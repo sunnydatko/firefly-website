@@ -9,6 +9,7 @@ import Typography from "@mui/material/Typography";
 import { blogPosts } from "../../helpers/config";
 import ResponsiveMenu from "../../components/ResponsiveMenu";
 import Footer from "../../components/Footer";
+import ReadingProgress from "../../components/ReadingProgress";
 import blog1 from "../../images/blog-1.png";
 import blog2 from "../../images/blog-2.png";
 
@@ -368,6 +369,7 @@ export default async function BlogPostPage({
 
   return (
     <>
+      <ReadingProgress />
       <ResponsiveMenu />
 
       {/* Hero image — full bleed, nav overlays it */}
@@ -433,19 +435,31 @@ export default async function BlogPostPage({
 
           {/* Article header */}
           <Box sx={{ mb: 6 }}>
-            <Typography
-              sx={{
-                color: "primary.main",
-                fontFamily: "var(--font-inter), sans-serif",
-                fontWeight: 600,
-                fontSize: 12,
-                letterSpacing: "0.22em",
-                textTransform: "uppercase",
-                mb: 2,
-              }}
-            >
-              {post.category}
-            </Typography>
+            <Box sx={{ display: "flex", alignItems: "center", gap: 2, mb: 2 }}>
+              <Typography
+                sx={{
+                  color: "primary.main",
+                  fontFamily: "var(--font-inter), sans-serif",
+                  fontWeight: 600,
+                  fontSize: 12,
+                  letterSpacing: "0.22em",
+                  textTransform: "uppercase",
+                }}
+              >
+                {post.category}
+              </Typography>
+              <Typography
+                sx={{
+                  color: "grey.600",
+                  fontFamily: "var(--font-inter), sans-serif",
+                  fontSize: 12,
+                  letterSpacing: "0.18em",
+                  textTransform: "uppercase",
+                }}
+              >
+                · {post.readTime} min read
+              </Typography>
+            </Box>
 
             <Typography
               variant="h2"

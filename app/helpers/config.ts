@@ -72,6 +72,7 @@ export const blogPosts = [
     tags: ["Design Systems", "MUI", "Frontend"],
     image: "blog-1",
     date: "",
+    readTime: 4,
     href: "/blog/building-a-design-system-that-scales",
   },
   {
@@ -83,6 +84,7 @@ export const blogPosts = [
     tags: ["Architecture", "Design Systems", "Frontend"],
     image: "blog-2",
     date: "",
+    readTime: 3,
     href: "/blog/building-systems-not-screens",
   },
 ];

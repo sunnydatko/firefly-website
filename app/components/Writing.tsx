@@ -116,7 +116,7 @@ export default function Writing() {
                   p: { xs: 3, md: 4.5 },
                 }}
               >
-                {/* Number + category */}
+                {/* Number + category + read time */}
                 <Box
                   sx={{ display: "flex", alignItems: "center", gap: 2, mb: 2 }}
                 >
@@ -144,6 +144,17 @@ export default function Writing() {
                     }}
                   >
                     {post.category}
+                  </Typography>
+                  <Typography
+                    sx={{
+                      fontFamily: "var(--font-inter), sans-serif",
+                      fontSize: 11,
+                      letterSpacing: "0.18em",
+                      textTransform: "uppercase",
+                      color: "grey.700",
+                    }}
+                  >
+                    · {post.readTime} min read
                   </Typography>
                 </Box>
 
