@@ -114,7 +114,7 @@ export default function Hero() {
           <Typography
             sx={{
               ...anim("0.4s"),
-              color: "primary.main",
+              color: "primary.light",
               fontWeight: 600,
               fontSize: { xs: 12, md: 13 },
               letterSpacing: "0.28em",

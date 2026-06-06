@@ -32,7 +32,7 @@ export default function Writing() {
             component="span"
             sx={{
               display: "block",
-              color: "primary.main",
+              color: "primary.light",
               fontFamily: "var(--font-inter), sans-serif",
               fontWeight: 600,
               fontSize: { xs: 12.5, md: 14 },
