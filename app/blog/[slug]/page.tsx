@@ -10,9 +10,11 @@ import { blogPosts } from "../../helpers/config";
 import ResponsiveMenu from "../../components/ResponsiveMenu";
 import Footer from "../../components/Footer";
 import blog1 from "../../images/blog-1.png";
+import blog2 from "../../images/blog-2.png";
 
 const imageMap: Record<string, StaticImageData> = {
   "blog-1": blog1,
+  "blog-2": blog2,
 };
 
 export async function generateStaticParams() {
@@ -239,6 +241,115 @@ const articleContent: Record<string, React.ReactNode> = {
         When approached thoughtfully, a design system becomes more than a UI
         library. It becomes a shared foundation that enables teams to build
         better products faster, with greater confidence and consistency.
+      </P>
+    </>
+  ),
+  "building-systems-not-screens": (
+    <>
+      <P>
+        When people think about frontend development, they often think about
+        screens.
+      </P>
+      <P>Buttons. Forms. Navigation. Dashboards.</P>
+      <P>
+        Those are certainly part of the job, but the most impactful frontend
+        work rarely starts with individual screens. Instead, it starts with
+        systems.
+      </P>
+      <P>
+        As products grow, complexity tends to grow with them. New features
+        introduce new requirements. Teams expand. Design evolves. What once felt
+        simple becomes increasingly difficult to maintain.
+      </P>
+      <P>The challenge is rarely building a single interface.</P>
+      <P>
+        The challenge is building a foundation that allows hundreds of
+        interfaces to evolve together.
+      </P>
+
+      <Heading>The Cost of Local Decisions</Heading>
+      <P>
+        Most technical debt doesn&apos;t come from bad engineers making poor
+        decisions. It comes from reasonable decisions made in isolation.
+      </P>
+      <P>A team needs a button variation for a new feature.</P>
+      <P>Another team introduces a slightly different form layout.</P>
+      <P>
+        A third team creates its own implementation of a common pattern because
+        it was faster than finding an existing solution.
+      </P>
+      <P>Each decision makes sense in the moment.</P>
+      <P>Collectively, they create fragmentation.</P>
+      <P>
+        Over time, products become collections of exceptions rather than
+        systems.
+      </P>
+
+      <Heading>Thinking in Foundations</Heading>
+      <P>The most sustainable products are built on shared foundations.</P>
+      <P>These foundations often include:</P>
+      <Ul
+        items={[
+          "Design tokens",
+          "Component libraries",
+          "Accessibility standards",
+          "Shared patterns",
+          "Architectural conventions",
+        ]}
+      />
+      <P>The goal isn&apos;t restriction.</P>
+      <P>The goal is alignment.</P>
+      <P>
+        When teams operate from a shared foundation, they spend less time
+        solving the same problems repeatedly and more time creating value for
+        users.
+      </P>
+
+      <Heading>Systems Create Velocity</Heading>
+      <P>It&apos;s easy to assume that standards slow teams down.</P>
+      <P>In practice, the opposite is often true.</P>
+      <P>A well-designed system reduces decision fatigue.</P>
+      <P>
+        Instead of debating spacing, typography, interaction states, and
+        implementation details for every feature, teams can focus on solving the
+        unique problems that matter.
+      </P>
+      <P>Consistency becomes the default rather than the exception.</P>
+      <P>As products scale, this compounds.</P>
+      <P>
+        A small investment in shared foundations can save hundreds of hours
+        across an organization.
+      </P>
+
+      <Heading>The Human Side of Architecture</Heading>
+      <P>Technical systems are only part of the equation.</P>
+      <P>The best systems also create alignment between people.</P>
+      <P>
+        Designers, engineers, and product managers benefit from shared language
+        and shared expectations.
+      </P>
+      <P>
+        When everyone understands the building blocks, collaboration becomes
+        easier.
+      </P>
+      <P>Communication becomes clearer.</P>
+      <P>Decisions become more predictable.</P>
+      <P>Architecture is ultimately about creating clarity.</P>
+      <P>Not just for code, but for teams.</P>
+
+      <Heading>Looking Forward</Heading>
+      <P>Technology changes quickly.</P>
+      <P>Frameworks evolve. Tools improve. Best practices shift.</P>
+      <P>
+        What tends to last are the principles behind strong systems:
+        consistency, clarity, maintainability, and thoughtful design.
+      </P>
+      <P>Products are built one feature at a time.</P>
+      <P>Great platforms are built through systems.</P>
+      <P>
+        The most valuable engineering work often isn&apos;t the screen users
+        see today—it&apos;s the foundation that enables everything that comes
+        next.
       </P>
     </>
   ),

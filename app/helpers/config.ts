@@ -74,6 +74,17 @@ export const blogPosts = [
     date: "",
     href: "/blog/building-a-design-system-that-scales",
   },
+  {
+    title: "Building Systems, Not Screens",
+    slug: "building-systems-not-screens",
+    category: "Frontend Architecture",
+    excerpt:
+      "The most impactful frontend work rarely starts with individual screens. It starts with systems. As products grow, the challenge is rarely building a single interface — it's building a foundation that allows hundreds of interfaces to evolve together.",
+    tags: ["Architecture", "Design Systems", "Frontend"],
+    image: "blog-2",
+    date: "",
+    href: "/blog/building-systems-not-screens",
+  },
 ];
 
 export const education = [

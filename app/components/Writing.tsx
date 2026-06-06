@@ -3,14 +3,15 @@
 import Image from "next/image";
 import type { StaticImageData } from "next/image";
 import Box from "@mui/material/Box";
-import Chip from "@mui/material/Chip";
 import Container from "@mui/material/Container";
 import Typography from "@mui/material/Typography";
 import { blogPosts } from "../helpers/config";
 import blog1 from "../images/blog-1.png";
+import blog2 from "../images/blog-2.png";
 
 const imageMap: Record<string, StaticImageData> = {
   "blog-1": blog1,
+  "blog-2": blog2,
 };
 
 export default function Writing() {
@@ -97,7 +98,10 @@ export default function Writing() {
                   src={imageMap[post.image]}
                   alt={post.title}
                   fill
-                  style={{ objectFit: "cover" }}
+                  style={{
+                    objectFit: "cover",
+                    filter: "brightness(1.15) contrast(1.05)",
+                  }}
                   sizes="(max-width: 900px) 100vw, 44vw"
                 />
               </Box>
@@ -147,7 +151,7 @@ export default function Writing() {
                 <Typography
                   variant="h3"
                   sx={{
-                    fontSize: { xs: "20px", md: "26px" },
+                    fontSize: { xs: "22px", md: "36px" },
                     color: "common.white",
                     mb: 1.5,
                     lineHeight: 1.2,
@@ -173,25 +177,6 @@ export default function Writing() {
                   {post.excerpt}
                 </Typography>
 
-                {/* Tags */}
-                <Box sx={{ display: "flex", flexWrap: "wrap", gap: 0.75 }}>
-                  {post.tags.map((tag) => (
-                    <Chip
-                      key={tag}
-                      label={tag}
-                      variant="outlined"
-                      size="small"
-                      sx={{
-                        borderColor: "rgba(255,255,255,0.12)",
-                        color: "grey.500",
-                        fontFamily: "var(--font-inter), sans-serif",
-                        fontSize: 11,
-                        borderRadius: "999px",
-                        height: 24,
-                      }}
-                    />
-                  ))}
-                </Box>
               </Box>
             </Box>
           ))}
