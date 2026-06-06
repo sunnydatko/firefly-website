@@ -121,7 +121,7 @@ export default function ResponsiveMenu() {
               variant="contained"
               sx={{ ml: 1.5, px: 2.5, fontSize: 14 }}
             >
-              Get In Touch
+              Contact Me
             </Button>
           </Box>
         </Toolbar>

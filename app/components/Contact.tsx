@@ -110,9 +110,9 @@ export default function Contact() {
               mb: 2,
             }}
           >
-            + Contact Me
+            + Let's Connect
           </Typography>
-          <Typography variant="h3">Get In Touch</Typography>
+          <Typography variant="h3">Contact Me</Typography>
         </Box>
 
         <form onSubmit={handleSubmit} noValidate className="reveal" style={{ transitionDelay: "0.1s" }}>
