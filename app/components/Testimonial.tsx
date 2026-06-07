@@ -29,20 +29,21 @@ export default function Testimonial() {
       }}
     >
       <Box
-          aria-hidden
-          sx={{
-            position: "absolute",
-            top: "50%",
-            left: "50%",
-            transform: "translate(-50%, -50%)",
-            width: { xs: "120%", md: "900px" },
-            height: { xs: "120%", md: "600px" },
-            background:
-              "radial-gradient(circle, rgba(123,93,184,0.14), transparent 70%)",
-            pointerEvents: "none",
-          }}
-        />
-      <Container sx={{ maxWidth: "650px !important", textAlign: "center", position: "relative" }}>
+        aria-hidden
+        sx={{
+          position: "absolute",
+          top: "50%",
+          left: "50%",
+          transform: "translate(-50%, -50%)",
+          width: { xs: "140%", md: "1000px" },
+          height: { xs: "140%", md: "700px" },
+          background:
+            "radial-gradient(circle, rgba(123,93,184,0.22), transparent 65%)",
+          pointerEvents: "none",
+        }}
+      />
+
+      <Container sx={{ maxWidth: "620px !important", textAlign: "center", position: "relative" }}>
         <Typography
           component="span"
           className="reveal"
@@ -54,91 +55,123 @@ export default function Testimonial() {
             fontSize: { xs: 12.5, md: 14 },
             letterSpacing: "0.28em",
             textTransform: "uppercase",
-            mb: 2,
+            mb: 3,
           }}
         >
           + Recommendation
         </Typography>
 
-        <Typography
-          className="reveal"
-          style={{ transitionDelay: "0.1s" }}
-          sx={{
-            color: "primary.light",
-            fontFamily: "Georgia, serif",
-            fontSize: { xs: "6rem", md: "8rem" },
-            lineHeight: 0.5,
-            mt: 3,
-            mb: 5,
-            userSelect: "none",
-          }}
-          aria-hidden
-        >
-          &ldquo;
-        </Typography>
+        <Box className="reveal" style={{ transitionDelay: "0.1s" }}>
+          <Box
+            sx={{
+              position: "relative",
+              background: "rgba(8, 4, 18, 0.90)",
+              backdropFilter: "blur(20px) saturate(140%)",
+              WebkitBackdropFilter: "blur(20px) saturate(140%)",
+              border: "1px solid rgba(150,110,255,0.08)",
+              borderRadius: "20px",
+              p: { xs: 4, md: 6 },
+              transform: "rotate(-0.8deg)",
+              boxShadow:
+                "0 0 0 1px rgba(255,255,255,0.04) inset, 0 1px 0 rgba(255,255,255,0.08) inset, 0 0 60px rgba(123,93,184,0.28), 0 0 120px rgba(123,93,184,0.14), 0 32px 64px rgba(0,0,0,0.7)",
+            }}
+          >
+            <Box
+              aria-hidden
+              sx={{
+                position: "absolute",
+                top: 0,
+                left: "50%",
+                transform: "translateX(-50%)",
+                width: "60%",
+                height: "1px",
+                background:
+                  "linear-gradient(90deg, transparent, rgba(123,93,184,0.7), transparent)",
+              }}
+            />
 
-        <Typography
-          className="reveal"
-          style={{ transitionDelay: "0.2s" }}
-          sx={{
-            color: "grey.200",
-            fontSize: { xs: "18px", md: "21px" },
-            lineHeight: 1.85,
-            fontStyle: "italic",
-            mb: 1,
-          }}
-        >
-          {quote}
-        </Typography>
+            <Typography
+              sx={{
+                color: "primary.light",
+                fontFamily: "Georgia, serif",
+                fontSize: { xs: "6rem", md: "8rem" },
+                lineHeight: 0.5,
+                mb: 5,
+                userSelect: "none",
+                opacity: 0.85,
+              }}
+              aria-hidden
+            >
+              &ldquo;
+            </Typography>
 
-        <Box
-          className="reveal"
-          style={{ transitionDelay: "0.3s" }}
-          sx={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 1.5 }}
-        >
-          {avatarSrc && (
+            <Typography
+              sx={{
+                color: "grey.200",
+                fontSize: { xs: "18px", md: "21px" },
+                lineHeight: 1.85,
+                fontStyle: "italic",
+                mb: 1,
+              }}
+            >
+              {quote}
+            </Typography>
+
             <Box
               sx={{
-                width: 100,
-                height: 100,
-                borderRadius: "50%",
-                overflow: "hidden",
-                border: "2px solid rgba(123,93,184,0.45)",
-                flexShrink: 0,
-                position: "relative",
+                display: "flex",
+                flexDirection: "column",
+                alignItems: "center",
+                gap: 1.5,
+                mt: 4,
               }}
             >
-              <Image
-                src={avatarSrc!}
-                alt={name}
-                fill
-                style={{ objectFit: "cover" }}
-                sizes="100px"
-              />
+              {avatarSrc && (
+                <Box
+                  sx={{
+                    width: 100,
+                    height: 100,
+                    borderRadius: "50%",
+                    overflow: "hidden",
+                    border: "2px solid rgba(150,110,255,0.6)",
+                    boxShadow: "0 0 18px rgba(155,110,255,0.55), 0 0 42px rgba(155,110,255,0.18)",
+                    flexShrink: 0,
+                    position: "relative",
+                  }}
+                >
+                  <Image
+                    src={avatarSrc!}
+                    alt={name}
+                    fill
+                    style={{ objectFit: "cover" }}
+                    sizes="100px"
+                  />
+                </Box>
+              )}
+              <Box>
+                <Typography
+                  sx={{
+                    color: "common.white",
+                    fontFamily: "var(--font-inter), sans-serif",
+                    fontWeight: 600,
+                    fontSize: { xs: 15, md: 16 },
+                  }}
+                >
+                  {name}
+                </Typography>
+                <Typography
+                  sx={{
+                    color: "rgba(255,255,255,0.65)",
+                    fontFamily: "var(--font-inter), sans-serif",
+                    fontSize: { xs: 12, md: 13 },
+                    letterSpacing: "0.04em",
+                    mt: 0.5,
+                  }}
+                >
+                  {title}
+                </Typography>
+              </Box>
             </Box>
-          )}
-          <Box>
-            <Typography
-              sx={{
-                color: "common.white",
-                fontFamily: "var(--font-inter), sans-serif",
-                fontWeight: 600,
-                fontSize: { xs: 15, md: 16 },
-              }}
-            >
-              {name}
-            </Typography>
-            <Typography
-              sx={{
-                color: "rgba(255,255,255,0.72)",
-                fontFamily: "var(--font-inter), sans-serif",
-                fontSize: { xs: 12, md: 13 },
-                letterSpacing: "0.04em",
-                mt: 0.5,
-              }}
-            >
-              {title}
-            </Typography>
           </Box>
         </Box>
       </Container>
