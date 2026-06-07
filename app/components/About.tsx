@@ -9,8 +9,6 @@ const skills = [
   "LLMs",
   "AI Agents",
   "RAG",
-  "Multi-Agent Systems",
-  "Prompt Engineering",
   "Python",
   "TypeScript",
   "System Design",
