@@ -24,15 +24,13 @@
 
 ## Design
 
-Eclipse is built for a specific reader: someone technical, skeptical of noise, and evaluating your work on substance. The aesthetic reflects that. Dark by default, precise in layout, and deliberately low-decoration — it gets out of the way and lets your projects and writing do the talking.
+Dark, minimal, and built for technical readers. The layout gets out of the way and lets your work do the talking.
 
-- **Space-dark palette** — near-black backgrounds with cool blue-white accents; the visual language of terminals, IDEs, and serious tooling
-- **Ambient motion** — a slow, living backdrop that suggests depth without distracting from content
-- **Engineering-first typography** — Space Grotesk for headlines, Inter for body; hierarchy through weight and spacing alone
-- **Signal over chrome** — no sidebars, no noise, no gradients competing for attention; structured for readers who scan for substance
-- **Scroll-driven reveals** — content surfaces progressively as you move through the page, each section arriving with quiet intention
-
-Eclipse resonates with the people who matter most to AI developers and technical builders: recruiters at AI labs, engineers evaluating collaborators, and founders looking for technical depth. The design signals craft without announcing it.
+- **Space-dark palette** — near-black backgrounds with cool blue-white accents
+- **Ambient motion** — a slow animated backdrop that suggests depth without distracting
+- **Considered typography** — Cormorant Garamond for headlines, Inter for body
+- **Minimal chrome** — no sidebars, no noise; structured for readers who scan for substance
+- **Scroll-driven reveals** — content surfaces as you move through the page
 
 ---
 
