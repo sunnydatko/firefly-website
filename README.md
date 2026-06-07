@@ -3,7 +3,7 @@
 
   # Orion
 
-  **A dark, minimal portfolio template built for engineers who ship.**
+  **A space-dark, minimal portfolio template for engineers, designers, and creators.**
 
   Built with Next.js 16 · React 19 · Material UI 9 · TypeScript
 
@@ -19,6 +19,18 @@
 ## Preview
 
 ![Orion preview](public/screenshot.png)
+
+---
+
+## Design
+
+Orion draws its palette and mood from deep space — near-black backgrounds, cold blue-white accents, and a density that rewards attention without demanding it. The aesthetic is intentional:
+
+- **Space-dark color palette** — rich near-black backgrounds offset by cool neutrals and precise accent hues that read like distant starlight
+- **Ambient background** — a slow, living backdrop that shifts like light refracting through atmosphere
+- **Typographic restraint** — Space Grotesk for headlines, Inter for body; hierarchy through weight and spacing, not decoration
+- **Minimal chrome** — no sidebars, no noise, no gradients competing for attention; the work speaks, the interface recedes
+- **Scroll-driven reveals** — content surfaces as you move through the page, each section arriving with quiet intention
 
 ---
 
