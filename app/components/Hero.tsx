@@ -178,7 +178,7 @@ export default function Hero() {
               mb: { xs: 4, md: 5 },
             }}
           >
-            Thoughtful design. Built for growth. Made to help small businesses shine online.</Typography>
+            Thoughtful design. Built for growth. Crafted for small businesses.            </Typography>
 
           {/* CTAs */}
           <Box
