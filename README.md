@@ -1,11 +1,13 @@
 <div align="center">
-  <img src="app/images/firefly-logo-cropped.png" alt="Firefly" width="64" height="64" />
+  <img src="app/images/firefly-logo-cropped.png" alt="Firefly Creative Studio" width="120" height="120" />
+
+  <br />
 
   # Firefly Creative Studio
 
-  **Website for Firefly Creative Studio — a design agency offering websites, branding, and business essentials for small businesses.**
+  **A design agency offering websites, branding, and business essentials for small businesses.**
 
-  Built with Next.js 16 · React 19 · Material UI 9 · TypeScript
+  <br />
 
   [![Next.js](https://img.shields.io/badge/Next.js-16-black?style=flat-square&logo=next.js)](https://nextjs.org)
   [![React](https://img.shields.io/badge/React-19-61DAFB?style=flat-square&logo=react&logoColor=black)](https://react.dev)
@@ -18,14 +20,13 @@
 
 ## Pages
 
-- **Home** — hero, value props, about, services overview, blog posts, testimonial, and contact
+- **Home** — hero, value props, about, services overview, featured projects, testimonial, and contact
 - **About** — studio story and approach
 - **Services** — overview of all service offerings
   - `/services/websites` — custom website design and development
   - `/services/logo-branding` — logo design and brand identity
   - `/services/business-essentials` — business cards, social graphics, SEO setup
-- **Work** — portfolio of client projects
-- **Blog** — articles at `/blog/[slug]`
+- **Work** — portfolio of client projects with individual case study pages at `/work/[slug]`
 - **Contact** — inbound inquiry form
 
 ---
@@ -55,16 +56,21 @@ Open [http://localhost:3000](http://localhost:3000).
 
 ## Content
 
-All site content lives in a single file:
+Site content lives in two files:
 
 **`app/helpers/config.ts`**
 
 ```ts
 export const social = [...]        // Social links
 export const experience = [...]    // Work history
-export const blogPosts = [...]     // Blog post metadata
 export const testimonials = [...]  // Client testimonials
 export const education = [...]     // Education
+```
+
+**`app/data/featuredProjects.ts`**
+
+```ts
+export const featuredProjects = [...]  // Portfolio projects (home + work pages)
 ```
 
 The theme — colors, typography, spacing — is in **`app/theme.ts`**.
@@ -76,25 +82,30 @@ The theme — colors, typography, spacing — is in **`app/theme.ts`**.
 ```
 app/
 ├── about/               # About page
-├── blog/[slug]/         # Dynamic blog post pages
 ├── contact/             # Contact page
 ├── services/            # Services overview + sub-pages
 │   ├── websites/
 │   ├── logo-branding/
 │   └── business-essentials/
-├── work/                # Portfolio / case studies
+├── work/                # Portfolio overview + case study pages
+│   └── [slug]/          # Individual project case studies
 ├── components/          # Shared UI components
 │   ├── Ambient.tsx      # Animated background
 │   ├── Hero.tsx
+│   ├── ValueProps.tsx
 │   ├── About.tsx
 │   ├── Services.tsx
-│   ├── ValueProps.tsx
-│   ├── Writing.tsx      # Blog card grid
+│   ├── FeaturedProjects.tsx
 │   ├── Testimonial.tsx
+│   ├── Contact.tsx
 │   ├── BrandMark.tsx
 │   ├── Footer.tsx
+│   ├── ScrollReveal.tsx
+│   ├── PageLoader.tsx
 │   └── ResponsiveMenu.tsx
-├── helpers/config.ts    # Site content (single source of truth)
+├── data/
+│   └── featuredProjects.ts  # Portfolio project data
+├── helpers/config.ts    # Social, experience, testimonials, education
 ├── images/              # Static image assets
 ├── theme.ts             # MUI theme
 ├── globals.css          # Global styles
