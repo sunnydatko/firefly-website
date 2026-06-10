@@ -1,73 +1,11 @@
+import Image from "next/image";
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
-import Chip from "@mui/material/Chip";
 import Container from "@mui/material/Container";
 import Typography from "@mui/material/Typography";
 import Footer from "../components/Footer";
 import ResponsiveMenu from "../components/ResponsiveMenu";
-
-const projects = [
-  {
-    client: "Rosestone Jewelry",
-    category: "Website + Branding",
-    year: "2025",
-    description:
-      "Custom e-commerce site and full brand identity for a master goldsmith. Included logo design, color palette, and a product showcase built to highlight handcrafted pieces.",
-    tags: ["Web Design", "Branding", "E-Commerce"],
-    accent: "rgba(247,215,116,0.12)",
-    accentBorder: "rgba(247,215,116,0.25)",
-  },
-  {
-    client: "Harlow & Co.",
-    category: "Website",
-    year: "2024",
-    description:
-      "Redesigned website for a boutique interior design studio. Focused on editorial layout and high-impact imagery to attract luxury residential clients.",
-    tags: ["Web Design", "CMS", "SEO"],
-    accent: "rgba(180,150,220,0.10)",
-    accentBorder: "rgba(180,150,220,0.22)",
-  },
-  {
-    client: "Maple Street Bakery",
-    category: "Full Package",
-    year: "2024",
-    description:
-      "Logo, brand guidelines, printed menus, and a new website with an online ordering integration — everything from scratch for a neighborhood bakery opening.",
-    tags: ["Branding", "Print", "Web Design"],
-    accent: "rgba(247,180,96,0.10)",
-    accentBorder: "rgba(247,180,96,0.22)",
-  },
-  {
-    client: "Summit Coaching",
-    category: "Website + Promotional",
-    year: "2024",
-    description:
-      "Website and marketing materials for an executive coach launching a group program. Included landing page, email template, and social media graphics.",
-    tags: ["Web Design", "Social Graphics", "Email"],
-    accent: "rgba(100,200,180,0.10)",
-    accentBorder: "rgba(100,200,180,0.22)",
-  },
-  {
-    client: "Vela Creative Studio",
-    category: "Branding",
-    year: "2023",
-    description:
-      "Complete brand identity for a Brooklyn-based creative agency — wordmark, icon, brand board, and a style guide handed off for in-house use.",
-    tags: ["Logo Design", "Brand Guidelines", "Typography"],
-    accent: "rgba(220,130,130,0.10)",
-    accentBorder: "rgba(220,130,130,0.22)",
-  },
-  {
-    client: "Drift Coffee",
-    category: "Website + Print",
-    year: "2023",
-    description:
-      "Website refresh and printed materials for a specialty coffee shop — menus, loyalty cards, and a new site optimized for local search.",
-    tags: ["Web Design", "SEO", "Print"],
-    accent: "rgba(160,120,80,0.12)",
-    accentBorder: "rgba(160,120,80,0.25)",
-  },
-];
+import { featuredProjects } from "../data/featuredProjects";
 
 export default function WorkPage() {
   return (
@@ -139,99 +77,124 @@ export default function WorkPage() {
               maxWidth: 600,
             }}
           >
-            Every project is a partnership. Here are a few of the businesses we've helped bring to life online.
+            Every project is a partnership. Here are a few of the businesses we&apos;ve helped bring to life online.
           </Typography>
         </Container>
       </Box>
 
-      {/* Projects grid */}
+      {/* Featured projects */}
       <Box component="section" sx={{ py: { xs: 10, md: 14 }, borderBottom: "1px solid rgba(255,255,255,0.06)" }}>
-        <Container sx={{ maxWidth: "1100px !important" }}>
+        <Container sx={{ maxWidth: "1300px !important" }}>
           <Box
             sx={{
               display: "grid",
-              gridTemplateColumns: { xs: "1fr", sm: "1fr 1fr", lg: "1fr 1fr 1fr" },
-              gap: 3,
+              gridTemplateColumns: { xs: "1fr", md: "1fr 1fr" },
+              gap: { xs: 5, md: 4 },
             }}
           >
-            {projects.map(({ client, category, year, description, tags, accent, accentBorder }) => (
+            {featuredProjects.map((project, index) => (
               <Box
-                key={client}
+                key={project.name}
+                component="a"
+                href={project.href}
                 sx={{
-                  backgroundColor: "background.paper",
-                  border: "1px solid rgba(255,255,255,0.07)",
-                  borderRadius: 2,
-                  overflow: "hidden",
                   display: "flex",
                   flexDirection: "column",
-                  transition: "border-color 0.3s, transform 0.3s",
-                  "&:hover": {
-                    borderColor: accentBorder,
-                    transform: "translateY(-4px)",
+                  textDecoration: "none",
+                  color: "inherit",
+                  "&:hover .screenshot-wrap": {
+                    borderColor: "rgba(255,255,255,0.18)",
+                  },
+                  "&:hover .screenshot-wrap img": {
+                    transform: "scale(1.03)",
+                  },
+                  "&:hover .screenshot-overlay": {
+                    opacity: 1,
                   },
                 }}
               >
-                {/* Color band */}
+                {/* Screenshot */}
                 <Box
+                  className="screenshot-wrap"
                   sx={{
-                    height: 6,
-                    backgroundColor: accentBorder,
+                    position: "relative",
+                    width: "100%",
+                    aspectRatio: "4 / 3",
+                    borderRadius: 2,
+                    overflow: "hidden",
+                    border: "1px solid rgba(255,255,255,0.08)",
+                    mb: 3,
+                    transition: "border-color 0.3s ease",
+                    "& img": { transition: "transform 0.5s ease" },
                   }}
-                />
-
-                <Box sx={{ p: { xs: 3, md: 3.5 }, display: "flex", flexDirection: "column", flexGrow: 1 }}>
-                  {/* Meta row */}
-                  <Box sx={{ display: "flex", alignItems: "center", justifyContent: "space-between", mb: 2.5 }}>
+                >
+                  <Image
+                    src={project.image}
+                    alt={`${project.name} website screenshot`}
+                    fill
+                    priority={index === 0}
+                    style={{
+                      objectFit: "cover",
+                      objectPosition: "top",
+                    }}
+                    sizes="(max-width: 900px) 100vw, 50vw"
+                  />
+                  <Box
+                    className="screenshot-overlay"
+                    sx={{
+                      position: "absolute",
+                      inset: 0,
+                      display: "flex",
+                      alignItems: "center",
+                      justifyContent: "center",
+                      backgroundColor: "rgba(11,16,32,0.52)",
+                      opacity: 0,
+                      transition: "opacity 0.3s ease",
+                    }}
+                  >
                     <Typography
                       sx={{
+                        color: "white",
                         fontFamily: "var(--font-inter), sans-serif",
                         fontWeight: 600,
-                        fontSize: 11,
-                        letterSpacing: "0.2em",
+                        fontSize: 13,
+                        letterSpacing: "0.12em",
                         textTransform: "uppercase",
-                        color: "grey.500",
                       }}
                     >
-                      {category}
+                      View Project →
                     </Typography>
-                    <Typography
-                      sx={{
-                        fontFamily: "var(--font-inter), sans-serif",
-                        fontSize: 12,
-                        color: "grey.600",
-                      }}
-                    >
-                      {year}
-                    </Typography>
-                  </Box>
-
-                  <Typography variant="h5" sx={{ fontSize: { xs: "18px", md: "20px" }, mb: 1.5 }}>
-                    {client}
-                  </Typography>
-
-                  <Typography
-                    sx={{ color: "grey.300", fontSize: "14px", lineHeight: 1.75, mb: 3, flexGrow: 1 }}
-                  >
-                    {description}
-                  </Typography>
-
-                  <Box sx={{ display: "flex", flexWrap: "wrap", gap: 1 }}>
-                    {tags.map((tag) => (
-                      <Chip
-                        key={tag}
-                        label={tag}
-                        size="small"
-                        variant="outlined"
-                        sx={{
-                          fontSize: 11,
-                          height: 24,
-                          borderColor: accentBorder,
-                          color: "grey.400",
-                        }}
-                      />
-                    ))}
                   </Box>
                 </Box>
+
+                {/* Info */}
+                <Typography
+                  variant="h4"
+                  sx={{ fontSize: { xs: "19px", md: "22px" }, mb: 0.75 }}
+                >
+                  {project.name}
+                </Typography>
+                <Typography
+                  sx={{
+                    color: "grey.400",
+                    fontFamily: "var(--font-inter), sans-serif",
+                    fontSize: { xs: 13, md: 14 },
+                    letterSpacing: "0.04em",
+                    mb: 0.5,
+                  }}
+                >
+                  {project.tagline}&nbsp;&nbsp;·&nbsp;&nbsp;{project.location}
+                </Typography>
+                <Typography
+                  sx={{
+                    color: "grey.500",
+                    fontFamily: "var(--font-inter), sans-serif",
+                    fontSize: { xs: 12, md: 13 },
+                    letterSpacing: "0.03em",
+                  }}
+                >
+                  {project.whatWeDid}
+                </Typography>
               </Box>
             ))}
           </Box>

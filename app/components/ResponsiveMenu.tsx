@@ -23,7 +23,7 @@ const navItems = [
   { name: "Home", href: "/" },
   { name: "About", href: "/about" },
   { name: "Services", href: "/services" },
-  { name: "Work", href: "/work" },
+  // { name: "Work", href: "/work" }, // hidden until projects approved
 ];
 
 export default function ResponsiveMenu() {

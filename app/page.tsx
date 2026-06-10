@@ -4,7 +4,7 @@ import Hero from "./components/Hero";
 import ValueProps from "./components/ValueProps";
 import About from "./components/About";
 import Services from "./components/Services";
-import Writing from "./components/Writing";
+import FeaturedProjects from "./components/FeaturedProjects";
 import Testimonial from "./components/Testimonial";
 import Contact from "./components/Contact";
 import Footer from "./components/Footer";
@@ -21,7 +21,7 @@ export default function Home() {
         <ValueProps />
         <About />
         <Services />
-        <Writing />
+        {/* <FeaturedProjects /> */}{/* hidden until projects approved */}
         <Testimonial />
         <Contact />
       </main>

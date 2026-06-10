@@ -39,7 +39,6 @@ export default function ValueProps() {
         borderTop: "1px solid rgba(247,215,116,0.10)",
         display: "grid",
         gridTemplateColumns: { xs: "1fr 1fr", md: "repeat(4, 1fr)" },
-        minHeight: { xs: "40svh", md: "40vh" },
       }}
     >
       {props.map(({ Icon, title, description }, i) => (
@@ -51,7 +50,7 @@ export default function ValueProps() {
             alignItems: "center",
             textAlign: "center",
             px: { xs: 3, md: 4 },
-            py: { xs: 4, md: 5 },
+            py: { xs: 3, md: 4 },
             borderRight: {
               xs: i % 2 === 0 ? "1px solid rgba(247,215,116,0.10)" : "none",
               md: i < 3 ? "1px solid rgba(247,215,116,0.10)" : "none",
@@ -65,7 +64,7 @@ export default function ValueProps() {
           <Icon
             sx={{
               color: "#F7D774",
-              fontSize: 32,
+              fontSize: 34,
               mb: 2,
               opacity: 0.9,
             }}

@@ -43,7 +43,7 @@ export default function Hero() {
     const handleScroll = () => {
       if (!sectionRef.current || !bgRef.current) return;
       const progress = Math.min(window.scrollY / sectionRef.current.offsetHeight, 1);
-      bgRef.current.style.transform = `scale(${1 + progress * 0.08})`;
+      bgRef.current.style.transform = `scale(${1.05 + progress * 0.08})`;
       bgRef.current.style.opacity = String((1 - progress * 0.4) * 0.9);
     };
     window.addEventListener("scroll", handleScroll, { passive: true });
@@ -60,7 +60,7 @@ export default function Hero() {
         position: "relative",
         display: "flex",
         alignItems: "center",
-        minHeight: { xs: "60svh", md: "60vh" },
+        minHeight: { xs: "54svh", md: "54vh" },
         overflow: "hidden",
         backgroundColor: "#0B1020",
       }}
@@ -77,6 +77,7 @@ export default function Hero() {
           backgroundPosition: { xs: "center", md: "right calc(50% - 40px)" },
           willChange: "transform, opacity",
           transformOrigin: "center center",
+          transform: "scale(1.05)",
           opacity: 0.9,
           filter: "brightness(0.9)",
         }}
@@ -109,7 +110,7 @@ export default function Hero() {
         }}
       />
 
-      <Container sx={{ position: "relative", zIndex: 2, py: { xs: 12, md: 10 } }}>
+      <Container sx={{ position: "relative", zIndex: 2, pt: { xs: 13, md: 11 }, pb: { xs: 9, md: 7 } }}>
         <Box sx={{ maxWidth: { xs: "100%", md: 620 } }}>
 
           {/* Eyebrow */}
@@ -159,7 +160,7 @@ export default function Hero() {
           <Box
             sx={{
               ...anim("0.75s"),
-              width: 52,
+              width: 80,
               height: 2,
               borderRadius: 1,
               bgcolor: "#F7D774",
