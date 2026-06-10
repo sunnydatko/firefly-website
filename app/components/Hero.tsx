@@ -6,7 +6,7 @@ import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import Container from "@mui/material/Container";
 import Typography from "@mui/material/Typography";
-import skyBg from "../images/hero-bg.png";
+import skyBg from "../images/hero-bg-4.png";
 
 const fadeUp = keyframes`
   from { opacity: 0; transform: translateY(32px); filter: blur(6px); }
@@ -20,8 +20,7 @@ const anim = (delay: string) => ({
 });
 
 const NEUTRAL =
-  "radial-gradient(ellipse 70% 80% at 50% 50%, transparent 0%, rgba(8,13,26,0.4) 100%)";
-
+  "radial-gradient(ellipse 70% 80% at 50% 50%, transparent 0%, rgba(11,16,32,0.4) 100%)";
 
 export default function Hero() {
   const sectionRef = useRef<HTMLDivElement>(null);
@@ -33,7 +32,7 @@ export default function Hero() {
     const rect = sectionRef.current.getBoundingClientRect();
     const x = ((e.clientX - rect.left) / rect.width) * 100;
     const y = ((e.clientY - rect.top) / rect.height) * 100;
-    mouseOverlayRef.current.style.background = `radial-gradient(ellipse 70% 80% at ${x}% ${y}%, transparent 0%, rgba(8,13,26,0.4) 100%)`;
+    mouseOverlayRef.current.style.background = `radial-gradient(ellipse 70% 80% at ${x}% ${y}%, transparent 0%, rgba(11,16,32,0.4) 100%)`;
   };
 
   const handleMouseLeave = () => {
@@ -61,9 +60,9 @@ export default function Hero() {
         position: "relative",
         display: "flex",
         alignItems: "center",
-        minHeight: { xs: "100svh", md: "100vh" },
+        minHeight: { xs: "60svh", md: "60vh" },
         overflow: "hidden",
-        backgroundColor: "#080d1a",
+        backgroundColor: "#0B1020",
       }}
     >
       {/* Background photo */}
@@ -75,27 +74,28 @@ export default function Hero() {
           inset: 0,
           backgroundImage: `url(${skyBg.src})`,
           backgroundSize: "cover",
-          backgroundPosition: { xs: "center", md: "center" },
+          backgroundPosition: { xs: "center", md: "right calc(50% - 40px)" },
           willChange: "transform, opacity",
           transformOrigin: "center center",
           opacity: 0.9,
+          filter: "brightness(0.9)",
         }}
       />
 
-      {/* Dark gradient — left-heavy so text stays legible, eclipse visible on right */}
+      {/* Left gradient — keeps text legible, lets the garden scene breathe on the right */}
       <Box
         aria-hidden
         sx={{
           position: "absolute",
           inset: 0,
           background: {
-            xs: "linear-gradient(180deg, rgba(8,13,26,0.80) 0%, rgba(8,13,26,0.60) 50%, rgba(8,13,26,0.85) 100%)",
-            md: "linear-gradient(90deg, rgba(8,13,26,0.92) 0%, rgba(8,13,26,0.80) 30%, rgba(8,13,26,0.35) 60%, rgba(8,13,26,0.05) 100%)",
+            xs: "linear-gradient(180deg, rgba(11,16,32,0.85) 0%, rgba(11,16,32,0.65) 50%, rgba(11,16,32,0.90) 100%)",
+            md: "linear-gradient(90deg, rgba(11,16,32,0.99) 0%, rgba(11,16,32,0.94) 32%, rgba(11,16,32,0.40) 58%, rgba(11,16,32,0.05) 100%)",
           },
         }}
       />
 
-      {/* Cursor-tracked radial overlay — desktop only */}
+      {/* Cursor-tracked overlay — desktop only */}
       <Box
         ref={mouseOverlayRef}
         aria-hidden
@@ -110,132 +110,130 @@ export default function Hero() {
       />
 
       <Container sx={{ position: "relative", zIndex: 2, py: { xs: 12, md: 10 } }}>
-        <Box sx={{ maxWidth: { xs: "100%", md: 560 } }}>
+        <Box sx={{ maxWidth: { xs: "100%", md: 620 } }}>
+
           {/* Eyebrow */}
           <Typography
             sx={{
-              ...anim("0.4s"),
-              color: "primary.light",
-              fontWeight: 600,
-              fontSize: { xs: 11, md: 12 },
-              letterSpacing: "0.28em",
+              ...anim("0.2s"),
+              fontFamily: "var(--font-inter), sans-serif",
+              fontSize: 11,
+              fontWeight: 700,
+              letterSpacing: "0.22em",
               textTransform: "uppercase",
-              mb: 1.5,
+              color: "#F7D774",
+              mb: 2.5,
             }}
           >
-            Hello, I&apos;m Alex Parker
+            Boutique Web Design &amp; Development
           </Typography>
-
-          {/* Accent rule — between eyebrow and headline */}
-          <Box
-            sx={{
-              ...anim("0.55s"),
-              width: 48,
-              height: 2,
-              borderRadius: 2,
-              bgcolor: "secondary.main",
-              mb: { xs: 3, md: 4 },
-            }}
-          />
 
           {/* Headline */}
           <Typography
             variant="h1"
             sx={{
-              ...anim("0.7s"),
-              fontSize: { xs: "40px", sm: "56px", md: "72px" },
-              lineHeight: 1.05,
-              color: "common.white",
-              mb: { xs: 3, md: 4 },
+              ...anim("0.5s"),
+              fontSize: { xs: "40px", sm: "54px", md: "68px" },
+              lineHeight: 1.08,
+              color: "#F8F5EE",
+              mb: { xs: 2.5, md: 3 },
             }}
           >
-            Building intelligent
+            Websites that
             <br />
-            systems that{" "}
-            <Box component="span" sx={{ color: "secondary.main" }}>
-              matter.
+            help your business
+            <br />
+            <Box
+              component="em"
+              sx={{
+                fontStyle: "italic",
+                color: "#F7D774",
+                fontFamily: "var(--font-fraunces), serif",
+              }}
+            >
+              shine.
             </Box>
           </Typography>
 
-          {/* Intro */}
+          {/* Gold rule */}
+          <Box
+            sx={{
+              ...anim("0.75s"),
+              width: 52,
+              height: 2,
+              borderRadius: 1,
+              bgcolor: "#F7D774",
+              mb: { xs: 3, md: 3.5 },
+            }}
+          />
+
+          {/* Subtext */}
           <Typography
             sx={{
-              ...anim("1.0s"),
-              color: "grey.300",
+              ...anim("0.95s"),
+              color: "rgba(248,245,238,0.72)",
               fontSize: { xs: 15, md: 17 },
-              lineHeight: 1.65,
-              maxWidth: 460,
+              lineHeight: 1.7,
+              maxWidth: 440,
               mb: { xs: 4, md: 5 },
             }}
           >
-            AI engineer and builder focused on creating intelligent systems that
-            learn, adapt, and deliver real impact.
-          </Typography>
+            Thoughtful design. Built for growth. Made to help small businesses shine online.</Typography>
 
           {/* CTAs */}
           <Box
             sx={{
-              ...anim("1.25s"),
+              ...anim("1.15s"),
               display: "flex",
               flexWrap: "wrap",
               alignItems: "center",
-              gap: { xs: 3, md: 4 },
+              gap: { xs: 2, md: 2.5 },
             }}
           >
             <Button
-              variant="outlined"
-              href="#experience"
+              variant="contained"
+              href="/work"
               sx={{
                 fontSize: { xs: 12, md: 13 },
-                fontWeight: 600,
+                fontWeight: 700,
                 letterSpacing: "0.14em",
                 textTransform: "uppercase",
-                px: 3,
-                py: 1.4,
-                borderColor: "rgba(255,255,255,0.55)",
-                color: "common.white",
+                px: { xs: 3, md: 3.5 },
+                py: 1.5,
+                backgroundColor: "#F7D774",
+                color: "#0B1020",
                 "&:hover": {
-                  borderColor: "common.white",
-                  backgroundColor: "rgba(255,255,255,0.06)",
+                  backgroundColor: "#F4B860",
                 },
-                "& .arrow": { ml: 1.5, transition: "transform 0.3s" },
-                "&:hover .arrow": { transform: "translateX(4px)" },
               }}
             >
-              View My Work
-              <Box component="span" className="arrow" aria-hidden>
-                {" "}→
-              </Box>
+              View Our Work
             </Button>
 
-            <Box
-              component="a"
-              href="#about"
+            <Button
+              variant="outlined"
+              href="/contact"
               sx={{
-                display: "inline-flex",
-                alignItems: "center",
-                color: "grey.200",
                 fontSize: { xs: 12, md: 13 },
-                fontWeight: 600,
+                fontWeight: 700,
                 letterSpacing: "0.14em",
                 textTransform: "uppercase",
-                borderBottom: "1px solid",
-                borderColor: "rgba(200,184,237,0.45)",
-                pb: "3px",
-                transition: "color 0.3s, border-color 0.3s",
-                textDecoration: "none",
+                px: { xs: 3, md: 3.5 },
+                py: 1.5,
+                borderColor: "#F7D774",
+                color: "#F7D774",
                 "&:hover": {
-                  color: "common.white",
-                  borderColor: "grey.300",
+                  borderColor: "#F4B860",
+                  color: "#F4B860",
+                  backgroundColor: "rgba(247,215,116,0.06)",
                 },
               }}
             >
-              About Me
-            </Box>
+              Let&apos;s Glow&nbsp;&bull;
+            </Button>
           </Box>
         </Box>
       </Container>
-
     </Box>
   );
 }

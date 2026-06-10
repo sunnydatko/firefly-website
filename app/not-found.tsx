@@ -11,60 +11,8 @@ import ResponsiveMenu from "./components/ResponsiveMenu";
 import Footer from "./components/Footer";
 
 const fadeUp = keyframes`
-  from { opacity: 0; transform: translateY(24px); filter: blur(4px); }
-  to   { opacity: 1; transform: translateY(0);    filter: blur(0px); }
-`;
-
-// Deep violet channel — shifts left during burst
-const glitch1 = keyframes`
-  0%, 80%, 100% { clip-path: inset(0 0 100% 0); transform: translate(0); }
-  82%  { clip-path: inset(8%  0 54% 0); transform: translate(-6px); }
-  84%  { clip-path: inset(62% 0 16% 0); transform: translate(6px);  }
-  86%  { clip-path: inset(28% 0 58% 0); transform: translate(-4px); }
-  88%  { clip-path: inset(78% 0  6% 0); transform: translate(5px);  }
-  90%  { clip-path: inset(44% 0 38% 0); transform: translate(-6px); }
-`;
-
-// Bright violet channel — interleaved slices, shifts right
-const glitch2 = keyframes`
-  0%, 80%, 100% { clip-path: inset(0 0 100% 0); transform: translate(0); }
-  83%  { clip-path: inset(52% 0 28% 0); transform: translate(6px);  }
-  85%  { clip-path: inset(18% 0 64% 0); transform: translate(-6px); }
-  87%  { clip-path: inset(72% 0 10% 0); transform: translate(4px);  }
-  89%  { clip-path: inset(34% 0 48% 0); transform: translate(-5px); }
-  91%  { clip-path: inset(0  0 100% 0); transform: translate(0);    }
-`;
-
-// 404 breathes like an eclipse corona
-const coronaPulse = keyframes`
-  0%, 100% {
-    text-shadow:
-      0 0 20px rgba(123,93,184,0.45),
-      0 0 60px rgba(123,93,184,0.18);
-  }
-  50% {
-    text-shadow:
-      0 0 40px rgba(168,146,216,0.80),
-      0 0 100px rgba(123,93,184,0.40),
-      0 0 180px rgba(74,50,111,0.30);
-  }
-`;
-
-// Power flicker synced to glitch window
-const flicker = keyframes`
-  0%, 92%, 100% { opacity: 1;    }
-  93%           { opacity: 0.75; }
-  94%           { opacity: 1;    }
-  95%           { opacity: 0.45; }
-  96%           { opacity: 1;    }
-`;
-
-// Ambient nebula glow drifts slowly over the eclipse area
-const nebulaFloat = keyframes`
-  0%, 100% { transform: translate(0px, 0px) scale(1);    opacity: 0.55; }
-  30%       { transform: translate(-18px, 12px) scale(1.06); opacity: 0.75; }
-  60%       { transform: translate(12px, -10px) scale(0.96); opacity: 0.45; }
-  80%       { transform: translate(-8px, 16px) scale(1.03);  opacity: 0.65; }
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
 `;
 
 const anim = (delay: string) => ({
@@ -72,6 +20,41 @@ const anim = (delay: string) => ({
   opacity: 0,
   "@media (prefers-reduced-motion: reduce)": { animation: "none", opacity: 1 },
 });
+
+function FireflyIcon({ size = 28 }: { size?: number }) {
+  return (
+    <Box
+      component="svg"
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 32 32"
+      sx={{ width: size, height: size, flexShrink: 0 }}
+      aria-hidden
+    >
+      <defs>
+        <radialGradient id="nf-bodyGrad" cx="45%" cy="30%" r="70%">
+          <stop offset="0%" stopColor="#FFFDE8" />
+          <stop offset="45%" stopColor="#F7D774" />
+          <stop offset="100%" stopColor="#B08018" />
+        </radialGradient>
+        <radialGradient id="nf-ambientGlow" cx="16" cy="19" r="11" gradientUnits="userSpaceOnUse">
+          <stop offset="0%" stopColor="#F7D774" stopOpacity="0.5" />
+          <stop offset="100%" stopColor="#F7D774" stopOpacity="0" />
+        </radialGradient>
+      </defs>
+      <ellipse cx="16" cy="19" rx="12" ry="9" fill="url(#nf-ambientGlow)" />
+      <path d="M15 20 Q8 17 7 22 Q10 25.5 15 22Z" fill="#F7D774" opacity="0.4" />
+      <path d="M17 20 Q24 17 25 22 Q22 25.5 17 22Z" fill="#F7D774" opacity="0.4" />
+      <path d="M15 17.5 Q9 12.5 8 16 Q11 19 15 18.5Z" fill="#F4B860" opacity="0.3" />
+      <path d="M17 17.5 Q23 12.5 24 16 Q21 19 17 18.5Z" fill="#F4B860" opacity="0.3" />
+      <ellipse cx="16" cy="21" rx="2.5" ry="3.5" fill="url(#nf-bodyGrad)" />
+      <circle cx="16" cy="15.5" r="2" fill="#C9A840" />
+      <path d="M15 13.7 Q13.5 11 12.5 9" stroke="#A88020" strokeWidth="0.9" fill="none" strokeLinecap="round" />
+      <path d="M17 13.7 Q18.5 11 19.5 9" stroke="#A88020" strokeWidth="0.9" fill="none" strokeLinecap="round" />
+      <circle cx="12.5" cy="9" r="0.9" fill="#A88020" />
+      <circle cx="19.5" cy="9" r="0.9" fill="#A88020" />
+    </Box>
+  );
+}
 
 export default function NotFound() {
   const sectionRef = useRef<HTMLDivElement>(null);
@@ -93,29 +76,23 @@ export default function NotFound() {
 
   useEffect(() => {
     const lerp = (a: number, b: number, t: number) => a + (b - a) * t;
-
     const tick = () => {
       if (!bgRef.current) { rafRef.current = requestAnimationFrame(tick); return; }
-
       const target = mouseRef.current
-        ? { x: (mouseRef.current.x - 0.5) * 22, y: (mouseRef.current.y - 0.5) * 14 }
+        ? { x: (mouseRef.current.x - 0.5) * 18, y: (mouseRef.current.y - 0.5) * 12 }
         : { x: 0, y: 0 };
-
       currentRef.current.x = lerp(currentRef.current.x, target.x, 0.04);
       currentRef.current.y = lerp(currentRef.current.y, target.y, 0.04);
-
       bgRef.current.style.transform =
         `scale(1.07) translate(${currentRef.current.x.toFixed(2)}px, ${currentRef.current.y.toFixed(2)}px)`;
-
       rafRef.current = requestAnimationFrame(tick);
     };
-
     rafRef.current = requestAnimationFrame(tick);
     return () => cancelAnimationFrame(rafRef.current);
   }, []);
 
   return (
-    <Box sx={{ minHeight: "100vh", backgroundColor: "#05030A", display: "flex", flexDirection: "column" }}>
+    <Box sx={{ minHeight: "100vh", backgroundColor: "#08111F", display: "flex", flexDirection: "column" }}>
       <ResponsiveMenu />
 
       <Box
@@ -128,10 +105,11 @@ export default function NotFound() {
           position: "relative",
           display: "flex",
           alignItems: "center",
+          justifyContent: "center",
           overflow: "hidden",
         }}
       >
-        {/* Background image — parallax driven by RAF loop */}
+        {/* Background image */}
         <Box
           ref={bgRef}
           aria-hidden
@@ -140,291 +118,132 @@ export default function NotFound() {
             inset: 0,
             backgroundImage: `url(${notFoundBg.src})`,
             backgroundSize: "cover",
-            backgroundPosition: { xs: "65% center", md: "center right" },
-            opacity: 0.92,
+            backgroundPosition: "center bottom",
+            opacity: 0.9,
             transform: "scale(1.07)",
             willChange: "transform",
           }}
         />
 
-        {/* Drifting nebula glow — always animating, no interaction needed */}
+        {/* Dark overlay */}
         <Box
           aria-hidden
           sx={{
             position: "absolute",
             inset: 0,
-            background:
-              "radial-gradient(ellipse 55% 55% at 68% 42%, rgba(90,45,160,0.30) 0%, transparent 65%)",
-            animation: `${nebulaFloat} 18s ease-in-out infinite`,
-            pointerEvents: "none",
+            background: "linear-gradient(180deg, rgba(8,17,31,0.72) 0%, rgba(8,17,31,0.45) 50%, rgba(8,17,31,0.70) 100%)",
             zIndex: 1,
-            "@media (prefers-reduced-motion: reduce)": { animation: "none" },
           }}
         />
 
-        {/* Left-heavy gradient — text readable, eclipse visible on right */}
-        <Box
-          aria-hidden
+        <Container
           sx={{
-            position: "absolute",
-            inset: 0,
-            zIndex: 1,
-            background: {
-              xs: "linear-gradient(180deg, rgba(5,3,10,0.88) 0%, rgba(5,3,10,0.65) 45%, rgba(5,3,10,0.82) 100%)",
-              md: "linear-gradient(90deg, rgba(5,3,10,0.97) 0%, rgba(5,3,10,0.93) 28%, rgba(5,3,10,0.65) 52%, rgba(5,3,10,0.08) 100%)",
-            },
-          }}
-        />
-
-        {/* Scanlines */}
-        <Box
-          aria-hidden
-          sx={{
-            position: "absolute",
-            inset: 0,
-            backgroundImage:
-              "repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0,0,0,0.06) 2px, rgba(0,0,0,0.06) 4px)",
-            pointerEvents: "none",
+            position: "relative",
             zIndex: 2,
+            py: { xs: 14, md: 16 },
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+            textAlign: "center",
           }}
-        />
-
-        {/* HUD crosshair — top left */}
-        <Box
-          aria-hidden
-          sx={{
-            position: "absolute",
-            top: { xs: 24, md: 36 },
-            left: { xs: 24, md: 44 },
-            width: 20,
-            height: 20,
-            zIndex: 3,
-            "&::before, &::after": {
-              content: '""',
-              position: "absolute",
-              background: "rgba(168,146,216,0.40)",
-            },
-            "&::before": {
-              top: "50%",
-              left: 0,
-              right: 0,
-              height: "1px",
-              transform: "translateY(-50%)",
-            },
-            "&::after": {
-              left: "50%",
-              top: 0,
-              bottom: 0,
-              width: "1px",
-              transform: "translateX(-50%)",
-            },
-          }}
-        />
-
-        {/* HUD accent dot */}
-        <Box
-          aria-hidden
-          sx={{
-            position: "absolute",
-            top: { xs: 30, md: 42 },
-            left: { xs: 56, md: 76 },
-            width: 4,
-            height: 4,
-            borderRadius: "50%",
-            background: "rgba(168,146,216,0.45)",
-            zIndex: 3,
-          }}
-        />
-
-        <Container sx={{ position: "relative", zIndex: 4, py: { xs: 3, md: 14 }, pl: { md: 8, lg: 12 } }}>
-          <Box
+        >
+          {/* 404 */}
+          <Typography
+            component="div"
             sx={{
-              maxWidth: { xs: "100%", md: 620 },
-              textAlign: { xs: "center", md: "left" },
+              ...anim("0.1s"),
+              fontFamily: "var(--font-fraunces), serif",
+              fontWeight: 700,
+              fontSize: { xs: "28vw", sm: "180px", md: "240px" },
+              lineHeight: 0.9,
+              letterSpacing: "-0.03em",
+              color: "#F8F5EE",
+              userSelect: "none",
             }}
           >
+            404
+          </Typography>
 
-            {/* Eyebrow — • PAGE NOT FOUND —— */}
-            <Box
+          {/* Divider with firefly icon */}
+          <Box
+            sx={{
+              ...anim("0.3s"),
+              display: "flex",
+              alignItems: "center",
+              gap: 2,
+              mt: { xs: 3, md: 4 },
+              mb: { xs: 3, md: 4 },
+              width: "100%",
+              maxWidth: 480,
+            }}
+          >
+            <Box sx={{ flex: 1, height: "1px", bgcolor: "rgba(247,215,116,0.35)" }} />
+            <FireflyIcon size={28} />
+            <Box sx={{ flex: 1, height: "1px", bgcolor: "rgba(247,215,116,0.35)" }} />
+          </Box>
+
+          {/* Heading */}
+          <Typography
+            variant="h2"
+            sx={{
+              ...anim("0.45s"),
+              fontSize: { xs: "24px", sm: "28px", md: "36px" },
+              color: "common.white",
+              lineHeight: 1.25,
+              mb: { xs: 2, md: 2.5 },
+              maxWidth: 520,
+            }}
+          >
+            Looks like you&apos;ve wandered
+            <br />
+            off the path.
+          </Typography>
+
+          {/* Subtext */}
+          <Typography
+            sx={{
+              ...anim("0.6s"),
+              color: "rgba(248,245,238,0.65)",
+              fontSize: { xs: 14, md: 16 },
+              lineHeight: 1.7,
+              mb: { xs: 4, md: 5 },
+              maxWidth: 400,
+            }}
+          >
+            The page you&apos;re looking for doesn&apos;t exist
+            or has been moved. Let&apos;s get you back
+            to something useful.
+          </Typography>
+
+          {/* CTA */}
+          <Box sx={{ ...anim("0.75s") }}>
+            <Button
+              href="/"
+              variant="outlined"
               sx={{
-                ...anim("0.2s"),
-                display: "flex",
-                alignItems: "center",
-                justifyContent: { xs: "center", md: "flex-start" },
-                gap: 1.5,
-                mb: { xs: 1.5, md: 4 },
+                fontSize: { xs: 11, md: 12 },
+                fontWeight: 600,
+                letterSpacing: "0.22em",
+                textTransform: "uppercase",
+                px: 4,
+                py: 1.5,
+                borderColor: "rgba(247,215,116,0.60)",
+                color: "#F8F5EE",
+                borderRadius: "4px",
+                "&:hover": {
+                  borderColor: "#F7D774",
+                  backgroundColor: "rgba(247,215,116,0.07)",
+                  color: "#F7D774",
+                },
+                "& .arrow": { ml: 1.5, transition: "transform 0.3s" },
+                "&:hover .arrow": { transform: "translateX(4px)" },
               }}
             >
-              <Box
-                component="span"
-                aria-hidden
-                sx={{
-                  width: 5,
-                  height: 5,
-                  borderRadius: "50%",
-                  bgcolor: "primary.light",
-                  flexShrink: 0,
-                }}
-              />
-              <Typography
-                sx={{
-                  color: "primary.light",
-                  fontFamily: "var(--font-inter), sans-serif",
-                  fontWeight: 600,
-                  fontSize: { xs: 10, md: 11 },
-                  letterSpacing: "0.30em",
-                  textTransform: "uppercase",
-                }}
-              >
-                Page Not Found
-              </Typography>
-              <Box
-                component="span"
-                aria-hidden
-                sx={{
-                  width: 40,
-                  height: "1px",
-                  bgcolor: "rgba(168,146,216,0.38)",
-                  flexShrink: 0,
-                }}
-              />
-            </Box>
-
-            {/* 404 — corona pulse + purple chromatic aberration */}
-            <Box sx={{ ...anim("0.35s"), mb: 0, position: "relative" }}>
-              {/* Behind-text corona bloom */}
-              <Box
-                aria-hidden
-                sx={{
-                  position: "absolute",
-                  inset: "-30px -50px",
-                  background:
-                    "radial-gradient(ellipse 80% 70% at 50% 50%, rgba(74,50,111,0.45) 0%, transparent 68%)",
-                  filter: "blur(16px)",
-                  pointerEvents: "none",
-                }}
-              />
-              <Typography
-                component="div"
-                sx={{
-                  fontFamily: "var(--font-cormorant-garamond), serif",
-                  fontWeight: 700,
-                  fontSize: { xs: "28vw", sm: "160px", md: "260px" },
-                  lineHeight: 0.88,
-                  letterSpacing: "-0.04em",
-                  userSelect: "none",
-                  color: "transparent",
-                  WebkitTextStroke: "2px rgba(168,146,216,0.65)",
-                  position: "relative",
-                  animation: `${coronaPulse} 4s ease-in-out infinite, ${flicker} 6s infinite 1.5s`,
-                  "@media (prefers-reduced-motion: reduce)": { animation: "none" },
-                  "&::before": {
-                    content: '"404"',
-                    position: "absolute",
-                    inset: 0,
-                    color: "transparent",
-                    WebkitTextStroke: "2px rgba(110,50,190,0.90)",
-                    animation: `${glitch1} 6s infinite`,
-                    "@media (prefers-reduced-motion: reduce)": { display: "none" },
-                  },
-                  "&::after": {
-                    content: '"404"',
-                    position: "absolute",
-                    inset: 0,
-                    color: "transparent",
-                    WebkitTextStroke: "2px rgba(210,170,255,0.88)",
-                    animation: `${glitch2} 6s infinite 0.04s`,
-                    "@media (prefers-reduced-motion: reduce)": { display: "none" },
-                  },
-                }}
-              >
-                404
-              </Typography>
-            </Box>
-
-            {/* Dash decorators */}
-            <Box
-              sx={{
-                ...anim("0.5s"),
-                display: "flex",
-                alignItems: "center",
-                justifyContent: { xs: "center", md: "flex-start" },
-                gap: 1,
-                mt: { xs: 1, md: 3 },
-                mb: { xs: 2, md: 4 },
-              }}
-            >
-              <Box sx={{ width: 28, height: "1px", bgcolor: "rgba(168,146,216,0.55)" }} />
-              <Box sx={{ width: 6, height: "1px", bgcolor: "rgba(168,146,216,0.30)" }} />
-              <Box sx={{ width: 44, height: "1px", bgcolor: "rgba(168,146,216,0.18)" }} />
-            </Box>
-
-            {/* Heading */}
-            <Typography
-              variant="h2"
-              sx={{
-                ...anim("0.65s"),
-                fontSize: { xs: "22px", sm: "24px", md: "36px" },
-                color: "common.white",
-                lineHeight: 1.3,
-                mb: { xs: 1, md: 1.5 },
-              }}
-            >
-              Looks like you&apos;ve drifted
-              <br />
-              into uncharted space.
-            </Typography>
-
-            {/* Subtext */}
-            <Typography
-              sx={{
-                ...anim("0.8s"),
-                color: "grey.400",
-                fontSize: { xs: 13, md: 15 },
-                lineHeight: 1.7,
-                mb: { xs: 3, md: 6 },
-              }}
-            >
-              Let&apos;s get you back on course.
-            </Typography>
-
-            {/* CTA */}
-            <Box
-              sx={{
-                ...anim("1.0s"),
-                display: "flex",
-                justifyContent: { xs: "center", md: "flex-start" },
-              }}
-            >
-              <Button
-                href="/"
-                variant="outlined"
-                sx={{
-                  fontSize: { xs: 11, md: 12 },
-                  fontWeight: 600,
-                  letterSpacing: "0.20em",
-                  textTransform: "uppercase",
-                  px: 3,
-                  py: 1.4,
-                  borderColor: "rgba(180,140,255,0.35)",
-                  color: "common.white",
-                  boxShadow: "0 0 20px rgba(180,140,255,0.08)",
-                  "&:hover": {
-                    borderColor: "primary.light",
-                    backgroundColor: "rgba(168,146,216,0.08)",
-                    boxShadow: "0 0 28px rgba(180,140,255,0.18)",
-                    color: "primary.light",
-                  },
-                  "& .arrow": { ml: 1.5, transition: "transform 0.3s" },
-                  "&:hover .arrow": { transform: "translateX(4px)" },
-                }}
-              >
-                Return Home
-                <Box component="span" className="arrow" aria-hidden>
-                  {" "}→
-                </Box>
-              </Button>
-            </Box>
+              Back to Home
+              <Box component="span" className="arrow" aria-hidden>
+                {" "}→
+              </Box>
+            </Button>
           </Box>
         </Container>
       </Box>

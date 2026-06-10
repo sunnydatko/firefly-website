@@ -34,43 +34,56 @@ body {
   will-change: transform;
 }
 
-.ambient-aura.violet {
+.ambient-aura.gold {
   width: 46vw;
   height: 46vw;
   top: -10vw;
   left: -8vw;
   background: radial-gradient(
     circle at center,
-    rgba(130, 93, 200, 0.28),
-    rgba(130, 93, 200, 0) 70%
+    rgba(247, 215, 116, 0.12),
+    rgba(247, 215, 116, 0) 70%
   );
   animation: auraDriftA 26s ease-in-out infinite alternate;
 }
 
-.ambient-aura.violet-muted {
+.ambient-aura.amber-muted {
   width: 40vw;
   height: 40vw;
   bottom: -12vw;
   right: -6vw;
   background: radial-gradient(
     circle at center,
-    rgba(100, 72, 160, 0.18),
-    rgba(100, 72, 160, 0) 70%
+    rgba(244, 184, 96, 0.10),
+    rgba(244, 184, 96, 0) 70%
   );
   animation: auraDriftB 32s ease-in-out infinite alternate;
 }
 
-.ambient-aura.violet-deep {
+.ambient-aura.navy-deep {
   width: 34vw;
   height: 34vw;
   top: 40%;
   left: 55%;
   background: radial-gradient(
     circle at center,
-    rgba(72, 28, 140, 0.38),
-    rgba(72, 28, 140, 0) 70%
+    rgba(18, 27, 51, 0.60),
+    rgba(18, 27, 51, 0) 70%
   );
   animation: auraDriftC 38s ease-in-out infinite alternate;
+}
+
+.ambient-aura.forest-green {
+  width: 72vw;
+  height: 52vw;
+  bottom: -22vw;
+  left: 14vw;
+  background: radial-gradient(
+    circle at center,
+    rgba(10, 36, 16, 0.22),
+    rgba(10, 36, 16, 0) 70%
+  );
+  animation: auraDriftB 44s ease-in-out infinite alternate;
 }
 
 .ambient-noise {
@@ -87,16 +100,16 @@ body {
   position: fixed;
   top: 0;
   left: 0;
-  width: 540px;
-  height: 540px;
-  margin: -270px 0 0 -270px;
+  width: 380px;
+  height: 380px;
+  margin: -190px 0 0 -190px;
   z-index: 1;
   pointer-events: none;
   border-radius: 50%;
   background: radial-gradient(
     circle at center,
-    rgba(123, 93, 184, 0.16),
-    rgba(123, 93, 184, 0) 65%
+    rgba(247, 215, 116, 0.055),
+    rgba(247, 215, 116, 0) 65%
   );
   mix-blend-mode: screen;
   will-change: transform;

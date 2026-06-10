@@ -34,7 +34,7 @@ export const experience = [
     ],
   },
   {
-    company: "Eclipse Systems",
+    company: "Firefly Systems",
     url: "https://example.com",
     title: "Software Engineer II",
     dates: "March 2019 – January 2021",
@@ -104,10 +104,10 @@ export const blogPosts = [
 export const testimonials = [
   {
     quote:
-      "One of the sharpest AI engineers I've had the privilege of working with. They think in systems — agents, pipelines, orchestration — and bring the kind of architectural clarity that makes complex AI workflows feel inevitable in hindsight. A rare talent who makes every product smarter.",
-    name: "Alex Rivera",
-    title: "VP of Product, Nexus Labs",
-    image: "testimonial-avatar",
+      "Firefly poured genuine care into every detail of our project. They built a beautiful, professional website from scratch — then went further by developing an integrated marketing strategy that brought new customers to our business almost immediately. We give their work the highest of recommendations.",
+    name: "Jeshua Rosestone",
+    title: "Master Goldsmith & Jewelry Designer",
+    image: "testimonial-jesh",
   },
 ];
 

@@ -1,9 +1,9 @@
 <div align="center">
-  <img src="app/icon.svg" alt="Eclipse" width="64" height="64" />
+  <img src="app/images/firefly-logo-cropped.png" alt="Firefly" width="64" height="64" />
 
-  # Eclipse
+  # Firefly Creative Studio
 
-  **A cinematic portfolio template built for AI developers, technical founders, and engineers building amibitious things.**
+  **Website for Firefly Creative Studio — a design agency offering websites, branding, and business essentials for small businesses.**
 
   Built with Next.js 16 · React 19 · Material UI 9 · TypeScript
 
@@ -16,33 +16,17 @@
 
 ---
 
-## Preview
+## Pages
 
-![Eclipse preview](public/screenshot.png)
-
----
-
-## Design
-
-Dark, minimal, and built for technical readers. The layout gets out of the way and lets your work do the talking.
-
-- **Space-dark palette** — near-black backgrounds with cool blue-white accents
-- **Ambient motion** — a slow animated backdrop that suggests depth without distracting
-- **Considered typography** — Cormorant Garamond for headlines, Inter for body
-- **Minimal chrome** — no sidebars, no noise; structured for readers who scan for substance
-- **Scroll-driven reveals** — content surfaces as you move through the page
-
----
-
-## What's included
-
-- **Hero** — headline, subhead, and social links
-- **About** — personal bio and summary
-- **Experience** — chronological work history with company, role, and highlights
-- **Blog** — card grid of articles with individual post pages at `/blog/[slug]`
-- **Contact** — inbound contact form
-- **Scroll animations** — CSS-driven reveal system via Intersection Observer, no animation library required
-- **SEO-ready** — server-side rendering, Metadata API, statically generated blog pages, optimized images
+- **Home** — hero, value props, about, services overview, blog posts, testimonial, and contact
+- **About** — studio story and approach
+- **Services** — overview of all service offerings
+  - `/services/websites` — custom website design and development
+  - `/services/logo-branding` — logo design and brand identity
+  - `/services/business-essentials` — business cards, social graphics, SEO setup
+- **Work** — portfolio of client projects
+- **Blog** — articles at `/blog/[slug]`
+- **Contact** — inbound inquiry form
 
 ---
 
@@ -53,7 +37,7 @@ Dark, minimal, and built for technical readers. The layout gets out of the way a
 | Framework | Next.js 16 (App Router) |
 | UI | Material UI 9 + Emotion |
 | Language | TypeScript 5 |
-| Fonts | Space Grotesk + Inter via `next/font` |
+| Fonts | Cormorant Garamond + Inter via `next/font` |
 | Runtime | React 19 |
 
 ---
@@ -69,20 +53,21 @@ Open [http://localhost:3000](http://localhost:3000).
 
 ---
 
-## Customization
+## Content
 
-All content lives in one file:
+All site content lives in a single file:
 
 **`app/helpers/config.ts`**
 
 ```ts
-export const social = [...]      // GitHub, LinkedIn, X
-export const experience = [...]  // Work history
-export const blogPosts = [...]   // Blog post metadata
-export const education = [...]   // Education
+export const social = [...]        // Social links
+export const experience = [...]    // Work history
+export const blogPosts = [...]     // Blog post metadata
+export const testimonials = [...]  // Client testimonials
+export const education = [...]     // Education
 ```
 
-The theme — colors, typography, dark mode — is in **`app/theme.ts`**.
+The theme — colors, typography, spacing — is in **`app/theme.ts`**.
 
 ---
 
@@ -90,19 +75,29 @@ The theme — colors, typography, dark mode — is in **`app/theme.ts`**.
 
 ```
 app/
+├── about/               # About page
 ├── blog/[slug]/         # Dynamic blog post pages
-├── components/          # All UI sections and layout components
+├── contact/             # Contact page
+├── services/            # Services overview + sub-pages
+│   ├── websites/
+│   ├── logo-branding/
+│   └── business-essentials/
+├── work/                # Portfolio / case studies
+├── components/          # Shared UI components
 │   ├── Ambient.tsx      # Animated background
 │   ├── Hero.tsx
 │   ├── About.tsx
-│   ├── Experience.tsx
+│   ├── Services.tsx
+│   ├── ValueProps.tsx
 │   ├── Writing.tsx      # Blog card grid
-│   ├── Contact.tsx
+│   ├── Testimonial.tsx
+│   ├── BrandMark.tsx
 │   ├── Footer.tsx
-│   └── ScrollReveal.tsx # Intersection Observer scroll animations
+│   └── ResponsiveMenu.tsx
 ├── helpers/config.ts    # Site content (single source of truth)
+├── images/              # Static image assets
 ├── theme.ts             # MUI theme
-├── globals.css          # Global styles + .reveal animation
+├── globals.css          # Global styles
 ├── layout.tsx           # Root layout with metadata
 └── page.tsx             # Home page
 ```
@@ -114,8 +109,6 @@ app/
 ```bash
 npx vercel
 ```
-
-All blog pages are pre-rendered at build time — fast, CDN-friendly, no runtime overhead.
 
 ---
 

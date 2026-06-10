@@ -1,6 +1,39 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32">
-  <circle cx="16" cy="16" r="15" fill="none" stroke="rgba(168,146,216,0.6)" stroke-width="1.5"/>
-  <circle cx="16" cy="16" r="12" fill="#07050F" stroke="rgba(168,146,216,0.5)" stroke-width="1"/>
-  <circle cx="22" cy="5" r="4.5" fill="rgba(255,235,200,0.5)"/>
-  <circle cx="22" cy="5" r="2" fill="white"/>
+  <defs>
+    <radialGradient id="bodyGrad" cx="45%" cy="30%" r="70%">
+      <stop offset="0%" stop-color="#FFFDE8"/>
+      <stop offset="45%" stop-color="#F7D774"/>
+      <stop offset="100%" stop-color="#B08018"/>
+    </radialGradient>
+    <radialGradient id="ambientGlow" cx="16" cy="19" r="11" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#F7D774" stop-opacity="0.5"/>
+      <stop offset="100%" stop-color="#F7D774" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="32" height="32" rx="7" fill="#0B1020"/>
+
+  <!-- Ambient glow -->
+  <ellipse cx="16" cy="19" rx="12" ry="9" fill="url(#ambientGlow)"/>
+
+  <!-- Lower wings -->
+  <path d="M15 20 Q8 17 7 22 Q10 25.5 15 22Z" fill="#F7D774" opacity="0.4"/>
+  <path d="M17 20 Q24 17 25 22 Q22 25.5 17 22Z" fill="#F7D774" opacity="0.4"/>
+
+  <!-- Upper wings -->
+  <path d="M15 17.5 Q9 12.5 8 16 Q11 19 15 18.5Z" fill="#F4B860" opacity="0.3"/>
+  <path d="M17 17.5 Q23 12.5 24 16 Q21 19 17 18.5Z" fill="#F4B860" opacity="0.3"/>
+
+  <!-- Body -->
+  <ellipse cx="16" cy="21" rx="2.5" ry="3.5" fill="url(#bodyGrad)"/>
+
+  <!-- Head -->
+  <circle cx="16" cy="15.5" r="2" fill="#C9A840"/>
+
+  <!-- Antennae -->
+  <path d="M15 13.7 Q13.5 11 12.5 9" stroke="#A88020" stroke-width="0.9" fill="none" stroke-linecap="round"/>
+  <path d="M17 13.7 Q18.5 11 19.5 9" stroke="#A88020" stroke-width="0.9" fill="none" stroke-linecap="round"/>
+  <circle cx="12.5" cy="9" r="0.9" fill="#A88020"/>
+  <circle cx="19.5" cy="9" r="0.9" fill="#A88020"/>
 </svg>

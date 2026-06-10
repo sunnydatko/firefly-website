@@ -5,13 +5,14 @@ import Chip from "@mui/material/Chip";
 import Container from "@mui/material/Container";
 import Typography from "@mui/material/Typography";
 
+
 const skills = [
-  "LLMs",
-  "AI Agents",
-  "RAG",
-  "Python",
-  "TypeScript",
-  "System Design",
+  "Web Design",
+  "Branding",
+  "Website Support",
+  "Google Business Profiles",
+  "Mobile-Friendly",
+  "Marketing Materials",
 ];
 
 export default function About() {
@@ -46,11 +47,11 @@ export default function About() {
             mb: 2,
           }}
         >
-          + About Me
+          + About Us
         </Typography>
 
         <Typography className="reveal" style={{ transitionDelay: "0.1s" }} variant="h3" sx={{ mb: 4 }}>
-          Engineering intelligent systems at the frontier of what&apos;s possible
+          A creative web studio built for small businesses
         </Typography>
 
         <Box
@@ -79,7 +80,7 @@ export default function About() {
             mb: 0,
           }}
         >
-          I&apos;m an AI engineer focused on designing and building intelligent systems — from multi-agent pipelines and RAG architectures to production LLM integrations that deliver real business value. I work at the intersection of model capability and systems design, turning complex AI research into reliable, scalable infrastructure that teams can build on.
+          We create beautiful, effective websites for small businesses. From branding and design to SEO and ongoing support, we build digital experiences that help you attract customers, build trust, and grow with confidence.
         </Typography>
       </Container>
     </Box>

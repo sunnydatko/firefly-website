@@ -1,0 +1,217 @@
+"use client";
+
+import Box from "@mui/material/Box";
+import Container from "@mui/material/Container";
+import Typography from "@mui/material/Typography";
+import LanguageOutlined from "@mui/icons-material/LanguageOutlined";
+import PaletteOutlined from "@mui/icons-material/PaletteOutlined";
+import CampaignOutlined from "@mui/icons-material/CampaignOutlined";
+
+const services = [
+  {
+    Icon: LanguageOutlined,
+    title: "Websites",
+    description:
+      "Custom-designed websites that are fast, mobile-friendly, and built to convert visitors into customers.",
+    features: ["Custom design", "Mobile friendly", "Performance optimized"],
+    href: "/services/websites",
+  },
+  {
+    Icon: PaletteOutlined,
+    title: "Logo & Branding",
+    description:
+      "A distinctive brand identity that sets you apart — from logo design to a cohesive visual language.",
+    features: ["Logo design", "Color palette", "Typography system", "Brand guidelines"],
+    href: "/services/logo-branding",
+  },
+  {
+    Icon: CampaignOutlined,
+    title: "Business Essentials",
+    description:
+      "Everything you need to launch with confidence — from business cards and social graphics to basic SEO setup and ongoing website support.",
+    features: ["Business cards", "Social media graphics", "Google Business Profile", "Basic SEO setup"],
+    href: "/services/promotional-materials",
+  },
+];
+
+export default function Services() {
+  return (
+    <Box
+      component="section"
+      id="services"
+      sx={{
+        py: { xs: 10, md: 14 },
+        borderTop: "1px solid rgba(255,255,255,0.06)",
+        position: "relative",
+        zIndex: 1,
+      }}
+    >
+      <Container sx={{ maxWidth: "1100px !important" }}>
+        <Box sx={{ textAlign: "center", mb: { xs: 7, md: 9 } }}>
+          <Typography
+            component="span"
+            className="reveal"
+            sx={{
+              display: "block",
+              color: "primary.light",
+              fontFamily: "var(--font-inter), sans-serif",
+              fontWeight: 600,
+              fontSize: { xs: 12.5, md: 14 },
+              letterSpacing: "0.28em",
+              textTransform: "uppercase",
+              mb: 2,
+            }}
+          >
+            + Services
+          </Typography>
+          <Typography
+            className="reveal"
+            style={{ transitionDelay: "0.1s" }}
+            variant="h3"
+            sx={{ mb: 3 }}
+          >
+            Everything you need to grow online
+          </Typography>
+          <Typography
+            className="reveal"
+            style={{ transitionDelay: "0.2s" }}
+            sx={{
+              color: "grey.300",
+              fontSize: { xs: "16px", md: "18px" },
+              lineHeight: 1.7,
+              maxWidth: 620,
+              mx: "auto",
+            }}
+          >
+            From your first logo to your fully launched website, we take care of the details so you can focus on growing your business.
+          </Typography>
+        </Box>
+
+        <Box
+          sx={{
+            display: "grid",
+            gridTemplateColumns: { xs: "1fr", sm: "1fr 1fr 1fr" },
+            gap: 3,
+          }}
+        >
+          {services.map(({ Icon, title, description, features, href }, i) => (
+            <Box
+              key={title}
+              component="a"
+              href={href}
+              className="reveal"
+              style={{ transitionDelay: `${i * 0.08}s` }}
+              sx={{
+                backgroundColor: "background.paper",
+                border: "1px solid rgba(255,255,255,0.07)",
+                borderRadius: 2,
+                p: { xs: 3.5, md: 4 },
+                display: "flex",
+                flexDirection: "column",
+                textDecoration: "none",
+                color: "inherit",
+                transition: "border-color 0.3s, transform 0.3s",
+                "&:hover": {
+                  borderColor: "rgba(247,215,116,0.3)",
+                  transform: "translateY(-4px)",
+                  "& .card-arrow": { transform: "translateX(4px)", opacity: 1 },
+                },
+              }}
+            >
+              <Box
+                sx={{
+                  width: 48,
+                  height: 48,
+                  borderRadius: 1.5,
+                  backgroundColor: "rgba(247,215,116,0.10)",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  mb: 3,
+                }}
+              >
+                <Icon sx={{ color: "primary.main", fontSize: 24 }} />
+              </Box>
+
+              <Typography
+                variant="h5"
+                sx={{ fontSize: { xs: "18px", md: "20px" }, mb: 1.5 }}
+              >
+                {title}
+              </Typography>
+
+              <Typography
+                sx={{ color: "grey.300", fontSize: "14px", lineHeight: 1.7, mb: 3 }}
+              >
+                {description}
+              </Typography>
+
+              <Box
+                component="ul"
+                sx={{
+                  listStyle: "none",
+                  p: 0,
+                  m: 0,
+                  display: "flex",
+                  flexDirection: "column",
+                  gap: 1,
+                }}
+              >
+                {features.map((feature) => (
+                  <Box
+                    component="li"
+                    key={feature}
+                    sx={{
+                      display: "flex",
+                      alignItems: "center",
+                      gap: 1.25,
+                      fontSize: "13px",
+                      color: "grey.400",
+                    }}
+                  >
+                    <Box
+                      component="span"
+                      sx={{
+                        width: 5,
+                        height: 5,
+                        borderRadius: "50%",
+                        backgroundColor: "primary.main",
+                        flexShrink: 0,
+                        opacity: 0.7,
+                      }}
+                    />
+                    {feature}
+                  </Box>
+                ))}
+              </Box>
+
+              <Box
+                sx={{
+                  mt: "auto",
+                  pt: 3,
+                  display: "flex",
+                  alignItems: "center",
+                  gap: 0.5,
+                  color: "primary.main",
+                  fontSize: "13px",
+                  fontFamily: "var(--font-inter), sans-serif",
+                  fontWeight: 600,
+                  letterSpacing: "0.06em",
+                }}
+              >
+                Learn more
+                <Box
+                  component="span"
+                  className="card-arrow"
+                  sx={{ transition: "transform 0.25s, opacity 0.25s", opacity: 0.7 }}
+                >
+                  →
+                </Box>
+              </Box>
+            </Box>
+          ))}
+        </Box>
+      </Container>
+    </Box>
+  );
+}

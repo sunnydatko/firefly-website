@@ -1,6 +1,7 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { usePathname } from "next/navigation";
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
@@ -19,47 +20,65 @@ import BrandMark from "./BrandMark";
 const drawerWidth = 320;
 
 const navItems = [
-  { name: "About", href: "/#about" },
-  { name: "Experience", href: "/#experience" },
-  { name: "Blog", href: "/#blog" },
+  { name: "Home", href: "/" },
+  { name: "About", href: "/about" },
+  { name: "Services", href: "/services" },
+  { name: "Work", href: "/work" },
 ];
 
 export default function ResponsiveMenu() {
   const [mobileOpen, setMobileOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+  const pathname = usePathname();
+  const isHome = pathname === "/";
+
+  useEffect(() => {
+    if (!isHome) return;
+    const onScroll = () => setScrolled(window.scrollY > window.innerHeight * 0.15);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, [isHome]);
+
+  const transparent = isHome && !scrolled;
 
   const handleDrawerToggle = () => setMobileOpen((prev) => !prev);
 
   const drawer = (
     <Box onClick={handleDrawerToggle} sx={{ textAlign: "center", pt: 1 }}>
       <Box sx={{ display: "flex", justifyContent: "center", py: 2 }}>
-        <BrandMark starSize={20} fontSize={15} />
+        <BrandMark height={30} />
       </Box>
-      <Divider />
+      <Divider sx={{ borderColor: "rgba(247,215,116,0.12)" }} />
       <List>
-        {[...navItems, { name: "Contact", href: "/#contact" }].map(({ name, href }) => (
-          <ListItem key={name} disablePadding>
-            <ListItemButton
-              component="a"
-              href={href}
-              sx={{ textAlign: "center" }}
-            >
-              <ListItemText
-                primary={name}
-                slotProps={{
-                  primary: {
-                    sx: {
-                      fontFamily: "var(--font-cormorant-garamond), serif",
-                      fontWeight: 600,
-                      letterSpacing: "0.06em",
-                      textTransform: "uppercase",
-                      fontSize: 13,
+        {[...navItems, { name: "Let's Glow", href: "/contact" }].map(({ name, href }) => {
+          const isActive = href === "/" ? pathname === "/" : pathname === href || pathname.startsWith(href + "/");
+          return (
+            <ListItem key={name} disablePadding>
+              <ListItemButton
+                component="a"
+                href={href}
+                sx={{ textAlign: "center" }}
+              >
+                <ListItemText
+                  primary={name}
+                  slotProps={{
+                    primary: {
+                      sx: {
+                        fontFamily: "var(--font-inter), sans-serif",
+                        fontWeight: 600,
+                        letterSpacing: "0.1em",
+                        textTransform: "uppercase",
+                        fontSize: 12,
+                        color: isActive ? "primary.main" : "inherit",
+                      },
                     },
-                  },
-                }}
-              />
-            </ListItemButton>
-          </ListItem>
-        ))}
+                  }}
+                />
+              </ListItemButton>
+            </ListItem>
+          );
+        })}
       </List>
     </Box>
   );
@@ -71,19 +90,20 @@ export default function ResponsiveMenu() {
         elevation={0}
         position="fixed"
         sx={{
-          backgroundColor: "rgba(5,5,7,0.70)",
-          backdropFilter: "blur(14px)",
-          WebkitBackdropFilter: "blur(14px)",
-          borderBottom: "1px solid rgba(255,255,255,0.06)",
+          backgroundColor: transparent ? "transparent" : "rgba(11,16,32,0.82)",
+          backdropFilter: transparent ? "blur(0px)" : "blur(16px)",
+          WebkitBackdropFilter: transparent ? "blur(0px)" : "blur(16px)",
+          borderBottom: transparent ? "1px solid transparent" : "1px solid rgba(247,215,116,0.08)",
+          transition: "background-color 0.5s ease, border-color 0.5s ease, backdrop-filter 0.5s ease, -webkit-backdrop-filter 0.5s ease",
           zIndex: 1100,
         }}
       >
-        <Toolbar>
+        <Toolbar sx={{ gap: 0, minHeight: { xs: 76, md: 80 }, pt: { xs: 1, md: 1.5 } }}>
           <IconButton
             aria-label="open navigation"
             edge="start"
             onClick={handleDrawerToggle}
-            sx={{ color: "common.white", mr: 2, display: { sm: "none" } }}
+            sx={{ color: "#F7D774", mr: 2, display: { sm: "none" } }}
           >
             <MenuIcon />
           </IconButton>
@@ -93,46 +113,138 @@ export default function ResponsiveMenu() {
             aria-label="Home"
             underline="none"
             sx={{
+              display: "flex",
+              alignItems: "center",
               paddingBottom: 0,
               "&::before": { display: "none" },
-              opacity: 0.7,
-              transition: "opacity 0.2s ease",
-              "&:hover": { opacity: 1 },
+              transition: "filter 0.25s ease",
+              filter: "brightness(1)",
+              "&:hover": {
+                filter: "brightness(1.3) drop-shadow(0 0 12px rgba(247,215,116,0.55))",
+              },
+              flexShrink: 0,
             }}
           >
-            <BrandMark starSize={22} fontSize={16} />
+            <BrandMark height={44} />
           </Link>
 
-          <Box sx={{ ml: "auto", display: { xs: "none", sm: "flex" }, gap: 0.5 }}>
-            {navItems.map(({ name, href }) => (
-              <Button
-                key={name}
-                href={href}
-                sx={{
-                  color: "grey.300",
-                  fontFamily: "var(--font-inter), sans-serif",
-                  fontWeight: 500,
-                  fontSize: 14,
-                  letterSpacing: "0.04em",
-                  px: 2,
-                  "&:hover": { color: "common.white", backgroundColor: "transparent" },
-                }}
-                variant="text"
-              >
-                {name}
-              </Button>
-            ))}
+          {/* Desktop nav — right aligned */}
+          <Box
+            sx={{
+              ml: "auto",
+              display: { xs: "none", md: "flex" },
+              alignItems: "center",
+              gap: 0,
+            }}
+          >
+            {navItems.map(({ name, href }) => {
+              const isActive = href === "/" ? pathname === "/" : pathname === href || pathname.startsWith(href + "/");
+              return (
+                <Button
+                  key={name}
+                  href={href}
+                  sx={{
+                    color: isActive ? "primary.main" : "rgba(248,245,238,0.65)",
+                    fontFamily: "var(--font-inter), sans-serif",
+                    fontWeight: 500,
+                    fontSize: 11,
+                    letterSpacing: "0.20em",
+                    textTransform: "uppercase",
+                    px: 1.75,
+                    py: 1,
+                    borderRadius: 0,
+                    "&:hover": {
+                      color: "primary.light",
+                      backgroundColor: "transparent",
+                    },
+                  }}
+                  variant="text"
+                >
+                  {name}
+                </Button>
+              );
+            })}
             <Button
-              href="/#contact"
+              href="/contact"
+              variant="outlined"
+              sx={{
+                ml: 2,
+                px: 2.5,
+                py: 1,
+                fontSize: 11,
+                fontWeight: 600,
+                letterSpacing: "0.18em",
+                textTransform: "uppercase",
+                borderColor: "#F7D774",
+                color: "#F7D774",
+                borderRadius: "4px",
+                whiteSpace: "nowrap",
+                "&:hover": {
+                  borderColor: "#F4B860",
+                  color: "#F4B860",
+                  backgroundColor: "rgba(247,215,116,0.06)",
+                },
+              }}
+            >
+              Let&apos;s Glow
+            </Button>
+          </Box>
+
+          {/* Tablet nav (sm only) — right aligned */}
+          <Box
+            sx={{
+              ml: "auto",
+              display: { xs: "none", sm: "flex", md: "none" },
+              alignItems: "center",
+              gap: 0,
+            }}
+          >
+            {navItems.slice(0, 3).map(({ name, href }) => {
+              const isActive = href === "/" ? pathname === "/" : pathname === href || pathname.startsWith(href + "/");
+              return (
+                <Button
+                  key={name}
+                  href={href}
+                  sx={{
+                    color: isActive ? "primary.main" : "rgba(248,245,238,0.65)",
+                    fontFamily: "var(--font-inter), sans-serif",
+                    fontWeight: 500,
+                    fontSize: 10,
+                    letterSpacing: "0.18em",
+                    textTransform: "uppercase",
+                    px: 1.5,
+                    borderRadius: 0,
+                    "&:hover": { color: "primary.light", backgroundColor: "transparent" },
+                  }}
+                  variant="text"
+                >
+                  {name}
+                </Button>
+              );
+            })}
+            <Button
+              href="/contact"
               variant="outlined"
               sx={{
                 ml: 1.5,
-                px: 2.5,
-                py: 1.25,
-                borderColor: "rgba(180,140,255,0.45)",
+                px: 2,
+                py: 0.75,
+                fontSize: 10,
+                fontWeight: 600,
+                letterSpacing: "0.18em",
+                textTransform: "uppercase",
+                borderColor: "#F7D774",
+                color: "#F7D774",
+                borderRadius: "4px",
+                whiteSpace: "nowrap",
+                "&:hover": {
+                  borderColor: "#F4B860",
+                  color: "#F4B860",
+                  backgroundColor: "rgba(247,215,116,0.06)",
+                },
               }}
             >
-              Contact Me
+              Let&apos;s Glow
             </Button>
           </Box>
         </Toolbar>
@@ -149,6 +261,7 @@ export default function ResponsiveMenu() {
             boxSizing: "border-box",
             width: drawerWidth,
             backgroundColor: "background.paper",
+            borderRight: "1px solid rgba(247,215,116,0.08)",
           },
         }}
       >

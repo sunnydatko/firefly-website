@@ -29,7 +29,7 @@ const Heading = ({ children }: { children: React.ReactNode }) => (
     variant="h4"
     sx={{
       color: "common.white",
-      fontFamily: "var(--font-cormorant-garamond), serif",
+      fontFamily: "var(--font-fraunces), serif",
       fontWeight: 600,
       fontSize: { xs: "20px", md: "24px" },
       mt: 6,

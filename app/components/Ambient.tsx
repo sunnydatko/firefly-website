@@ -19,7 +19,7 @@ const BotanicalSprig = ({
     style={style}
     viewBox="0 0 60 220"
     fill="none"
-    stroke="rgba(168,146,216,0.40)"
+    stroke="rgba(170,184,160,0.35)"
     strokeWidth={1.1}
     strokeLinecap="round"
     aria-hidden
@@ -30,11 +30,54 @@ const BotanicalSprig = ({
     <path d="M30 128 C 16 120, 10 128, 8 140" />
     {[40, 52, 64, 76, 88, 100].map((y, i) => (
       <g key={y} transform={`translate(0 ${y})`}>
-        <circle cx={30} cy={0} r={i < 2 ? 2.6 : 2.2} fill="rgba(168,146,216,0.25)" />
+        <circle cx={30} cy={0} r={i < 2 ? 2.6 : 2.2} fill="rgba(170,184,160,0.20)" />
         <line x1={30} y1={-3} x2={24} y2={-7} />
         <line x1={30} y1={-3} x2={36} y2={-7} />
       </g>
     ))}
+  </svg>
+);
+
+/* Forest edge silhouette ------------------------------------------------- */
+const ForestEdge = () => (
+  <svg
+    aria-hidden
+    style={{
+      position: "absolute",
+      bottom: 0,
+      left: 0,
+      width: "100%",
+      height: "45vh",
+      pointerEvents: "none",
+    }}
+    viewBox="0 0 1440 360"
+    preserveAspectRatio="xMidYMax slice"
+  >
+    <g fill="rgba(170,184,160,0.055)">
+      {/* Left cluster — pines and deciduous */}
+      <path d="M0 360 L0 185 L32 118 L64 185 L64 360 Z" />
+      <path d="M46 360 L46 222 L72 160 L98 222 L98 360 Z" />
+      <ellipse cx="130" cy="285" rx="40" ry="56" />
+      <rect x="124" y="330" width="12" height="30" />
+      <path d="M162 360 L162 215 L188 150 L214 215 L214 360 Z" />
+      <ellipse cx="242" cy="308" rx="33" ry="45" />
+      <rect x="236" y="346" width="12" height="14" />
+      <path d="M265 360 L265 238 L285 184 L305 238 L305 360 Z" />
+      {/* Extra sprig foliage suggestion */}
+      <ellipse cx="320" cy="332" rx="22" ry="28" />
+    </g>
+    {/* Right cluster — mirrored */}
+    <g fill="rgba(170,184,160,0.055)" transform="translate(1440 0) scale(-1 1)">
+      <path d="M0 360 L0 185 L32 118 L64 185 L64 360 Z" />
+      <path d="M46 360 L46 222 L72 160 L98 222 L98 360 Z" />
+      <ellipse cx="130" cy="285" rx="40" ry="56" />
+      <rect x="124" y="330" width="12" height="30" />
+      <path d="M162 360 L162 215 L188 150 L214 215 L214 360 Z" />
+      <ellipse cx="242" cy="308" rx="33" ry="45" />
+      <rect x="236" y="346" width="12" height="14" />
+      <path d="M265 360 L265 238 L285 184 L305 238 L305 360 Z" />
+      <ellipse cx="320" cy="332" rx="22" ry="28" />
+    </g>
   </svg>
 );
 
@@ -63,9 +106,10 @@ const GradientAura = () => {
   return (
     <div className="ambient-layer" aria-hidden>
       <div ref={ref} style={{ position: "absolute", inset: 0, willChange: "transform" }}>
-        <div className="ambient-aura violet" />
-        <div className="ambient-aura violet-muted" />
-        <div className="ambient-aura violet-deep" />
+        <div className="ambient-aura gold" />
+        <div className="ambient-aura amber-muted" />
+        <div className="ambient-aura navy-deep" />
+        <div className="ambient-aura forest-green" />
         <BotanicalSprig
           className="sway"
           style={{ position: "absolute", bottom: -10, left: "3vw", width: 90, height: 240, opacity: 0.12 }}
@@ -78,19 +122,30 @@ const GradientAura = () => {
             right: "4vw",
             width: 80,
             height: 220,
-            opacity: 0.1,
+            opacity: 0.10,
             transform: "scaleX(-1)",
           }}
         />
+        <ForestEdge />
       </div>
     </div>
   );
 };
 
-/* Floating particles + constellation lines (canvas) ---------------------- */
-type Particle = { x: number; y: number; vx: number; vy: number; r: number };
+/* Firefly field (canvas) ------------------------------------------------- */
+type Firefly = {
+  x: number;
+  y: number;
+  vx: number;
+  vy: number;
+  r: number;
+  blinkPhase: number;
+  blinkSpeed: number;
+  maxOpacity: number;
+  isAmber: boolean;
+};
 
-const ParticleField = () => {
+const FireflyField = () => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
 
   useEffect(() => {
@@ -102,13 +157,13 @@ const ParticleField = () => {
     const dpr = Math.min(window.devicePixelRatio || 1, 2);
     let width = 0;
     let height = 0;
-    let particles: Particle[] = [];
+    let flies: Firefly[] = [];
     let raf = 0;
-    const LINK_DIST = 110;
+    const startTime = Date.now();
 
     const count = () => {
-      const base = Math.round((window.innerWidth * window.innerHeight) / 20000);
-      return Math.max(30, Math.min(70, base));
+      const base = Math.round((window.innerWidth * window.innerHeight) / 28000);
+      return Math.max(18, Math.min(42, base));
     };
 
     const init = () => {
@@ -119,45 +174,56 @@ const ParticleField = () => {
       canvas.style.width = `${width}px`;
       canvas.style.height = `${height}px`;
       ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-      particles = Array.from({ length: count() }, () => ({
+      flies = Array.from({ length: count() }, () => ({
         x: Math.random() * width,
         y: Math.random() * height,
         vx: (Math.random() - 0.5) * 0.18,
-        vy: (Math.random() - 0.5) * 0.18,
-        r: Math.random() * 1.2 + 0.5,
+        vy: (Math.random() - 0.5) * 0.14,
+        r: Math.random() * 0.9 + 0.4,
+        blinkPhase: Math.random() * Math.PI * 2,
+        blinkSpeed: Math.random() * 0.8 + 0.35,
+        maxOpacity: Math.random() * 0.28 + 0.22,
+        isAmber: Math.random() > 0.6,
       }));
     };
 
     const draw = () => {
       ctx.clearRect(0, 0, width, height);
-      for (let i = 0; i < particles.length; i++) {
-        const p = particles[i];
+      const t = (Date.now() - startTime) / 1000;
+
+      for (const ff of flies) {
         if (!reduced) {
-          p.x += p.vx;
-          p.y += p.vy;
-          if (p.x < -20) p.x = width + 20;
-          if (p.x > width + 20) p.x = -20;
-          if (p.y < -20) p.y = height + 20;
-          if (p.y > height + 20) p.y = -20;
+          ff.x += ff.vx;
+          ff.y += ff.vy;
+          if (ff.x < -20) ff.x = width + 20;
+          if (ff.x > width + 20) ff.x = -20;
+          if (ff.y < -20) ff.y = height + 20;
+          if (ff.y > height + 20) ff.y = -20;
         }
+
+        // Power of 3 creates sharp blink rather than smooth oscillation
+        const rawBlink = (Math.sin(t * ff.blinkSpeed * Math.PI + ff.blinkPhase) + 1) / 2;
+        const opacity = Math.pow(rawBlink, 3) * ff.maxOpacity;
+        if (opacity < 0.02) continue;
+
+        const rgb = ff.isAmber ? "244,184,96" : "247,215,116";
+        const glowR = ff.r * 9;
+
+        // Soft outer halo
+        const grad = ctx.createRadialGradient(ff.x, ff.y, 0, ff.x, ff.y, glowR);
+        grad.addColorStop(0, `rgba(${rgb},${opacity * 0.22})`);
+        grad.addColorStop(0.4, `rgba(${rgb},${opacity * 0.07})`);
+        grad.addColorStop(1, `rgba(${rgb},0)`);
         ctx.beginPath();
-        ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
-        ctx.fillStyle = "rgba(200,184,237,0.50)";
+        ctx.arc(ff.x, ff.y, glowR, 0, Math.PI * 2);
+        ctx.fillStyle = grad;
         ctx.fill();
-        for (let j = i + 1; j < particles.length; j++) {
-          const q = particles[j];
-          const dx = p.x - q.x;
-          const dy = p.y - q.y;
-          const dist = Math.hypot(dx, dy);
-          if (dist < LINK_DIST) {
-            ctx.beginPath();
-            ctx.moveTo(p.x, p.y);
-            ctx.lineTo(q.x, q.y);
-            ctx.strokeStyle = `rgba(168,146,216,${(1 - dist / LINK_DIST) * 0.12})`;
-            ctx.lineWidth = 0.6;
-            ctx.stroke();
-          }
-        }
+
+        // Bright core dot
+        ctx.beginPath();
+        ctx.arc(ff.x, ff.y, ff.r, 0, Math.PI * 2);
+        ctx.fillStyle = `rgba(${rgb},${Math.min(opacity * 1.4, 1)})`;
+        ctx.fill();
       }
     };
 
@@ -275,7 +341,7 @@ export default function Ambient() {
   return (
     <>
       <GradientAura />
-      <ParticleField />
+      <FireflyField />
       <CursorGlow />
       <div className="ambient-noise" aria-hidden />
       <ScrollReveal />

@@ -26,102 +26,133 @@ export default function PageLoader() {
           position: "fixed",
           inset: 0,
           display: "flex",
+          flexDirection: "column",
           alignItems: "center",
           justifyContent: "center",
-          background: "#050507",
+          background: "#060709",
           zIndex: 9999,
           opacity: fading ? 0 : 1,
           transition: "opacity 0.5s ease",
           pointerEvents: fading ? "none" : "auto",
         }}
       >
+        <div
+          aria-hidden="true"
+          style={{
+            position: "absolute",
+            inset: 0,
+            background:
+              "radial-gradient(circle at 50% 50%, rgba(247,215,116,0.08) 0%, rgba(244,184,96,0.04) 30%, transparent 62%)",
+            animation: "ffBreathe 5s ease-in-out infinite",
+          }}
+        />
+
         <svg
-          width="200"
-          height="200"
-          viewBox="0 0 200 200"
+          width="220"
+          height="220"
+          viewBox="0 0 220 220"
           fill="none"
           aria-hidden="true"
+          style={{ position: "relative" }}
         >
           <defs>
-            <radialGradient id="eclCoronaGrad" cx="50%" cy="50%" r="50%">
-              <stop offset="0%" stopColor="rgba(255,255,255,0.85)" />
-              <stop offset="10%" stopColor="rgba(210,200,255,0.65)" />
-              <stop offset="28%" stopColor="rgba(140,110,220,0.40)" />
-              <stop offset="52%" stopColor="rgba(70,45,140,0.16)" />
-              <stop offset="78%" stopColor="rgba(30,15,70,0.05)" />
-              <stop offset="100%" stopColor="rgba(0,0,0,0)" />
-            </radialGradient>
-            <filter id="eclOuterBlur" x="-60%" y="-60%" width="220%" height="220%">
-              <feGaussianBlur stdDeviation="18" />
+            <filter id="ff-halo" x="-300%" y="-300%" width="700%" height="700%">
+              <feGaussianBlur stdDeviation="11" />
             </filter>
-            <filter id="eclMidBlur" x="-30%" y="-30%" width="160%" height="160%">
-              <feGaussianBlur stdDeviation="8" />
-            </filter>
-            <filter id="eclRingBlur" x="-30%" y="-30%" width="160%" height="160%">
-              <feGaussianBlur stdDeviation="3.5" />
-            </filter>
-            <filter id="eclSparkleF" x="-300%" y="-300%" width="700%" height="700%">
-              <feGaussianBlur stdDeviation="2.5" result="blr" />
+            <filter id="ff-glow" x="-400%" y="-400%" width="900%" height="900%">
+              <feGaussianBlur stdDeviation="4.5" result="blur" />
               <feMerge>
-                <feMergeNode in="blr" />
+                <feMergeNode in="blur" />
                 <feMergeNode in="SourceGraphic" />
               </feMerge>
             </filter>
           </defs>
 
-          {/* Background stars */}
-          <circle cx="22" cy="30" r="1" fill="white" className="ecl-star-a" />
-          <circle cx="175" cy="38" r="0.8" fill="white" className="ecl-star-b" />
-          <circle cx="14" cy="158" r="0.9" fill="white" className="ecl-star-c" />
-          <circle cx="180" cy="168" r="0.7" fill="white" className="ecl-star-a" />
-          <circle cx="42" cy="182" r="0.8" fill="white" className="ecl-star-b" />
-          <circle cx="162" cy="16" r="0.7" fill="white" className="ecl-star-c" />
-          <circle cx="188" cy="95" r="0.6" fill="white" className="ecl-star-a" />
-          <circle cx="10" cy="78" r="0.8" fill="white" className="ecl-star-b" />
+          <circle cx="18" cy="20" r="0.7" fill="white" className="ff-star-a" />
+          <circle cx="200" cy="28" r="0.8" fill="white" className="ff-star-b" />
+          <circle cx="12" cy="188" r="0.9" fill="white" className="ff-star-a" />
+          <circle cx="205" cy="192" r="0.7" fill="white" className="ff-star-b" />
+          <circle cx="110" cy="8" r="0.6" fill="white" className="ff-star-c" />
+          <circle cx="38" cy="210" r="0.7" fill="white" className="ff-star-a" />
+          <circle cx="182" cy="205" r="0.6" fill="white" className="ff-star-b" />
+          <circle cx="8" cy="100" r="0.7" fill="white" className="ff-star-c" />
+          <circle cx="212" cy="108" r="0.6" fill="white" className="ff-star-a" />
 
-          {/* Outer corona — heavily blurred radial gradient */}
-          <circle
-            cx="100"
-            cy="100"
-            r="96"
-            fill="url(#eclCoronaGrad)"
-            style={{ filter: "url(#eclOuterBlur)" }}
-            className="ecl-corona"
-          />
+          <g style={{ animation: "ffDa 9s ease-in-out infinite alternate" }}>
+            <g className="ff ff-1">
+              <circle cx="110" cy="104" r="20" fill="#F7D774" filter="url(#ff-halo)" opacity="0.45" />
+              <circle cx="110" cy="104" r="3.5" fill="#FFFBE0" filter="url(#ff-glow)" />
+            </g>
+          </g>
 
-          {/* Inner corona — tighter glow */}
-          <circle
-            cx="100"
-            cy="100"
-            r="70"
-            fill="url(#eclCoronaGrad)"
-            style={{ filter: "url(#eclMidBlur)" }}
-            className="ecl-corona"
-          />
+          <g style={{ animation: "ffDb 7s ease-in-out infinite alternate" }}>
+            <g className="ff ff-2">
+              <circle cx="162" cy="80" r="15" fill="#F4B860" filter="url(#ff-halo)" opacity="0.4" />
+              <circle cx="162" cy="80" r="2.8" fill="#FFE8B0" filter="url(#ff-glow)" />
+            </g>
+          </g>
 
-          {/* Moon limb brightening — blurred ring at disc edge */}
-          <circle
-            cx="100"
-            cy="100"
-            r="47"
-            fill="none"
-            stroke="rgba(220,215,255,0.6)"
-            strokeWidth="3"
-            style={{ filter: "url(#eclRingBlur)" }}
-            className="ecl-corona"
-          />
+          <g style={{ animation: "ffDc 8.5s ease-in-out infinite alternate" }}>
+            <g className="ff ff-3">
+              <circle cx="66" cy="150" r="15" fill="#F7D774" filter="url(#ff-halo)" opacity="0.4" />
+              <circle cx="66" cy="150" r="2.8" fill="#FFFBE0" filter="url(#ff-glow)" />
+            </g>
+          </g>
 
-          {/* Moon disc */}
-          <circle cx="100" cy="100" r="44" fill="#040608" />
+          <g style={{ animation: "ffDd 6.5s ease-in-out infinite alternate" }}>
+            <g className="ff ff-4">
+              <circle cx="174" cy="138" r="12" fill="#F4B860" filter="url(#ff-halo)" opacity="0.35" />
+              <circle cx="174" cy="138" r="2.2" fill="#FFE8B0" filter="url(#ff-glow)" />
+            </g>
+          </g>
 
-          {/* Diamond ring sparkle orbiting the moon edge */}
-          <g className="ecl-orbit">
-            <path
-              transform="translate(100, 56)"
-              d="M0 -5.5 L1.3 -1.3 L5.5 0 L1.3 1.3 L0 5.5 L-1.3 1.3 L-5.5 0 L-1.3 -1.3 Z"
-              fill="#E3C8A0"
-              style={{ filter: "url(#eclSparkleF)" }}
-            />
+          <g style={{ animation: "ffDe 10s ease-in-out infinite alternate" }}>
+            <g className="ff ff-5">
+              <circle cx="62" cy="72" r="12" fill="#F7D774" filter="url(#ff-halo)" opacity="0.35" />
+              <circle cx="62" cy="72" r="2.2" fill="#FFFBE0" filter="url(#ff-glow)" />
+            </g>
+          </g>
+
+          <g style={{ animation: "ffDf 7.5s ease-in-out infinite alternate" }}>
+            <g className="ff ff-6">
+              <circle cx="46" cy="120" r="12" fill="#F4B860" filter="url(#ff-halo)" opacity="0.35" />
+              <circle cx="46" cy="120" r="2.2" fill="#FFE8B0" filter="url(#ff-glow)" />
+            </g>
+          </g>
+
+          <g style={{ animation: "ffDg 8s ease-in-out infinite alternate" }}>
+            <g className="ff ff-7">
+              <circle cx="138" cy="168" r="9" fill="#F7D774" filter="url(#ff-halo)" opacity="0.3" />
+              <circle cx="138" cy="168" r="1.7" fill="#FFFBE0" filter="url(#ff-glow)" />
+            </g>
+          </g>
+
+          <g style={{ animation: "ffDh 11s ease-in-out infinite alternate" }}>
+            <g className="ff ff-8">
+              <circle cx="118" cy="46" r="9" fill="#F4B860" filter="url(#ff-halo)" opacity="0.3" />
+              <circle cx="118" cy="46" r="1.7" fill="#FFE8B0" filter="url(#ff-glow)" />
+            </g>
+          </g>
+
+          <g style={{ animation: "ffDa 6s ease-in-out infinite alternate" }}>
+            <g className="ff ff-9">
+              <circle cx="188" cy="52" r="7" fill="#F7D774" filter="url(#ff-halo)" opacity="0.26" />
+              <circle cx="188" cy="52" r="1.4" fill="#FFFBE0" filter="url(#ff-glow)" />
+            </g>
+          </g>
+
+          <g style={{ animation: "ffDb 9.5s ease-in-out infinite alternate" }}>
+            <g className="ff ff-10">
+              <circle cx="24" cy="86" r="6" fill="#F4B860" filter="url(#ff-halo)" opacity="0.24" />
+              <circle cx="24" cy="86" r="1.2" fill="#FFE8B0" filter="url(#ff-glow)" />
+            </g>
+          </g>
+
+          <g style={{ animation: "ffDc 7s ease-in-out infinite alternate" }}>
+            <g className="ff ff-11">
+              <circle cx="194" cy="175" r="6" fill="#F7D774" filter="url(#ff-halo)" opacity="0.24" />
+              <circle cx="194" cy="175" r="1.2" fill="#FFFBE0" filter="url(#ff-glow)" />
+            </g>
           </g>
         </svg>
 
@@ -143,37 +174,46 @@ export default function PageLoader() {
       </div>
 
       <style>{`
-        .ecl-corona {
-          transform-box: view-box;
-          transform-origin: 100px 100px;
-          opacity: 0.75;
-          animation: eclipseCorona 4s ease-in-out infinite;
+        .ff { opacity: 0.12; }
+        .ff-1  { animation: ffPulse 3.2s ease-in-out infinite 0.0s; }
+        .ff-2  { animation: ffPulse 2.7s ease-in-out infinite 0.7s; }
+        .ff-3  { animation: ffPulse 3.8s ease-in-out infinite 1.4s; }
+        .ff-4  { animation: ffPulse 2.5s ease-in-out infinite 2.1s; }
+        .ff-5  { animation: ffPulse 3.5s ease-in-out infinite 0.3s; }
+        .ff-6  { animation: ffPulse 2.9s ease-in-out infinite 1.8s; }
+        .ff-7  { animation: ffPulse 2.4s ease-in-out infinite 1.1s; }
+        .ff-8  { animation: ffPulse 3.6s ease-in-out infinite 2.5s; }
+        .ff-9  { animation: ffPulse 2.8s ease-in-out infinite 0.5s; }
+        .ff-10 { animation: ffPulse 3.1s ease-in-out infinite 1.9s; }
+        .ff-11 { animation: ffPulse 2.6s ease-in-out infinite 0.9s; }
+        .ff-star-a { opacity: 0.1; animation: ffStar 3.2s ease-in-out infinite; }
+        .ff-star-b { opacity: 0.1; animation: ffStar 4.6s ease-in-out infinite 1.5s; }
+        .ff-star-c { opacity: 0.1; animation: ffStar 3.9s ease-in-out infinite 0.8s; }
+        @keyframes ffPulse {
+          0%, 100% { opacity: 0.12; }
+          35% { opacity: 0.2; }
+          50% { opacity: 1; }
+          65% { opacity: 0.82; }
         }
-        .ecl-orbit {
-          transform-box: view-box;
-          transform-origin: 100px 100px;
-          animation: eclipseOrbit 8s linear infinite;
-        }
-        .ecl-star-a { opacity: 0.1; animation: eclipseStar 3s ease-in-out infinite; }
-        .ecl-star-b { opacity: 0.1; animation: eclipseStar 4.5s ease-in-out infinite 1.5s; }
-        .ecl-star-c { opacity: 0.1; animation: eclipseStar 3.8s ease-in-out infinite 0.8s; }
-        @keyframes eclipseCorona {
-          0%, 100% { opacity: 0.75; transform: scale(1); }
-          50% { opacity: 1; transform: scale(1.06); }
-        }
-        @keyframes eclipseOrbit {
-          from { transform: rotate(0deg); }
-          to { transform: rotate(360deg); }
-        }
-        @keyframes eclipseStar {
+        @keyframes ffStar {
           0%, 100% { opacity: 0.1; }
           50% { opacity: 0.5; }
         }
+        @keyframes ffBreathe {
+          0%, 100% { opacity: 0.5; transform: scale(1); }
+          50% { opacity: 1; transform: scale(1.18); }
+        }
+        @keyframes ffDa { from { transform: translate(0, 0); }   to { transform: translate(3px, -2px); } }
+        @keyframes ffDb { from { transform: translate(0, 0); }   to { transform: translate(-2px, 3px); } }
+        @keyframes ffDc { from { transform: translate(0, 0); }   to { transform: translate(2.5px, 2px); } }
+        @keyframes ffDd { from { transform: translate(0, 0); }   to { transform: translate(-3px, -1.5px); } }
+        @keyframes ffDe { from { transform: translate(0, 0); }   to { transform: translate(1.5px, 3.5px); } }
+        @keyframes ffDf { from { transform: translate(0, 0); }   to { transform: translate(-2px, -2.5px); } }
+        @keyframes ffDg { from { transform: translate(0, 0); }   to { transform: translate(3.5px, 1px); } }
+        @keyframes ffDh { from { transform: translate(0, 0); }   to { transform: translate(-1px, -3px); } }
         @media (prefers-reduced-motion: reduce) {
-          .ecl-corona, .ecl-orbit, .ecl-star-a, .ecl-star-b, .ecl-star-c {
-            animation: none;
-            opacity: 1;
-          }
+          .ff { animation: none; opacity: 0.85; }
+          .ff-star-a, .ff-star-b, .ff-star-c { animation: none; opacity: 0.35; }
         }
       `}</style>
     </>

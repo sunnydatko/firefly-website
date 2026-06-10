@@ -1,26 +1,35 @@
 "use client";
 
 import Image from "next/image";
-import type { StaticImageData } from "next/image";
 import Box from "@mui/material/Box";
+import Button from "@mui/material/Button";
 import Container from "@mui/material/Container";
 import Typography from "@mui/material/Typography";
-import { blogPosts } from "../helpers/config";
-import blog1 from "../images/blog-1.png";
-import blog2 from "../images/blog-2.png";
-import blog3 from "../images/blog-3.png";
+import balancedBodyworks from "../images/projects/balanced-bodyworks.png";
+import genivere from "../images/projects/genivere.png";
 
-const imageMap: Record<string, StaticImageData> = {
-  "blog-1": blog1,
-  "blog-2": blog2,
-  "blog-3": blog3,
-};
+const projects = [
+  {
+    name: "Balanced Bodyworks",
+    tagline: "Therapeutic Bodywork",
+    location: "Oceanside, CA",
+    image: balancedBodyworks,
+    href: "/work",
+  },
+  {
+    name: "Genivere",
+    tagline: "Personal Portfolio",
+    location: "San Diego, CA",
+    image: genivere,
+    href: "/work",
+  },
+];
 
 export default function Writing() {
   return (
     <Box
       component="section"
-      id="blog"
+      id="projects"
       sx={{
         py: { xs: 10, md: 14 },
         borderTop: "1px solid rgba(255,255,255,0.06)",
@@ -43,166 +52,99 @@ export default function Writing() {
               mb: 2,
             }}
           >
-            + My Writing
+            + Recent Work
           </Typography>
-          <Typography variant="h3">Blog</Typography>
+          <Typography variant="h3">Featured Work</Typography>
         </Box>
 
-        <Box sx={{ display: "flex", flexDirection: "column", gap: 3 }}>
-          {blogPosts.map((post, index) => (
+        <Box
+          sx={{
+            display: "grid",
+            gridTemplateColumns: { xs: "1fr", md: "1fr 1fr" },
+            gap: { xs: 8, md: 6 },
+          }}
+        >
+          {projects.map((project, index) => (
             <Box
-              key={post.slug}
-              component="a"
-              href={post.href}
+              key={project.name}
               className="reveal"
-              style={{ transitionDelay: `${index * 0.15 + 0.1}s` }}
-              sx={{
-                display: "flex",
-                flexDirection: { xs: "column", md: "row" },
-                borderRadius: 3,
-                overflow: "hidden",
-                border: "1px solid rgba(255,255,255,0.08)",
-                backgroundColor: "background.paper",
-                textDecoration: "none",
-                position: "relative",
-                transition: "border-color 0.3s ease",
-                "&::after": {
-                  content: '""',
-                  position: "absolute",
-                  bottom: 0,
-                  left: 0,
-                  right: 0,
-                  height: "2px",
-                  backgroundColor: "#7B5DB8",
-                  transform: "scaleX(0)",
-                  transformOrigin: "left",
-                  transition: "transform 0.35s ease",
-                },
-                "&:hover": {
-                  borderColor: "rgba(123,93,184,0.25)",
-                  "&::after": { transform: "scaleX(1)" },
-                  "& img": { transform: "scale(1.08)" },
-                },
-              }}
+              style={{ transitionDelay: `${index * 0.15}s` }}
+              sx={{ display: "flex", flexDirection: "column" }}
             >
-              {/* Image */}
+              {/* Screenshot */}
               <Box
+                component="a"
+                href={project.href}
                 sx={{
                   position: "relative",
-                  minHeight: { xs: 200, md: "auto" },
-                  flex: { md: "0 0 44%" },
+                  display: "block",
+                  width: "100%",
+                  aspectRatio: "16 / 10",
+                  borderRadius: 2,
                   overflow: "hidden",
+                  border: "1px solid rgba(255,255,255,0.08)",
+                  mb: 3,
+                  textDecoration: "none",
+                  "&:hover img": { transform: "scale(1.03)" },
+                  "&:hover": { borderColor: "rgba(255,255,255,0.16)" },
+                  transition: "border-color 0.3s ease",
                 }}
               >
                 <Image
-                  src={imageMap[post.image]}
-                  alt={post.title}
+                  src={project.image}
+                  alt={`${project.name} website screenshot`}
                   fill
                   priority={index === 0}
                   style={{
                     objectFit: "cover",
-                    filter: "brightness(1.15) contrast(1.05)",
+                    objectPosition: "top",
                     transition: "transform 0.5s ease",
                   }}
-                  sizes="(max-width: 900px) 100vw, 44vw"
+                  sizes="(max-width: 900px) 100vw, 50vw"
                 />
               </Box>
 
-              {/* Content */}
-              <Box
+              {/* Info */}
+              <Typography
+                variant="h4"
+                sx={{ fontSize: { xs: "22px", md: "26px" }, mb: 0.75 }}
+              >
+                {project.name}
+              </Typography>
+              <Typography
                 sx={{
-                  flex: 1,
-                  display: "flex",
-                  flexDirection: "column",
-                  justifyContent: "center",
-                  p: { xs: 3, md: 4.5 },
+                  color: "grey.400",
+                  fontFamily: "var(--font-inter), sans-serif",
+                  fontSize: { xs: 13, md: 14 },
+                  letterSpacing: "0.04em",
+                  mb: 2.5,
                 }}
               >
-                {/* Number + category + read time */}
-                <Box
-                  sx={{ display: "flex", alignItems: "center", gap: 2, mb: 2 }}
-                >
-                  <Typography
-                    aria-hidden
-                    sx={{
-                      fontFamily: "var(--font-cormorant-garamond), serif",
-                      fontWeight: 700,
-                      fontSize: { xs: 24, md: 30 },
-                      color: "rgba(255,255,255,0.10)",
-                      lineHeight: 1,
-                      userSelect: "none",
-                    }}
-                  >
-                    {String(index + 1).padStart(2, "0")}
-                  </Typography>
-                  <Typography
-                    sx={{
-                      fontFamily: "var(--font-inter), sans-serif",
-                      fontWeight: 600,
-                      fontSize: 11,
-                      letterSpacing: "0.22em",
-                      textTransform: "uppercase",
-                      color: "grey.500",
-                    }}
-                  >
-                    {post.category}
-                  </Typography>
-                  <Typography
-                    sx={{
-                      fontFamily: "var(--font-inter), sans-serif",
-                      fontSize: 11,
-                      letterSpacing: "0.18em",
-                      textTransform: "uppercase",
-                      color: "grey.400",
-                    }}
-                  >
-                    · {post.readTime} min read
-                  </Typography>
-                  {post.date && (
-                    <Typography
-                      sx={{
-                        fontFamily: "var(--font-inter), sans-serif",
-                        fontSize: 11,
-                        letterSpacing: "0.18em",
-                        textTransform: "uppercase",
-                        color: "grey.400",
-                      }}
-                    >
-                      · {post.date}
-                    </Typography>
-                  )}
-                </Box>
-
-                {/* Title */}
-                <Typography
-                  variant="h3"
+                {project.tagline}&nbsp;&nbsp;·&nbsp;&nbsp;{project.location}
+              </Typography>
+              <Box>
+                <Button
+                  href={project.href}
+                  variant="outlined"
+                  size="small"
                   sx={{
-                    fontSize: { xs: "22px", md: "36px" },
-                    color: "common.white",
-                    mb: 1.5,
-                    lineHeight: 1.2,
+                    fontSize: 11,
+                    fontWeight: 700,
+                    letterSpacing: "0.16em",
+                    textTransform: "uppercase",
+                    px: 2.5,
+                    py: 1,
+                    borderColor: "rgba(255,255,255,0.18)",
+                    color: "grey.300",
+                    "&:hover": {
+                      borderColor: "primary.main",
+                      color: "primary.main",
+                      backgroundColor: "transparent",
+                    },
                   }}
                 >
-                  {post.title}
-                </Typography>
-
-                {/* Excerpt — clamped to 2 lines */}
-                <Typography
-                  sx={{
-                    color: "grey.400",
-                    fontFamily: "var(--font-inter), sans-serif",
-                    fontSize: { xs: 14, md: 15 },
-                    lineHeight: 1.65,
-                    mb: 2.5,
-                    display: "-webkit-box",
-                    WebkitLineClamp: 2,
-                    WebkitBoxOrient: "vertical",
-                    overflow: "hidden",
-                  }}
-                >
-                  {post.excerpt}
-                </Typography>
-
+                  View Project
+                </Button>
               </Box>
             </Box>
           ))}

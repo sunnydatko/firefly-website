@@ -6,10 +6,10 @@ import Box from "@mui/material/Box";
 import Container from "@mui/material/Container";
 import Typography from "@mui/material/Typography";
 import { testimonials } from "../helpers/config";
-import testimonialAvatar from "../images/testimonial-avatar.png";
+import testimonialJesh from "../images/testimonial.jpg";
 
 const imageMap: Record<string, StaticImageData> = {
-  "testimonial-avatar": testimonialAvatar,
+  "testimonial-jesh": testimonialJesh,
 };
 
 export default function Testimonial() {
@@ -38,7 +38,7 @@ export default function Testimonial() {
           width: { xs: "140%", md: "1000px" },
           height: { xs: "140%", md: "700px" },
           background:
-            "radial-gradient(circle, rgba(123,93,184,0.22), transparent 65%)",
+            "radial-gradient(circle, rgba(247,215,116,0.06), transparent 65%)",
           pointerEvents: "none",
         }}
       />
@@ -65,15 +65,14 @@ export default function Testimonial() {
           <Box
             sx={{
               position: "relative",
-              background: "rgba(8, 4, 18, 0.90)",
-              backdropFilter: "blur(20px) saturate(140%)",
-              WebkitBackdropFilter: "blur(20px) saturate(140%)",
-              border: "1px solid rgba(150,110,255,0.08)",
-              borderRadius: "20px",
+              background: "rgba(18, 27, 51, 0.95)",
+              backdropFilter: "blur(20px) saturate(110%)",
+              WebkitBackdropFilter: "blur(20px) saturate(110%)",
+              border: "1px solid rgba(255,255,255,0.07)",
+              borderRadius: "16px",
               p: { xs: 4, md: 6 },
-              transform: "rotate(-0.8deg)",
               boxShadow:
-                "0 0 0 1px rgba(255,255,255,0.04) inset, 0 1px 0 rgba(255,255,255,0.08) inset, 0 0 60px rgba(123,93,184,0.28), 0 0 120px rgba(123,93,184,0.14), 0 32px 64px rgba(0,0,0,0.7)",
+                "0 1px 0 rgba(255,255,255,0.06) inset, 0 0 40px rgba(247,215,116,0.06), 0 24px 48px rgba(0,0,0,0.45)",
             }}
           >
             <Box
@@ -86,7 +85,7 @@ export default function Testimonial() {
                 width: "60%",
                 height: "1px",
                 background:
-                  "linear-gradient(90deg, transparent, rgba(123,93,184,0.7), transparent)",
+                  "linear-gradient(90deg, transparent, rgba(247,215,116,0.22), transparent)",
               }}
             />
 
@@ -107,7 +106,7 @@ export default function Testimonial() {
 
             <Typography
               sx={{
-                color: "grey.200",
+                color: "common.white",
                 fontSize: { xs: "18px", md: "21px" },
                 lineHeight: 1.85,
                 fontStyle: "italic",
@@ -133,8 +132,8 @@ export default function Testimonial() {
                     height: 100,
                     borderRadius: "50%",
                     overflow: "hidden",
-                    border: "2px solid rgba(150,110,255,0.6)",
-                    boxShadow: "0 0 18px rgba(155,110,255,0.55), 0 0 42px rgba(155,110,255,0.18)",
+                    border: "2px solid rgba(247,215,116,0.25)",
+                    boxShadow: "0 0 12px rgba(247,215,116,0.12)",
                     flexShrink: 0,
                     position: "relative",
                   }}
