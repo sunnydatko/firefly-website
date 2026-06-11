@@ -34,7 +34,7 @@ export default function ResponsiveMenu() {
 
   useEffect(() => {
     if (!isHome) return;
-    const onScroll = () => setScrolled(window.scrollY > window.innerHeight * 0.15);
+    const onScroll = () => setScrolled(window.scrollY > window.innerHeight * 0.05);
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
