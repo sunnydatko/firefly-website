@@ -87,7 +87,7 @@ const Footer = () => (
         <Typography
           sx={{
             textAlign: "center",
-            color: "grey.600",
+            color: "rgba(248,245,238,0.45)",
             fontFamily: "var(--font-inter), sans-serif",
             fontSize: 11,
             letterSpacing: "0.06em",
