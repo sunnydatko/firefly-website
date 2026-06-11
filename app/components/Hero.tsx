@@ -6,7 +6,7 @@ import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import Container from "@mui/material/Container";
 import Typography from "@mui/material/Typography";
-import skyBg from "../images/hero-bg-4.png";
+import skyBg from "../images/hero-bg-5.png";
 
 const fadeUp = keyframes`
   from { opacity: 0; transform: translateY(32px); filter: blur(6px); }
@@ -74,7 +74,7 @@ export default function Hero() {
           inset: 0,
           backgroundImage: `url(${skyBg.src})`,
           backgroundSize: "cover",
-          backgroundPosition: { xs: "center", md: "right calc(50% - 40px)" },
+          backgroundPosition: { xs: "right center", md: "center 62%" },
           willChange: "transform, opacity",
           transformOrigin: "center center",
           transform: "scale(1.05)",
@@ -90,7 +90,7 @@ export default function Hero() {
           position: "absolute",
           inset: 0,
           background: {
-            xs: "linear-gradient(180deg, rgba(11,16,32,0.85) 0%, rgba(11,16,32,0.65) 50%, rgba(11,16,32,0.90) 100%)",
+            xs: "linear-gradient(180deg, rgba(11,16,32,0.88) 0%, rgba(11,16,32,0.82) 50%, rgba(11,16,32,0.92) 100%)",
             md: "linear-gradient(90deg, rgba(11,16,32,0.99) 0%, rgba(11,16,32,0.94) 32%, rgba(11,16,32,0.40) 58%, rgba(11,16,32,0.05) 100%)",
           },
         }}
