@@ -6,7 +6,7 @@ import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import Container from "@mui/material/Container";
 import Typography from "@mui/material/Typography";
-import skyBg from "../images/hero-bg-5.png";
+import skyBg from "../images/hero-bg-5.webp";
 
 const fadeUp = keyframes`
   from { opacity: 0; transform: translateY(32px); filter: blur(6px); }
