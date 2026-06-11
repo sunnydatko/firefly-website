@@ -20,7 +20,7 @@ export default function Loading() {
           position: "absolute",
           inset: 0,
           background:
-            "radial-gradient(circle at 50% 50%, rgba(247,215,116,0.08) 0%, rgba(244,184,96,0.04) 30%, transparent 62%)",
+            "radial-gradient(circle at 50% 50%, rgba(242,193,90,0.08) 0%, rgba(255,216,120,0.04) 30%, transparent 62%)",
           animation: "ffBreathe 5s ease-in-out infinite",
         }}
       />
@@ -58,77 +58,77 @@ export default function Loading() {
 
         <g style={{ animation: "ffDa 9s ease-in-out infinite alternate" }}>
           <g className="ff ff-1">
-            <circle cx="110" cy="104" r="20" fill="#F7D774" filter="url(#ff-halo)" opacity="0.45" />
+            <circle cx="110" cy="104" r="20" fill="#F2C15A" filter="url(#ff-halo)" opacity="0.45" />
             <circle cx="110" cy="104" r="3.5" fill="#FFFBE0" filter="url(#ff-glow)" />
           </g>
         </g>
 
         <g style={{ animation: "ffDb 7s ease-in-out infinite alternate" }}>
           <g className="ff ff-2">
-            <circle cx="162" cy="80" r="15" fill="#F4B860" filter="url(#ff-halo)" opacity="0.4" />
+            <circle cx="162" cy="80" r="15" fill="#FFD878" filter="url(#ff-halo)" opacity="0.4" />
             <circle cx="162" cy="80" r="2.8" fill="#FFE8B0" filter="url(#ff-glow)" />
           </g>
         </g>
 
         <g style={{ animation: "ffDc 8.5s ease-in-out infinite alternate" }}>
           <g className="ff ff-3">
-            <circle cx="66" cy="150" r="15" fill="#F7D774" filter="url(#ff-halo)" opacity="0.4" />
+            <circle cx="66" cy="150" r="15" fill="#F2C15A" filter="url(#ff-halo)" opacity="0.4" />
             <circle cx="66" cy="150" r="2.8" fill="#FFFBE0" filter="url(#ff-glow)" />
           </g>
         </g>
 
         <g style={{ animation: "ffDd 6.5s ease-in-out infinite alternate" }}>
           <g className="ff ff-4">
-            <circle cx="174" cy="138" r="12" fill="#F4B860" filter="url(#ff-halo)" opacity="0.35" />
+            <circle cx="174" cy="138" r="12" fill="#FFD878" filter="url(#ff-halo)" opacity="0.35" />
             <circle cx="174" cy="138" r="2.2" fill="#FFE8B0" filter="url(#ff-glow)" />
           </g>
         </g>
 
         <g style={{ animation: "ffDe 10s ease-in-out infinite alternate" }}>
           <g className="ff ff-5">
-            <circle cx="62" cy="72" r="12" fill="#F7D774" filter="url(#ff-halo)" opacity="0.35" />
+            <circle cx="62" cy="72" r="12" fill="#F2C15A" filter="url(#ff-halo)" opacity="0.35" />
             <circle cx="62" cy="72" r="2.2" fill="#FFFBE0" filter="url(#ff-glow)" />
           </g>
         </g>
 
         <g style={{ animation: "ffDf 7.5s ease-in-out infinite alternate" }}>
           <g className="ff ff-6">
-            <circle cx="46" cy="120" r="12" fill="#F4B860" filter="url(#ff-halo)" opacity="0.35" />
+            <circle cx="46" cy="120" r="12" fill="#FFD878" filter="url(#ff-halo)" opacity="0.35" />
             <circle cx="46" cy="120" r="2.2" fill="#FFE8B0" filter="url(#ff-glow)" />
           </g>
         </g>
 
         <g style={{ animation: "ffDg 8s ease-in-out infinite alternate" }}>
           <g className="ff ff-7">
-            <circle cx="138" cy="168" r="9" fill="#F7D774" filter="url(#ff-halo)" opacity="0.3" />
+            <circle cx="138" cy="168" r="9" fill="#F2C15A" filter="url(#ff-halo)" opacity="0.3" />
             <circle cx="138" cy="168" r="1.7" fill="#FFFBE0" filter="url(#ff-glow)" />
           </g>
         </g>
 
         <g style={{ animation: "ffDh 11s ease-in-out infinite alternate" }}>
           <g className="ff ff-8">
-            <circle cx="118" cy="46" r="9" fill="#F4B860" filter="url(#ff-halo)" opacity="0.3" />
+            <circle cx="118" cy="46" r="9" fill="#FFD878" filter="url(#ff-halo)" opacity="0.3" />
             <circle cx="118" cy="46" r="1.7" fill="#FFE8B0" filter="url(#ff-glow)" />
           </g>
         </g>
 
         <g style={{ animation: "ffDa 6s ease-in-out infinite alternate" }}>
           <g className="ff ff-9">
-            <circle cx="188" cy="52" r="7" fill="#F7D774" filter="url(#ff-halo)" opacity="0.26" />
+            <circle cx="188" cy="52" r="7" fill="#F2C15A" filter="url(#ff-halo)" opacity="0.26" />
             <circle cx="188" cy="52" r="1.4" fill="#FFFBE0" filter="url(#ff-glow)" />
           </g>
         </g>
 
         <g style={{ animation: "ffDb 9.5s ease-in-out infinite alternate" }}>
           <g className="ff ff-10">
-            <circle cx="24" cy="86" r="6" fill="#F4B860" filter="url(#ff-halo)" opacity="0.24" />
+            <circle cx="24" cy="86" r="6" fill="#FFD878" filter="url(#ff-halo)" opacity="0.24" />
             <circle cx="24" cy="86" r="1.2" fill="#FFE8B0" filter="url(#ff-glow)" />
           </g>
         </g>
 
         <g style={{ animation: "ffDc 7s ease-in-out infinite alternate" }}>
           <g className="ff ff-11">
-            <circle cx="194" cy="175" r="6" fill="#F7D774" filter="url(#ff-halo)" opacity="0.24" />
+            <circle cx="194" cy="175" r="6" fill="#F2C15A" filter="url(#ff-halo)" opacity="0.24" />
             <circle cx="194" cy="175" r="1.2" fill="#FFFBE0" filter="url(#ff-glow)" />
           </g>
         </g>

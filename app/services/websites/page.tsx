@@ -92,7 +92,7 @@ export default function WebsitesPage() {
             height: "800px",
             borderRadius: "50%",
             background:
-              "radial-gradient(ellipse, rgba(247,215,116,0.06) 0%, transparent 70%)",
+              "radial-gradient(ellipse, rgba(242,193,90,0.06) 0%, transparent 70%)",
             pointerEvents: "none",
           },
         }}
@@ -242,7 +242,7 @@ export default function WebsitesPage() {
                     width: 44,
                     height: 44,
                     borderRadius: 1.5,
-                    backgroundColor: "rgba(247,215,116,0.10)",
+                    backgroundColor: "rgba(242,193,90,0.10)",
                     display: "flex",
                     alignItems: "center",
                     justifyContent: "center",
@@ -310,7 +310,7 @@ export default function WebsitesPage() {
                     fontFamily: "var(--font-fraunces), serif",
                     fontSize: { xs: "36px", md: "52px" },
                     fontWeight: 700,
-                    color: "rgba(247,215,116,0.15)",
+                    color: "rgba(242,193,90,0.15)",
                     lineHeight: 1,
                   }}
                 >

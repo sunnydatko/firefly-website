@@ -33,19 +33,19 @@ function FireflyIcon({ size = 28 }: { size?: number }) {
       <defs>
         <radialGradient id="nf-bodyGrad" cx="45%" cy="30%" r="70%">
           <stop offset="0%" stopColor="#FFFDE8" />
-          <stop offset="45%" stopColor="#F7D774" />
+          <stop offset="45%" stopColor="#F2C15A" />
           <stop offset="100%" stopColor="#B08018" />
         </radialGradient>
         <radialGradient id="nf-ambientGlow" cx="16" cy="19" r="11" gradientUnits="userSpaceOnUse">
-          <stop offset="0%" stopColor="#F7D774" stopOpacity="0.5" />
-          <stop offset="100%" stopColor="#F7D774" stopOpacity="0" />
+          <stop offset="0%" stopColor="#F2C15A" stopOpacity="0.5" />
+          <stop offset="100%" stopColor="#F2C15A" stopOpacity="0" />
         </radialGradient>
       </defs>
       <ellipse cx="16" cy="19" rx="12" ry="9" fill="url(#nf-ambientGlow)" />
-      <path d="M15 20 Q8 17 7 22 Q10 25.5 15 22Z" fill="#F7D774" opacity="0.4" />
-      <path d="M17 20 Q24 17 25 22 Q22 25.5 17 22Z" fill="#F7D774" opacity="0.4" />
-      <path d="M15 17.5 Q9 12.5 8 16 Q11 19 15 18.5Z" fill="#F4B860" opacity="0.3" />
-      <path d="M17 17.5 Q23 12.5 24 16 Q21 19 17 18.5Z" fill="#F4B860" opacity="0.3" />
+      <path d="M15 20 Q8 17 7 22 Q10 25.5 15 22Z" fill="#F2C15A" opacity="0.4" />
+      <path d="M17 20 Q24 17 25 22 Q22 25.5 17 22Z" fill="#F2C15A" opacity="0.4" />
+      <path d="M15 17.5 Q9 12.5 8 16 Q11 19 15 18.5Z" fill="#FFD878" opacity="0.3" />
+      <path d="M17 17.5 Q23 12.5 24 16 Q21 19 17 18.5Z" fill="#FFD878" opacity="0.3" />
       <ellipse cx="16" cy="21" rx="2.5" ry="3.5" fill="url(#nf-bodyGrad)" />
       <circle cx="16" cy="15.5" r="2" fill="#C9A840" />
       <path d="M15 13.7 Q13.5 11 12.5 9" stroke="#A88020" strokeWidth="0.9" fill="none" strokeLinecap="round" />
@@ -177,9 +177,9 @@ export default function NotFound() {
               maxWidth: 480,
             }}
           >
-            <Box sx={{ flex: 1, height: "1px", bgcolor: "rgba(247,215,116,0.35)" }} />
+            <Box sx={{ flex: 1, height: "1px", bgcolor: "rgba(242,193,90,0.35)" }} />
             <FireflyIcon size={28} />
-            <Box sx={{ flex: 1, height: "1px", bgcolor: "rgba(247,215,116,0.35)" }} />
+            <Box sx={{ flex: 1, height: "1px", bgcolor: "rgba(242,193,90,0.35)" }} />
           </Box>
 
           {/* Heading */}
@@ -227,13 +227,13 @@ export default function NotFound() {
                 textTransform: "uppercase",
                 px: 4,
                 py: 1.5,
-                borderColor: "rgba(247,215,116,0.60)",
+                borderColor: "rgba(242,193,90,0.60)",
                 color: "#F8F5EE",
                 borderRadius: "4px",
                 "&:hover": {
-                  borderColor: "#F7D774",
-                  backgroundColor: "rgba(247,215,116,0.07)",
-                  color: "#F7D774",
+                  borderColor: "#F2C15A",
+                  backgroundColor: "rgba(242,193,90,0.07)",
+                  color: "#F2C15A",
                 },
                 "& .arrow": { ml: 1.5, transition: "transform 0.3s" },
                 "&:hover .arrow": { transform: "translateX(4px)" },

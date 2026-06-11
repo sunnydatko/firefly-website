@@ -37,7 +37,7 @@ export default function Testimonial() {
           width: { xs: "140%", md: "1000px" },
           height: { xs: "140%", md: "700px" },
           background:
-            "radial-gradient(circle, rgba(247,215,116,0.06), transparent 65%)",
+            "radial-gradient(circle, rgba(242,193,90,0.06), transparent 65%)",
           pointerEvents: "none",
         }}
       />
@@ -71,7 +71,7 @@ export default function Testimonial() {
               borderRadius: "16px",
               p: { xs: 4, md: 6 },
               boxShadow:
-                "0 1px 0 rgba(255,255,255,0.06) inset, 0 0 40px rgba(247,215,116,0.06), 0 24px 48px rgba(0,0,0,0.45)",
+                "0 1px 0 rgba(255,255,255,0.06) inset, 0 0 40px rgba(242,193,90,0.06), 0 24px 48px rgba(0,0,0,0.45)",
             }}
           >
             <Box
@@ -84,7 +84,7 @@ export default function Testimonial() {
                 width: "60%",
                 height: "1px",
                 background:
-                  "linear-gradient(90deg, transparent, rgba(247,215,116,0.22), transparent)",
+                  "linear-gradient(90deg, transparent, rgba(242,193,90,0.22), transparent)",
               }}
             />
 
@@ -131,8 +131,8 @@ export default function Testimonial() {
                     height: 100,
                     borderRadius: "50%",
                     overflow: "hidden",
-                    border: "2px solid rgba(247,215,116,0.25)",
-                    boxShadow: "0 0 12px rgba(247,215,116,0.12)",
+                    border: "2px solid rgba(242,193,90,0.25)",
+                    boxShadow: "0 0 12px rgba(242,193,90,0.12)",
                     flexShrink: 0,
                     position: "relative",
                   }}

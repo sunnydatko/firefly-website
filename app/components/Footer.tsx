@@ -74,7 +74,7 @@ const Footer = () => (
             href="/contact"
             sx={{
               ...linkSx,
-              color: "rgba(247,215,116,0.55)",
+              color: "rgba(242,193,90,0.55)",
               "&:hover": { color: "primary.main" },
             }}
           >

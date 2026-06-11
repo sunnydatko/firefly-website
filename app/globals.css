@@ -41,8 +41,8 @@ body {
   left: -8vw;
   background: radial-gradient(
     circle at center,
-    rgba(247, 215, 116, 0.12),
-    rgba(247, 215, 116, 0) 70%
+    rgba(242, 193, 90, 0.12),
+    rgba(242, 193, 90, 0) 70%
   );
   animation: auraDriftA 26s ease-in-out infinite alternate;
 }
@@ -54,8 +54,8 @@ body {
   right: -6vw;
   background: radial-gradient(
     circle at center,
-    rgba(244, 184, 96, 0.10),
-    rgba(244, 184, 96, 0) 70%
+    rgba(255, 216, 120, 0.10),
+    rgba(255, 216, 120, 0) 70%
   );
   animation: auraDriftB 32s ease-in-out infinite alternate;
 }
@@ -73,15 +73,15 @@ body {
   animation: auraDriftC 38s ease-in-out infinite alternate;
 }
 
-.ambient-aura.forest-green {
+.ambient-aura.midnight-deep {
   width: 72vw;
   height: 52vw;
   bottom: -22vw;
   left: 14vw;
   background: radial-gradient(
     circle at center,
-    rgba(10, 36, 16, 0.22),
-    rgba(10, 36, 16, 0) 70%
+    rgba(21, 27, 51, 0.28),
+    rgba(21, 27, 51, 0) 70%
   );
   animation: auraDriftB 44s ease-in-out infinite alternate;
 }
@@ -108,8 +108,8 @@ body {
   border-radius: 50%;
   background: radial-gradient(
     circle at center,
-    rgba(247, 215, 116, 0.055),
-    rgba(247, 215, 116, 0) 65%
+    rgba(242, 193, 90, 0.055),
+    rgba(242, 193, 90, 0) 65%
   );
   mix-blend-mode: screen;
   will-change: transform;

@@ -36,7 +36,7 @@ export default function ValueProps() {
       component="section"
       sx={{
         backgroundColor: "#0B1020",
-        borderTop: "1px solid rgba(247,215,116,0.10)",
+        borderTop: "1px solid rgba(242,193,90,0.10)",
         display: "grid",
         gridTemplateColumns: { xs: "1fr 1fr", md: "repeat(4, 1fr)" },
       }}
@@ -52,18 +52,18 @@ export default function ValueProps() {
             px: { xs: 3, md: 4 },
             py: { xs: 3, md: 4 },
             borderRight: {
-              xs: i % 2 === 0 ? "1px solid rgba(247,215,116,0.10)" : "none",
-              md: i < 3 ? "1px solid rgba(247,215,116,0.10)" : "none",
+              xs: i % 2 === 0 ? "1px solid rgba(242,193,90,0.10)" : "none",
+              md: i < 3 ? "1px solid rgba(242,193,90,0.10)" : "none",
             },
             borderBottom: {
-              xs: i < 2 ? "1px solid rgba(247,215,116,0.10)" : "none",
+              xs: i < 2 ? "1px solid rgba(242,193,90,0.10)" : "none",
               md: "none",
             },
           }}
         >
           <Icon
             sx={{
-              color: "#F7D774",
+              color: "#F2C15A",
               fontSize: 34,
               mb: 2,
               opacity: 0.9,

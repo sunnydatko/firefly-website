@@ -63,7 +63,7 @@ export default function AboutPage() {
             width: "800px",
             height: "800px",
             borderRadius: "50%",
-            background: "radial-gradient(ellipse, rgba(247,215,116,0.06) 0%, transparent 70%)",
+            background: "radial-gradient(ellipse, rgba(242,193,90,0.06) 0%, transparent 70%)",
             pointerEvents: "none",
           },
         }}
@@ -258,7 +258,7 @@ export default function AboutPage() {
                     width: 44,
                     height: 44,
                     borderRadius: 1.5,
-                    backgroundColor: "rgba(247,215,116,0.10)",
+                    backgroundColor: "rgba(242,193,90,0.10)",
                     display: "flex",
                     alignItems: "center",
                     justifyContent: "center",

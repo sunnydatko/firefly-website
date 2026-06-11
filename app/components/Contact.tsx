@@ -111,7 +111,7 @@ export default function Contact() {
           >
             + Let's Connect
           </Typography>
-          <Typography variant="h3">Contact Me</Typography>
+          <Typography variant="h3">Let&apos;s Work Together</Typography>
         </Box>
 
         <form onSubmit={handleSubmit} noValidate className="reveal" style={{ transitionDelay: "0.1s" }}>

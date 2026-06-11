@@ -109,7 +109,7 @@ const GradientAura = () => {
         <div className="ambient-aura gold" />
         <div className="ambient-aura amber-muted" />
         <div className="ambient-aura navy-deep" />
-        <div className="ambient-aura forest-green" />
+        <div className="ambient-aura midnight-deep" />
         <BotanicalSprig
           className="sway"
           style={{ position: "absolute", bottom: -10, left: "3vw", width: 90, height: 240, opacity: 0.12 }}

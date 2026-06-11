@@ -111,7 +111,7 @@ export default function Services() {
                 color: "inherit",
                 transition: "border-color 0.3s, transform 0.3s",
                 "&:hover": {
-                  borderColor: "rgba(247,215,116,0.3)",
+                  borderColor: "rgba(242,193,90,0.3)",
                   transform: "translateY(-4px)",
                   "& .card-arrow": { transform: "translateX(4px)", opacity: 1 },
                 },
@@ -122,7 +122,7 @@ export default function Services() {
                   width: 48,
                   height: 48,
                   borderRadius: 1.5,
-                  backgroundColor: "rgba(247,215,116,0.10)",
+                  backgroundColor: "rgba(242,193,90,0.10)",
                   display: "flex",
                   alignItems: "center",
                   justifyContent: "center",

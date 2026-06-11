@@ -122,7 +122,7 @@ export default function Hero() {
               fontWeight: 700,
               letterSpacing: "0.22em",
               textTransform: "uppercase",
-              color: "#F7D774",
+              color: "#F2C15A",
               mb: 2.5,
             }}
           >
@@ -148,7 +148,7 @@ export default function Hero() {
               component="em"
               sx={{
                 fontStyle: "italic",
-                color: "#F7D774",
+                color: "#F2C15A",
                 fontFamily: "var(--font-fraunces), serif",
               }}
             >
@@ -163,7 +163,7 @@ export default function Hero() {
               width: 80,
               height: 2,
               borderRadius: 1,
-              bgcolor: "#F7D774",
+              bgcolor: "#F2C15A",
               mb: { xs: 3, md: 3.5 },
             }}
           />
@@ -201,10 +201,10 @@ export default function Hero() {
                 textTransform: "uppercase",
                 px: { xs: 3, md: 3.5 },
                 py: 1.5,
-                backgroundColor: "#F7D774",
+                backgroundColor: "#F2C15A",
                 color: "#0B1020",
                 "&:hover": {
-                  backgroundColor: "#F4B860",
+                  backgroundColor: "#FFD878",
                 },
               }}
             >
@@ -221,12 +221,12 @@ export default function Hero() {
                 textTransform: "uppercase",
                 px: { xs: 3, md: 3.5 },
                 py: 1.5,
-                borderColor: "#F7D774",
-                color: "#F7D774",
+                borderColor: "#F2C15A",
+                color: "#F2C15A",
                 "&:hover": {
-                  borderColor: "#F4B860",
-                  color: "#F4B860",
-                  backgroundColor: "rgba(247,215,116,0.06)",
+                  borderColor: "#FFD878",
+                  color: "#FFD878",
+                  backgroundColor: "rgba(242,193,90,0.06)",
                 },
               }}
             >

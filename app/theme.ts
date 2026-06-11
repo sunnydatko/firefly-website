@@ -2,18 +2,24 @@
 
 import { createTheme } from "@mui/material/styles";
 
+declare module "@mui/material/styles" {
+  interface TypeBackground {
+    elevated: string;
+  }
+}
+
 const theme = createTheme({
   palette: {
     mode: "dark",
     primary: {
-      light: "#FBE9A8",
-      main: "#F7D774",
+      light: "#FFD878",  // Glow
+      main: "#F2C15A",   // Gold
       dark: "#C9A840",
     },
     secondary: {
-      light: "#F8D090",
-      main: "#F4B860",
-      dark: "#C08830",
+      light: "#FFE9A0",
+      main: "#FFD878",   // Glow
+      dark: "#C9A840",
     },
     error: {
       light: "#FFD29A",
@@ -21,12 +27,13 @@ const theme = createTheme({
       dark: "#C97A17",
     },
     background: {
-      default: "#0B1020",
-      paper: "#121B33",
+      default: "#0B1020",   // Midnight
+      paper: "#151B33",     // Indigo
+      elevated: "#2A3347",  // Slate
     },
     text: {
       primary: "#F8F5EE",
-      secondary: "#AAB8A0",
+      secondary: "#9A9890",
     },
     grey: {
       100: "#F8F5EE",
@@ -85,7 +92,7 @@ const theme = createTheme({
       styleOverrides: {
         root: {
           textDecoration: "none",
-          color: "#F7D774",
+          color: "#F2C15A",
           transition: "color 0.3s",
           position: "relative",
           paddingBottom: "3px",
@@ -97,13 +104,13 @@ const theme = createTheme({
             width: "100%",
             height: "2px",
             borderRadius: "4px",
-            backgroundColor: "#F4B860",
+            backgroundColor: "#FFD878",
             transformOrigin: "right",
             transform: "scaleX(0)",
             transition: "transform 0.3s ease-in-out",
           },
           "&:hover": {
-            color: "#F4B860",
+            color: "#FFD878",
             "&::before": {
               transformOrigin: "left",
               transform: "scaleX(1)",
