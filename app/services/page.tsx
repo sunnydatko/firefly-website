@@ -4,7 +4,7 @@ import Container from "@mui/material/Container";
 import Typography from "@mui/material/Typography";
 import LanguageOutlined from "@mui/icons-material/LanguageOutlined";
 import PaletteOutlined from "@mui/icons-material/PaletteOutlined";
-import CampaignOutlined from "@mui/icons-material/CampaignOutlined";
+import RocketLaunchOutlined from "@mui/icons-material/RocketLaunchOutlined";
 import Footer from "../components/Footer";
 import ResponsiveMenu from "../components/ResponsiveMenu";
 import SectionDivider from "../components/SectionDivider";
@@ -27,7 +27,7 @@ const services = [
     href: "/services/logo-branding",
   },
   {
-    Icon: CampaignOutlined,
+    Icon: RocketLaunchOutlined,
     title: "Business Essentials",
     description:
       "Everything you need to launch with confidence — from business cards and social graphics to basic SEO setup and ongoing website support.",
