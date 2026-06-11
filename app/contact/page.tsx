@@ -45,14 +45,8 @@ const contactDetails = [
   {
     Icon: EmailOutlined,
     label: "Email",
-    value: "hello@fireflywebstudio.com",
-    href: "mailto:hello@fireflywebstudio.com",
-  },
-  {
-    Icon: PhoneOutlined,
-    label: "Phone",
-    value: "(000) 000-0000",
-    href: "tel:0000000000",
+    value: "hello@fireflycreativeco.com",
+    href: "mailto:hello@fireflycreativeco.com",
   },
   {
     Icon: AccessTimeOutlined,
