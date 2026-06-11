@@ -13,10 +13,8 @@ import SectionDivider from "../components/SectionDivider";
 const skills = [
   "Web Design",
   "Branding",
-  "Website Support",
   "Google Business Profiles",
-  "Mobile-Friendly",
-  "Marketing Materials",
+  "Ongoing Support"
 ];
 
 const values = [

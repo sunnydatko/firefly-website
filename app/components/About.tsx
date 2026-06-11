@@ -9,10 +9,8 @@ import Typography from "@mui/material/Typography";
 const skills = [
   "Web Design",
   "Branding",
-  "Website Support",
   "Google Business Profiles",
-  "Mobile-Friendly",
-  "Marketing Materials",
+  "Ongoing Support"
 ];
 
 export default function About() {
@@ -50,7 +48,7 @@ export default function About() {
         </Typography>
 
         <Typography className="reveal" style={{ transitionDelay: "0.1s" }} variant="h3" sx={{ mb: 4 }}>
-          A creative web studio built for small businesses
+          Beautiful websites backed by strategy, design, and ongoing support
         </Typography>
 
         <Box
