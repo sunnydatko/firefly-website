@@ -48,7 +48,7 @@ export default function About() {
         </Typography>
 
         <Typography className="reveal" style={{ transitionDelay: "0.1s" }} variant="h3" sx={{ mb: 4 }}>
-          Beautiful websites backed by strategy, design, and ongoing support
+          Beautiful websites backed by strategy and support
         </Typography>
 
         <Box
@@ -63,7 +63,16 @@ export default function About() {
           }}
         >
           {skills.map((skill) => (
-            <Chip key={skill} label={skill} variant="outlined" />
+            <Chip
+              key={skill}
+              label={skill}
+              variant="outlined"
+              sx={{
+                height: 26,
+                borderWidth: "0.5px",
+                "& .MuiChip-label": { px: 1.25 },
+              }}
+            />
           ))}
         </Box>
 
@@ -75,9 +84,11 @@ export default function About() {
             fontSize: { xs: "17px", md: "21px" },
             lineHeight: 1.7,
             mb: 0,
+            maxWidth: "620px",
+            mx: "auto",
           }}
         >
-          We create beautiful, effective websites for small businesses. From branding and design to SEO and ongoing support, we build digital experiences that help you attract customers, build trust, and grow with confidence.
+          From branding and design to SEO and ongoing support, we help small businesses attract customers, build trust, and grow with confidence.
         </Typography>
       </Container>
     </Box>
