@@ -8,6 +8,7 @@ import FavoriteOutlined from "@mui/icons-material/FavoriteOutlined";
 import HandshakeOutlined from "@mui/icons-material/HandshakeOutlined";
 import Footer from "../components/Footer";
 import ResponsiveMenu from "../components/ResponsiveMenu";
+import SectionDivider from "../components/SectionDivider";
 
 const skills = [
   "Web Design",
@@ -51,7 +52,6 @@ export default function AboutPage() {
           pt: { xs: 18, md: 22 },
           pb: { xs: 10, md: 14 },
           backgroundColor: "background.default",
-          borderBottom: "1px solid rgba(255,255,255,0.06)",
           position: "relative",
           overflow: "hidden",
           "&::before": {
@@ -121,10 +121,12 @@ export default function AboutPage() {
         </Container>
       </Box>
 
+      <SectionDivider />
+
       {/* Our Story */}
       <Box
         component="section"
-        sx={{ py: { xs: 10, md: 14 }, borderBottom: "1px solid rgba(255,255,255,0.06)" }}
+        sx={{ py: { xs: 10, md: 14 } }}
       >
         <Container sx={{ maxWidth: "860px !important" }}>
           <Box
@@ -207,10 +209,12 @@ export default function AboutPage() {
         </Container>
       </Box>
 
+      <SectionDivider />
+
       {/* Values */}
       <Box
         component="section"
-        sx={{ py: { xs: 10, md: 14 }, borderBottom: "1px solid rgba(255,255,255,0.06)" }}
+        sx={{ py: { xs: 10, md: 14 } }}
       >
         <Container sx={{ maxWidth: "1100px !important" }}>
           <Box sx={{ textAlign: "center", mb: { xs: 7, md: 9 } }}>
@@ -274,6 +278,8 @@ export default function AboutPage() {
           </Box>
         </Container>
       </Box>
+
+      <SectionDivider />
 
       {/* CTA */}
       <Box component="section" sx={{ py: { xs: 12, md: 16 } }}>

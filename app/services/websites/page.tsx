@@ -11,6 +11,7 @@ import SearchOutlined from "@mui/icons-material/SearchOutlined";
 import SupportAgentOutlined from "@mui/icons-material/SupportAgentOutlined";
 import ResponsiveMenu from "../../components/ResponsiveMenu";
 import Footer from "../../components/Footer";
+import SectionDivider from "../../components/SectionDivider";
 
 const included = [
   {
@@ -79,7 +80,6 @@ export default function WebsitesPage() {
           pt: { xs: 18, md: 22 },
           pb: { xs: 10, md: 14 },
           backgroundColor: "background.default",
-          borderBottom: "1px solid rgba(255,255,255,0.06)",
           position: "relative",
           overflow: "hidden",
           "&::before": {
@@ -191,12 +191,13 @@ export default function WebsitesPage() {
         </Container>
       </Box>
 
+      <SectionDivider />
+
       {/* What's included */}
       <Box
         component="section"
         sx={{
           py: { xs: 10, md: 14 },
-          borderBottom: "1px solid rgba(255,255,255,0.06)",
         }}
       >
         <Container sx={{ maxWidth: "1100px !important" }}>
@@ -265,10 +266,12 @@ export default function WebsitesPage() {
         </Container>
       </Box>
 
+      <SectionDivider />
+
       {/* Process */}
       <Box
         component="section"
-        sx={{ py: { xs: 10, md: 14 }, borderBottom: "1px solid rgba(255,255,255,0.06)" }}
+        sx={{ py: { xs: 10, md: 14 } }}
       >
         <Container sx={{ maxWidth: "860px !important" }}>
           <Box sx={{ textAlign: "center", mb: { xs: 7, md: 9 } }}>
@@ -329,6 +332,8 @@ export default function WebsitesPage() {
           </Box>
         </Container>
       </Box>
+
+      <SectionDivider />
 
       {/* CTA */}
       <Box component="section" sx={{ py: { xs: 12, md: 16 } }}>

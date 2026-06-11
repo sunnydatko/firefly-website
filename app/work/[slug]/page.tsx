@@ -6,6 +6,7 @@ import Container from "@mui/material/Container";
 import Typography from "@mui/material/Typography";
 import ResponsiveMenu from "../../components/ResponsiveMenu";
 import Footer from "../../components/Footer";
+import SectionDivider from "../../components/SectionDivider";
 import { featuredProjects } from "../../data/featuredProjects";
 
 export async function generateStaticParams() {
@@ -92,7 +93,6 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
         sx={{
           pt: { xs: 6, md: 8 },
           pb: { xs: 8, md: 10 },
-          borderBottom: "1px solid rgba(255,255,255,0.06)",
         }}
       >
         <Container sx={{ maxWidth: "900px !important" }}>
@@ -186,12 +186,13 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
         </Box>
       )}
 
+      <SectionDivider />
+
       {/* Next project */}
       <Box
         component="section"
         sx={{
           py: { xs: 10, md: 12 },
-          borderTop: "1px solid rgba(255,255,255,0.06)",
         }}
       >
         <Container sx={{ maxWidth: "1300px !important" }}>
@@ -244,12 +245,13 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
         </Container>
       </Box>
 
+      <SectionDivider />
+
       {/* CTA */}
       <Box
         component="section"
         sx={{
           py: { xs: 12, md: 16 },
-          borderTop: "1px solid rgba(255,255,255,0.06)",
           textAlign: "center",
         }}
       >

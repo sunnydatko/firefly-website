@@ -7,6 +7,7 @@ import PaletteOutlined from "@mui/icons-material/PaletteOutlined";
 import CampaignOutlined from "@mui/icons-material/CampaignOutlined";
 import Footer from "../components/Footer";
 import ResponsiveMenu from "../components/ResponsiveMenu";
+import SectionDivider from "../components/SectionDivider";
 
 const services = [
   {
@@ -47,7 +48,6 @@ export default function ServicesPage() {
           pt: { xs: 18, md: 22 },
           pb: { xs: 10, md: 14 },
           backgroundColor: "background.default",
-          borderBottom: "1px solid rgba(255,255,255,0.06)",
           position: "relative",
           overflow: "hidden",
           "&::before": {
@@ -111,8 +111,10 @@ export default function ServicesPage() {
         </Container>
       </Box>
 
+      <SectionDivider />
+
       {/* Services grid */}
-      <Box component="section" sx={{ py: { xs: 10, md: 14 }, borderBottom: "1px solid rgba(255,255,255,0.06)" }}>
+      <Box component="section" sx={{ py: { xs: 10, md: 14 } }}>
         <Container sx={{ maxWidth: "1100px !important" }}>
           <Box
             sx={{
@@ -233,6 +235,8 @@ export default function ServicesPage() {
           </Box>
         </Container>
       </Box>
+
+      <SectionDivider />
 
       {/* CTA */}
       <Box component="section" sx={{ py: { xs: 12, md: 16 } }}>

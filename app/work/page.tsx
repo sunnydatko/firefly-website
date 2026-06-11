@@ -5,6 +5,7 @@ import Container from "@mui/material/Container";
 import Typography from "@mui/material/Typography";
 import Footer from "../components/Footer";
 import ResponsiveMenu from "../components/ResponsiveMenu";
+import SectionDivider from "../components/SectionDivider";
 import { featuredProjects } from "../data/featuredProjects";
 
 export default function WorkPage() {
@@ -19,7 +20,6 @@ export default function WorkPage() {
           pt: { xs: 18, md: 22 },
           pb: { xs: 10, md: 14 },
           backgroundColor: "background.default",
-          borderBottom: "1px solid rgba(255,255,255,0.06)",
           position: "relative",
           overflow: "hidden",
           "&::before": {
@@ -82,8 +82,10 @@ export default function WorkPage() {
         </Container>
       </Box>
 
+      <SectionDivider />
+
       {/* Featured projects */}
-      <Box component="section" sx={{ py: { xs: 10, md: 14 }, borderBottom: "1px solid rgba(255,255,255,0.06)" }}>
+      <Box component="section" sx={{ py: { xs: 10, md: 14 } }}>
         <Container sx={{ maxWidth: "1300px !important" }}>
           <Box
             sx={{
@@ -200,6 +202,8 @@ export default function WorkPage() {
           </Box>
         </Container>
       </Box>
+
+      <SectionDivider />
 
       {/* CTA */}
       <Box component="section" sx={{ py: { xs: 12, md: 16 } }}>
