@@ -38,7 +38,7 @@
 | Framework | Next.js 16 (App Router) |
 | UI | Material UI 9 + Emotion |
 | Language | TypeScript 5 |
-| Fonts | Cormorant Garamond + Inter via `next/font` |
+| Fonts | Fraunces + Inter via `next/font` |
 | Runtime | React 19 |
 
 ---
