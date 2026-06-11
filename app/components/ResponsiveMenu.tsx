@@ -120,7 +120,7 @@ export default function ResponsiveMenu() {
               transition: "filter 0.25s ease",
               filter: "brightness(1)",
               "&:hover": {
-                filter: "brightness(1.3) drop-shadow(0 0 12px rgba(247,215,116,0.55))",
+                filter: "brightness(1.15) drop-shadow(0 0 8px rgba(247,215,116,0.35))",
               },
               flexShrink: 0,
             }}
