@@ -113,6 +113,25 @@ export default function ContactPage() {
           pb: { xs: 8, md: 10 },
           textAlign: "center",
           position: "relative",
+          overflow: "hidden",
+          "&::before": {
+            content: '""',
+            position: "absolute",
+            top: "-20%",
+            left: "50%",
+            transform: "translateX(-50%)",
+            width: "800px",
+            height: "800px",
+            borderRadius: "50%",
+            background: "radial-gradient(ellipse, rgba(247,215,116,0.06) 0%, transparent 70%)",
+            pointerEvents: "none",
+            "@media (max-width: 600px)": {
+              width: "480px",
+              height: "380px",
+              top: "-5%",
+              background: "radial-gradient(ellipse, rgba(247,215,116,0.05) 0%, transparent 55%)",
+            },
+          },
         }}
       >
         <Container sx={{ maxWidth: "680px !important", position: "relative", zIndex: 1 }}>
