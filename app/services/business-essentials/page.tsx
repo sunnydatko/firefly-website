@@ -314,7 +314,7 @@ export default function PromotionalMaterialsPage() {
                     fontFamily: "var(--font-fraunces), serif",
                     fontSize: { xs: "36px", md: "52px" },
                     fontWeight: 700,
-                    color: "rgba(242,193,90,0.15)",
+                    color: "rgba(242,193,90,0.35)",
                     lineHeight: 1,
                   }}
                 >
