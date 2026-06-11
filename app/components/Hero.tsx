@@ -110,7 +110,7 @@ export default function Hero() {
         }}
       />
 
-      <Container sx={{ position: "relative", zIndex: 2, pt: { xs: 13, md: 11 }, pb: { xs: 9, md: 7 } }}>
+      <Container sx={{ position: "relative", zIndex: 2, pt: { xs: 13, md: 12 }, pb: { xs: 9, md: 7 } }}>
         <Box sx={{ maxWidth: { xs: "100%", md: 620 } }}>
 
           {/* Eyebrow */}

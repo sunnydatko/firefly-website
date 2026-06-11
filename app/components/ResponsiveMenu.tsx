@@ -125,7 +125,7 @@ export default function ResponsiveMenu() {
               flexShrink: 0,
             }}
           >
-            <BrandMark height={44} />
+            <BrandMark height={40} />
           </Link>
 
           {/* Desktop nav — right aligned */}
