@@ -11,6 +11,7 @@ const services = [
   {
     Icon: LanguageOutlined,
     title: "Websites",
+    startingFrom: "Starting from $800",
     description:
       "Custom-designed websites that are fast, mobile-friendly, and built to convert visitors into customers.",
     features: ["Custom design", "Mobile friendly", "Performance optimized"],
@@ -19,6 +20,7 @@ const services = [
   {
     Icon: PaletteOutlined,
     title: "Logo & Branding",
+    startingFrom: "Starting from $500",
     description:
       "A distinctive brand identity that sets you apart — from logo design to a cohesive visual language.",
     features: ["Logo design", "Color palette", "Typography system", "Brand guidelines"],
@@ -27,6 +29,7 @@ const services = [
   {
     Icon: RocketLaunchOutlined,
     title: "Business Essentials",
+    startingFrom: "Starting from $299",
     description:
       "Everything you need to launch with confidence — from business cards and social graphics to basic SEO setup and ongoing website support.",
     features: ["Business cards", "Social media graphics", "Google Business Profile", "Basic SEO setup"],
@@ -93,7 +96,7 @@ export default function Services() {
             gap: 3,
           }}
         >
-          {services.map(({ Icon, title, description, features, href }, i) => (
+          {services.map(({ Icon, title, startingFrom, description, features, href }, i) => (
             <Box
               key={title}
               component="a"
@@ -134,9 +137,23 @@ export default function Services() {
 
               <Typography
                 variant="h5"
-                sx={{ fontSize: { xs: "18px", md: "20px" }, mb: 1.5 }}
+                sx={{ fontSize: { xs: "18px", md: "20px" }, mb: 0.75 }}
               >
                 {title}
+              </Typography>
+
+              <Typography
+                sx={{
+                  fontFamily: "var(--font-inter), sans-serif",
+                  fontSize: 11,
+                  fontWeight: 600,
+                  letterSpacing: "0.12em",
+                  textTransform: "uppercase",
+                  color: "rgba(242,193,90,0.65)",
+                  mb: 1.75,
+                }}
+              >
+                {startingFrom}
               </Typography>
 
               <Typography

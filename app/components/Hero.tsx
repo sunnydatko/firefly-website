@@ -74,7 +74,7 @@ export default function Hero() {
           inset: 0,
           backgroundImage: `url(${skyBg.src})`,
           backgroundSize: "cover",
-          backgroundPosition: { xs: "right center", md: "center 62%" },
+          backgroundPosition: { xs: "75% center", md: "center 62%" },
           willChange: "transform, opacity",
           transformOrigin: "center center",
           transform: "scale(1.05)",
@@ -90,7 +90,7 @@ export default function Hero() {
           position: "absolute",
           inset: 0,
           background: {
-            xs: "linear-gradient(180deg, rgba(11,16,32,0.88) 0%, rgba(11,16,32,0.82) 50%, rgba(11,16,32,0.92) 100%)",
+            xs: "linear-gradient(180deg, rgba(11,16,32,0.70) 0%, rgba(11,16,32,0.50) 50%, rgba(11,16,32,0.70) 100%)",
             md: "linear-gradient(90deg, rgba(11,16,32,0.99) 0%, rgba(11,16,32,0.94) 32%, rgba(11,16,32,0.40) 58%, rgba(11,16,32,0.05) 100%)",
           },
         }}
@@ -179,7 +179,7 @@ export default function Hero() {
               mb: { xs: 4, md: 5 },
             }}
           >
-            Thoughtful design. Built for growth. Crafted for small businesses.            </Typography>
+            Thoughtful design. Built for growth. Crafted for small businesses.</Typography>
 
           {/* CTAs */}
           <Box
@@ -193,7 +193,7 @@ export default function Hero() {
           >
             <Button
               variant="contained"
-              href="/work"
+              href="/services"
               sx={{
                 fontSize: { xs: 12, md: 13 },
                 fontWeight: 700,
@@ -208,7 +208,7 @@ export default function Hero() {
                 },
               }}
             >
-              View Our Work
+              Our Services
             </Button>
 
             <Button

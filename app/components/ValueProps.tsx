@@ -35,7 +35,7 @@ export default function ValueProps() {
     <Box
       component="section"
       sx={{
-        backgroundColor: "#0B1020",
+        background: "linear-gradient(to bottom, #0B1020 55%, rgba(11,16,32,0) 100%)",
         borderTop: "1px solid rgba(242,193,90,0.10)",
         display: "grid",
         gridTemplateColumns: { xs: "1fr 1fr", md: "repeat(4, 1fr)" },

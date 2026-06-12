@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import Chip from "@mui/material/Chip";
@@ -9,6 +10,26 @@ import HandshakeOutlined from "@mui/icons-material/HandshakeOutlined";
 import Footer from "../components/Footer";
 import ResponsiveMenu from "../components/ResponsiveMenu";
 import SectionDivider from "../components/SectionDivider";
+
+export const metadata: Metadata = {
+  title: "About | Firefly Creative Co",
+  description:
+    "We create custom websites and brand identities for small businesses. Learn about our story, values, and what makes Firefly different.",
+  openGraph: {
+    title: "About | Firefly Creative Co",
+    description:
+      "We create custom websites and brand identities for small businesses. Learn about our story, values, and what makes Firefly different.",
+    url: "https://fireflycreativeco.com/about",
+    images: [{ url: "/firefly-og.jpg", width: 1200, height: 630, alt: "About Firefly Creative Co" }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "About | Firefly Creative Co",
+    description:
+      "We create custom websites and brand identities for small businesses. Learn about our story, values, and what makes Firefly different.",
+    images: ["/firefly-og.jpg"],
+  },
+};
 
 const skills = [
   "Web Design",
