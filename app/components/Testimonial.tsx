@@ -1,27 +1,61 @@
 "use client";
 
+import { useState, useEffect, useRef } from "react";
 import Image from "next/image";
 import type { StaticImageData } from "next/image";
 import Box from "@mui/material/Box";
 import Container from "@mui/material/Container";
 import Typography from "@mui/material/Typography";
-import { testimonials } from "../helpers/config";
-import testimonialJesh from "../images/testimonial.jpg";
+import { testimonials } from "../helpers/data";
+import testimonialRosestone from "../images/testimonial-rosestone-jewelry.webp";
+import testimonialTasha from "../images/testimonial-tasha-rae-jewelry.webp";
+import testimonialBeInTouch from "../images/testimonial-be-in-touch.webp";
+import testimonialBB from "../images/testimonial-bb.webp";
 
 const imageMap: Record<string, StaticImageData> = {
-  "testimonial-jesh": testimonialJesh,
+  "testimonial-rosestone-jewelry": testimonialRosestone,
+  "testimonial-tasha-rae-jewelry": testimonialTasha,
+  "testimonial-be-in-touch": testimonialBeInTouch,
+  "testimonial-bb": testimonialBB,
 };
 
+const INTERVAL_MS = 5500;
+const FADE_MS = 350;
+
 export default function Testimonial() {
-  const { quote, name, title, image } = testimonials[0];
+  const [active, setActive] = useState(0);
+  const [paused, setPaused] = useState(false);
+  const [visible, setVisible] = useState(true);
+  const activeRef = useRef(0);
+
+  function goTo(idx: number) {
+    setVisible(false);
+    setTimeout(() => {
+      setActive(idx);
+      activeRef.current = idx;
+      setVisible(true);
+    }, FADE_MS);
+  }
+
+  useEffect(() => {
+    if (paused) return;
+    const id = setInterval(() => {
+      goTo((activeRef.current + 1) % testimonials.length);
+    }, INTERVAL_MS);
+    return () => clearInterval(id);
+  }, [paused]);
+
+  const { quote, name, title, image } = testimonials[active];
   const avatarSrc = image ? imageMap[image] : undefined;
 
   return (
     <Box
       component="section"
       id="testimonial"
+      onMouseEnter={() => setPaused(true)}
+      onMouseLeave={() => setPaused(false)}
       sx={{
-        py: { xs: 10, md: 14 },
+        py: { xs: 7, md: 10 },
         position: "relative",
         zIndex: 1,
         overflow: "hidden",
@@ -57,10 +91,17 @@ export default function Testimonial() {
             mb: 3,
           }}
         >
-          + Recommendation
+          + Recommendations
         </Typography>
 
-        <Box className="reveal" style={{ transitionDelay: "0.1s" }}>
+        <Box
+          className="reveal"
+          style={{ transitionDelay: "0.1s" }}
+          sx={{
+            opacity: visible ? 1 : 0,
+            transition: `opacity ${FADE_MS}ms ease`,
+          }}
+        >
           <Box
             sx={{
               position: "relative",
@@ -69,7 +110,8 @@ export default function Testimonial() {
               WebkitBackdropFilter: "blur(20px) saturate(110%)",
               border: "1px solid rgba(255,255,255,0.07)",
               borderRadius: "16px",
-              p: { xs: 4, md: 6 },
+              px: { xs: 7, md: 9 },
+              py: { xs: 3, md: 4.5 },
               boxShadow:
                 "0 1px 0 rgba(255,255,255,0.06) inset, 0 0 40px rgba(242,193,90,0.06), 0 24px 48px rgba(0,0,0,0.45)",
             }}
@@ -92,9 +134,9 @@ export default function Testimonial() {
               sx={{
                 color: "primary.light",
                 fontFamily: "Georgia, serif",
-                fontSize: { xs: "6rem", md: "8rem" },
+                fontSize: { xs: "5rem", md: "6rem" },
                 lineHeight: 0.5,
-                mb: 5,
+                mb: 3,
                 userSelect: "none",
                 opacity: 0.85,
               }}
@@ -106,8 +148,8 @@ export default function Testimonial() {
             <Typography
               sx={{
                 color: "common.white",
-                fontSize: { xs: "18px", md: "21px" },
-                lineHeight: 1.85,
+                fontSize: { xs: "16px", md: "18px" },
+                lineHeight: 1.75,
                 fontStyle: "italic",
                 mb: 1,
               }}
@@ -115,61 +157,105 @@ export default function Testimonial() {
               {quote}
             </Typography>
 
-            <Box
-              sx={{
-                display: "flex",
-                flexDirection: "column",
-                alignItems: "center",
-                gap: 1.5,
-                mt: 4,
-              }}
-            >
-              {avatarSrc && (
-                <Box
-                  sx={{
-                    width: 100,
-                    height: 100,
-                    borderRadius: "50%",
-                    overflow: "hidden",
-                    border: "2px solid rgba(242,193,90,0.25)",
-                    boxShadow: "0 0 12px rgba(242,193,90,0.12)",
-                    flexShrink: 0,
-                    position: "relative",
-                  }}
-                >
-                  <Image
-                    src={avatarSrc!}
-                    alt={name}
-                    fill
-                    style={{ objectFit: "cover" }}
-                    sizes="100px"
-                  />
-                </Box>
-              )}
-              <Box>
-                <Typography
-                  sx={{
-                    color: "common.white",
-                    fontFamily: "var(--font-inter), sans-serif",
-                    fontWeight: 600,
-                    fontSize: { xs: 15, md: 16 },
-                  }}
-                >
-                  {name}
-                </Typography>
-                <Typography
-                  sx={{
-                    color: "rgba(255,255,255,0.65)",
-                    fontFamily: "var(--font-inter), sans-serif",
-                    fontSize: { xs: 12, md: 13 },
-                    letterSpacing: "0.04em",
-                    mt: 0.5,
-                  }}
-                >
-                  {title}
-                </Typography>
+            {(avatarSrc || name) && (
+              <Box
+                sx={{
+                  display: "flex",
+                  flexDirection: "column",
+                  alignItems: "center",
+                  gap: 1.5,
+                  mt: 4,
+                }}
+              >
+                {avatarSrc && (
+                  <Box
+                    sx={{
+                      width: 100,
+                      height: 100,
+                      borderRadius: "50%",
+                      overflow: "hidden",
+                      border: "2px solid rgba(242,193,90,0.25)",
+                      boxShadow: "0 0 12px rgba(242,193,90,0.12)",
+                      flexShrink: 0,
+                      position: "relative",
+                    }}
+                  >
+                    <Image
+                      src={avatarSrc}
+                      alt={name}
+                      fill
+                      style={{ objectFit: "cover" }}
+                      sizes="100px"
+                    />
+                  </Box>
+                )}
+                {name && (
+                  <Box>
+                    <Typography
+                      sx={{
+                        color: "common.white",
+                        fontFamily: "var(--font-inter), sans-serif",
+                        fontWeight: 600,
+                        fontSize: { xs: 15, md: 16 },
+                      }}
+                    >
+                      {name}
+                    </Typography>
+                    {title && (
+                      <Typography
+                        sx={{
+                          color: "rgba(255,255,255,0.65)",
+                          fontFamily: "var(--font-inter), sans-serif",
+                          fontSize: { xs: 12, md: 13 },
+                          letterSpacing: "0.04em",
+                          mt: 0.5,
+                        }}
+                      >
+                        {title}
+                      </Typography>
+                    )}
+                  </Box>
+                )}
               </Box>
-            </Box>
+            )}
+            {testimonials.length > 1 && (
+              <>
+                {([{ label: "Previous testimonial", delta: -1, side: "left" }, { label: "Next testimonial", delta: 1, side: "right" }] as const).map(({ label, delta, side }) => (
+                  <Box
+                    key={side}
+                    role="button"
+                    aria-label={label}
+                    onClick={() => goTo((active + delta + testimonials.length) % testimonials.length)}
+                    sx={{
+                      position: "absolute",
+                      [side]: { xs: 10, md: 14 },
+                      top: "50%",
+                      transform: "translateY(-50%)",
+                      width: 34,
+                      height: 34,
+                      borderRadius: "50%",
+                      border: "1px solid rgba(242,193,90,0.25)",
+                      display: "flex",
+                      alignItems: "center",
+                      justifyContent: "center",
+                      color: "rgba(242,193,90,0.65)",
+                      fontSize: 20,
+                      lineHeight: 1,
+                      cursor: "pointer",
+                      userSelect: "none",
+                      transition: "all 0.2s ease",
+                      "&:hover": {
+                        background: "rgba(242,193,90,0.1)",
+                        border: "1px solid rgba(242,193,90,0.55)",
+                        color: "rgba(242,193,90,1)",
+                      },
+                    }}
+                  >
+                    {side === "left" ? "‹" : "›"}
+                  </Box>
+                ))}
+              </>
+            )}
           </Box>
         </Box>
       </Container>

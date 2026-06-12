@@ -67,8 +67,29 @@ export const testimonials = [
     quote:
       "Firefly poured genuine care into every detail of our project. They built a beautiful, professional website from scratch — then went further by developing an integrated marketing strategy that brought new customers to our business almost immediately. We give their work the highest of recommendations.",
     name: "Jeshua Rosestone",
-    title: "Master Goldsmith & Jewelry Designer",
-    image: "testimonial-jesh",
+    title: "Master Goldsmith · Rosestone Jewelry",
+    image: "testimonial-rosestone-jewelry",
+  },
+  {
+    quote:
+      "Firefly helped me to develop a website and suggested excellent marketing strategies for my new business. I attribute much of my online professional image to their help, and as such, cannot praise them highly enough. They're a joy to work with and just full of brilliant ideas. Thank you, Firefly!",
+    name: "Lani Oft",
+    title: "Owner · Be In Touch Bodywork",
+    image: "testimonial-be-in-touch",
+  },
+  {
+    quote:
+      "Firefly was highly recommended to me to help problem solve a web-based marketing project for my small business. They performed above and beyond what I was hoping for — their knowledge far exceeded the dollar cost of their services, and I've since hired them on for several other projects. I would highly recommend Firefly to any size business looking for a professional, dependable, and creative addition to their marketing solutions.",
+    name: "Tasha Tatro",
+    title: "Owner · Tasha Rae Jewelry",
+    image: "testimonial-tasha-rae-jewelry",
+  },
+  {
+    quote:
+      "I hired Firefly to do some website updates and social media promotion for me. Their methods were creative and they got the job done quickly. Not only was it fast but it was better than I had expected. I would definitely recommend them to anyone looking for web-based promotion.",
+    name: "Bryan Beglinger",
+    title: "Senior Realtor · FAM Realty",
+    image: "testimonial-bb",
   },
 ];
 
