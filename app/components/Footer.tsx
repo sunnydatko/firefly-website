@@ -33,10 +33,10 @@ const Footer = () => (
     component="footer"
     sx={{ borderTop: "1px solid rgba(245,241,236,0.08)" }}
   >
-    <Box sx={{ padding: "48px 0 36px" }}>
+    <Box sx={{ padding: "32px 0 24px" }}>
       <Container>
         {/* Logo */}
-        <Box sx={{ display: "flex", justifyContent: "center", mb: 3.5 }}>
+        <Box sx={{ display: "flex", justifyContent: "center", mb: 4.75 }}>
           <Link
             href="/"
             aria-label="Home"
@@ -50,7 +50,7 @@ const Footer = () => (
               "&:hover": { opacity: 1 },
             }}
           >
-            <BrandMark height={26} />
+            <BrandMark height={30} />
           </Link>
         </Box>
 
@@ -62,7 +62,7 @@ const Footer = () => (
             alignItems: "center",
             flexWrap: "wrap",
             gap: { xs: "16px 24px", sm: "16px 32px" },
-            mb: 3.5,
+            mb: 2,
           }}
         >
           {navLinks.map(({ name, href }) => (
@@ -82,7 +82,7 @@ const Footer = () => (
           </Link>
         </Box>
 
-        <Divider sx={{ borderColor: "rgba(245,241,236,0.06)", mb: 3 }} />
+        <Divider sx={{ borderColor: "rgba(245,241,236,0.06)", mb: 2 }} />
 
         <Typography
           sx={{
