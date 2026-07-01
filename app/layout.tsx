@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Fraunces, Inter } from "next/font/google";
 import "./globals.css";
 import Providers from "./providers";
@@ -64,6 +64,11 @@ export const metadata: Metadata = {
     description: OG_DESC,
     images: ["/firefly-og.jpg"],
   },
+};
+
+export const viewport: Viewport = {
+  themeColor: "#0B1020",
+  colorScheme: "dark",
 };
 
 export default function RootLayout({
