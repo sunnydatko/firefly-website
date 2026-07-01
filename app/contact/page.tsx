@@ -83,7 +83,13 @@ export default function ContactPage() {
     if (Object.keys(validationErrors).length > 0) return;
 
     try {
-      // TODO: wire up email service
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(fields),
+      });
+      if (!res.ok) throw new Error("Request failed");
+
       setSnack({ open: true, severity: "success", text: "Your message was sent — we'll be in touch soon!" });
       setFields(EMPTY);
       setErrors({});
@@ -262,8 +268,8 @@ export default function ContactPage() {
                   value={fields.from_name}
                   onChange={handleChange}
                   onBlur={handleBlur}
-                  error={!!errors.from_name}
-                  helperText={errors.from_name}
+                  error={!!(touched.from_name && errors.from_name)}
+                  helperText={touched.from_name && errors.from_name}
                   fullWidth
                 />
                 <TextField
@@ -273,8 +279,8 @@ export default function ContactPage() {
                   value={fields.reply_to}
                   onChange={handleChange}
                   onBlur={handleBlur}
-                  error={!!errors.reply_to}
-                  helperText={errors.reply_to}
+                  error={!!(touched.reply_to && errors.reply_to)}
+                  helperText={touched.reply_to && errors.reply_to}
                   fullWidth
                 />
               </Box>
@@ -293,8 +299,8 @@ export default function ContactPage() {
                 value={fields.message}
                 onChange={handleChange}
                 onBlur={handleBlur}
-                error={!!errors.message}
-                helperText={errors.message}
+                error={!!(touched.message && errors.message)}
+                helperText={touched.message && errors.message}
                 fullWidth
               />
               <Button

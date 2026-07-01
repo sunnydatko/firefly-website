@@ -67,12 +67,12 @@ export default function Contact() {
     if (Object.keys(validationErrors).length > 0) return;
 
     try {
-      // TODO: wire up email service
-      // Example with EmailJS:
-      //   await emailjs.send(SERVICE_ID, TEMPLATE_ID, { ...fields }, PUBLIC_KEY);
-      //
-      // Example with a custom API route:
-      //   await fetch("/api/contact", { method: "POST", body: JSON.stringify(fields) });
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(fields),
+      });
+      if (!res.ok) throw new Error("Request failed");
 
       setSnack({ open: true, severity: "success", text: "Your message was sent." });
       setFields(EMPTY);
@@ -130,8 +130,8 @@ export default function Contact() {
               value={fields.from_name}
               onChange={handleChange}
               onBlur={handleBlur}
-              error={!!errors.from_name}
-              helperText={errors.from_name}
+              error={!!(touched.from_name && errors.from_name)}
+              helperText={touched.from_name && errors.from_name}
             />
             <TextField
               label="Email"
@@ -140,8 +140,8 @@ export default function Contact() {
               value={fields.reply_to}
               onChange={handleChange}
               onBlur={handleBlur}
-              error={!!errors.reply_to}
-              helperText={errors.reply_to}
+              error={!!(touched.reply_to && errors.reply_to)}
+              helperText={touched.reply_to && errors.reply_to}
             />
             <TextField
               label="Message"
@@ -151,8 +151,8 @@ export default function Contact() {
               value={fields.message}
               onChange={handleChange}
               onBlur={handleBlur}
-              error={!!errors.message}
-              helperText={errors.message}
+              error={!!(touched.message && errors.message)}
+              helperText={touched.message && errors.message}
             />
             <Button
               size="large"
