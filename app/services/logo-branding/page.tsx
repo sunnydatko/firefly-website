@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import Container from "@mui/material/Container";
@@ -12,6 +13,21 @@ import LayersOutlined from "@mui/icons-material/LayersOutlined";
 import ResponsiveMenu from "../../components/ResponsiveMenu";
 import Footer from "../../components/Footer";
 import SectionDivider from "../../components/SectionDivider";
+import { pageMetadata } from "../../lib/seo";
+
+export const metadata: Metadata = pageMetadata({
+  title: "Logo Design & Branding for Small Businesses",
+  description:
+    "Distinctive, consistent brand identities for small businesses — logo design, visual systems, and brand guidelines built to grow with you.",
+  path: "/services/logo-branding",
+  imageAlt: "Firefly Creative Co Logo & Branding",
+  keywords: [
+    "logo design for small business",
+    "small business branding",
+    "brand identity design",
+    "small business logo",
+  ],
+});
 
 const included = [
   {

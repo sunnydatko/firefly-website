@@ -8,6 +8,7 @@ import ResponsiveMenu from "../../components/ResponsiveMenu";
 import Footer from "../../components/Footer";
 import SectionDivider from "../../components/SectionDivider";
 import { featuredProjects } from "../../data/featuredProjects";
+import { pageMetadata } from "../../lib/seo";
 
 export async function generateStaticParams() {
   return featuredProjects.map((p) => ({ slug: p.slug }));
@@ -17,10 +18,13 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const { slug } = await params;
   const project = featuredProjects.find((p) => p.slug === slug);
   if (!project) return {};
-  return {
-    title: `${project.name} — Firefly Creative Studio`,
-    description: project.whatWeDid,
-  };
+
+  return pageMetadata({
+    title: `${project.name} — Small Business Case Study`,
+    description: `${project.whatWeDid} for ${project.name}, a small business in ${project.location}.`,
+    path: project.href,
+    imageAlt: `${project.name} case study`,
+  });
 }
 
 export default async function ProjectPage({ params }: { params: Promise<{ slug: string }> }) {

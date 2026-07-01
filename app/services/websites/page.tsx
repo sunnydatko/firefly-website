@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import Container from "@mui/material/Container";
@@ -12,6 +13,21 @@ import SupportAgentOutlined from "@mui/icons-material/SupportAgentOutlined";
 import ResponsiveMenu from "../../components/ResponsiveMenu";
 import Footer from "../../components/Footer";
 import SectionDivider from "../../components/SectionDivider";
+import { pageMetadata } from "../../lib/seo";
+
+export const metadata: Metadata = pageMetadata({
+  title: "Custom Website Design for Small Businesses",
+  description:
+    "Custom-built, fast, mobile-friendly websites for small businesses — no templates, no shortcuts. Designed to turn visitors into customers.",
+  path: "/services/websites",
+  imageAlt: "Firefly Creative Co Website Design",
+  keywords: [
+    "small business website design",
+    "custom website design",
+    "small business web developer",
+    "mobile-friendly website design",
+  ],
+});
 
 const included = [
   {

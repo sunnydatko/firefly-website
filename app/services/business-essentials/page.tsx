@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import Container from "@mui/material/Container";
@@ -12,6 +13,21 @@ import ViewQuiltOutlined from "@mui/icons-material/ViewQuiltOutlined";
 import ResponsiveMenu from "../../components/ResponsiveMenu";
 import Footer from "../../components/Footer";
 import SectionDivider from "../../components/SectionDivider";
+import { pageMetadata } from "../../lib/seo";
+
+export const metadata: Metadata = pageMetadata({
+  title: "Business Essentials for Small Businesses",
+  description:
+    "Business cards, social graphics, Google Business Profile setup, and website updates — everything a small business needs to show up professionally.",
+  path: "/services/business-essentials",
+  imageAlt: "Firefly Creative Co Business Essentials",
+  keywords: [
+    "small business marketing materials",
+    "Google Business Profile setup",
+    "small business social graphics",
+    "business essentials design",
+  ],
+});
 
 const included = [
   {

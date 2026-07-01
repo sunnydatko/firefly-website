@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import Container from "@mui/material/Container";
@@ -8,6 +9,22 @@ import RocketLaunchOutlined from "@mui/icons-material/RocketLaunchOutlined";
 import Footer from "../components/Footer";
 import ResponsiveMenu from "../components/ResponsiveMenu";
 import SectionDivider from "../components/SectionDivider";
+import { pageMetadata } from "../lib/seo";
+
+export const metadata: Metadata = pageMetadata({
+  title: "Web Design & Branding Services for Small Businesses",
+  description:
+    "From your first logo to a fully launched website, Firefly Creative Co handles every piece of your small business's digital presence — websites, branding, and business essentials.",
+  path: "/services",
+  imageAlt: "Firefly Creative Co Services",
+  keywords: [
+    "web design for small businesses",
+    "small business branding",
+    "small business website design",
+    "logo design for small business",
+    "affordable website design",
+  ],
+});
 
 const services = [
   {

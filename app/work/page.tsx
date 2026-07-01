@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import Image from "next/image";
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
@@ -7,6 +8,16 @@ import Footer from "../components/Footer";
 import ResponsiveMenu from "../components/ResponsiveMenu";
 import SectionDivider from "../components/SectionDivider";
 import { featuredProjects } from "../data/featuredProjects";
+import { pageMetadata } from "../lib/seo";
+
+export const metadata: Metadata = pageMetadata({
+  title: "Small Business Website & Branding Portfolio",
+  description:
+    "See how Firefly Creative Co has helped small businesses launch beautiful, effective websites and brand identities.",
+  path: "/work",
+  imageAlt: "Firefly Creative Co Portfolio",
+  keywords: ["small business website portfolio", "web design case studies", "small business branding examples"],
+});
 
 export default function WorkPage() {
   return (
