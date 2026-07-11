@@ -9,6 +9,7 @@ import ResponsiveMenu from "../components/ResponsiveMenu";
 import SectionDivider from "../components/SectionDivider";
 import { featuredProjects } from "../data/featuredProjects";
 import { pageMetadata } from "../lib/seo";
+import leafBg from "../images/leaf-bg.webp";
 
 export const metadata: Metadata = pageMetadata({
   title: "Small Business Website & Branding Portfolio",
@@ -47,6 +48,24 @@ export default function WorkPage() {
           },
         }}
       >
+        {/* Ambient leaf shadow texture */}
+        <Box
+          aria-hidden
+          sx={{
+            position: "absolute",
+            inset: 0,
+            backgroundImage: `url(${leafBg.src})`,
+            backgroundSize: "cover",
+            backgroundPosition: "center 35%",
+            opacity: { xs: 0.14, md: 0.2 },
+            maskImage:
+              "linear-gradient(180deg, transparent 0%, black 25%, black 75%, transparent 100%)",
+            WebkitMaskImage:
+              "linear-gradient(180deg, transparent 0%, black 25%, black 75%, transparent 100%)",
+            pointerEvents: "none",
+          }}
+        />
+
         <Container sx={{ maxWidth: "900px !important", position: "relative", zIndex: 1 }}>
           <Typography
             component="span"

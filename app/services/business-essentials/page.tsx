@@ -14,6 +14,7 @@ import ResponsiveMenu from "../../components/ResponsiveMenu";
 import Footer from "../../components/Footer";
 import SectionDivider from "../../components/SectionDivider";
 import { pageMetadata } from "../../lib/seo";
+import leafBg from "../../images/leaf-bg.webp";
 
 export const metadata: Metadata = pageMetadata({
   title: "Business Essentials for Small Businesses",
@@ -118,6 +119,24 @@ export default function PromotionalMaterialsPage() {
           },
         }}
       >
+        {/* Ambient leaf shadow texture */}
+        <Box
+          aria-hidden
+          sx={{
+            position: "absolute",
+            inset: 0,
+            backgroundImage: `url(${leafBg.src})`,
+            backgroundSize: "cover",
+            backgroundPosition: "center 35%",
+            opacity: { xs: 0.14, md: 0.2 },
+            maskImage:
+              "linear-gradient(180deg, transparent 0%, black 25%, black 75%, transparent 100%)",
+            WebkitMaskImage:
+              "linear-gradient(180deg, transparent 0%, black 25%, black 75%, transparent 100%)",
+            pointerEvents: "none",
+          }}
+        />
+
         <Container sx={{ maxWidth: "900px !important", position: "relative", zIndex: 1 }}>
           <Link
             href="/#services"

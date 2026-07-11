@@ -1,17 +1,8 @@
 "use client";
 
 import Box from "@mui/material/Box";
-import Chip from "@mui/material/Chip";
 import Container from "@mui/material/Container";
 import Typography from "@mui/material/Typography";
-
-
-const skills = [
-  "Web Design",
-  "Branding",
-  "Google Business Profiles",
-  "Ongoing Support"
-];
 
 export default function About() {
   return (
@@ -51,34 +42,9 @@ export default function About() {
           Beautiful websites backed by strategy and support
         </Typography>
 
-        <Box
-          className="reveal"
-          style={{ transitionDelay: "0.2s" }}
-          sx={{
-            display: "flex",
-            flexWrap: "wrap",
-            gap: 1.25,
-            mb: 4,
-            justifyContent: "center",
-          }}
-        >
-          {skills.map((skill) => (
-            <Chip
-              key={skill}
-              label={skill}
-              variant="outlined"
-              sx={{
-                height: 26,
-                borderWidth: "0.5px",
-                "& .MuiChip-label": { px: 1.25 },
-              }}
-            />
-          ))}
-        </Box>
-
         <Typography
           className="reveal"
-          style={{ transitionDelay: "0.3s" }}
+          style={{ transitionDelay: "0.2s" }}
           sx={{
             color: "grey.300",
             fontSize: { xs: "17px", md: "21px" },
