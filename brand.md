@@ -15,24 +15,25 @@
 Elegant · Warm · Strategic · Creative · Professional · Approachable
 
 ## Color Palette
-| Name     | Hex       | Role                          |
-|----------|-----------|-------------------------------|
-| Midnight | #0B1020   | Primary background (deep navy-black) |
-| Indigo   | #151B33   | Secondary background          |
-| Slate    | #2A3347   | Tertiary / card backgrounds   |
-| Gold     | #F2C15A   | Primary accent — use intentionally to highlight |
-| Glow     | #FFD878   | Lighter gold / hover/glow states |
-| Ivory    | #F5F2EA   | Light text, clean contrast    |
+| Name       | Hex       | Role                          |
+|------------|-----------|-------------------------------|
+| Midnight   | #0D0B14   | Primary background (deep purple-black) |
+| Plum       | #1A1322   | Secondary background          |
+| Aubergine  | #2B1D3B   | Tertiary / card backgrounds   |
+| Orchid     | #46304F   | Elevated / hover / border tone |
+| Gold       | #D8B36A   | Primary accent — use intentionally to highlight |
+| Glow       | #E8CE94   | Lighter gold / hover/glow states |
+| Ivory      | #F2E8CF   | Light text, clean contrast    |
 
-**Usage note:** Use gold intentionally to highlight what matters. Keep layouts clean and spacious. Let the dark backgrounds and glow create focus and emotion.
+**Usage note:** Use gold intentionally to highlight what matters. Keep layouts clean and spacious. Let the dark purple backgrounds and glow create focus and emotion.
 
 ## Typography
-| Role     | Font              | Weight/Size         | Character          |
-|----------|-------------------|---------------------|--------------------|
-| Headings | Fraunces Semibold | 48–64px / 120% lh  | Elegant · Refined · Timeless |
-| H2       | Inter Regular     | 18–24px / 150% lh  |                    |
-| Body     | Inter Regular     | 16px / 150% lh     | Clean · Modern · Readable |
-| Button   | Inter Semibold    | 14–16px / 120% / UPPERCASE | |
+| Role     | Font                     | Weight/Size         | Character          |
+|----------|--------------------------|---------------------|--------------------|
+| Headings | Playfair Display Semibold| 48–64px / 120% lh  | Elegant · Refined · Timeless |
+| H2       | Inter Regular            | 18–24px / 150% lh  |                    |
+| Body     | Inter Regular            | 16px / 150% lh     | Clean · Modern · Readable |
+| Button   | Inter Semibold           | 14–16px / 120% / UPPERCASE | |
 
 ## Imagery Style
 Dark, warm, natural, and magical. A feeling of calm, trust, and possibility. (Reference: fireflies in mason jars, glowing garden scenes.)
@@ -44,6 +45,6 @@ Subtle details that add warmth, movement, and a sense of magic. (Thin line illus
 Line-art firefly illustration in gold, used as logomark alongside "Firefly" wordmark in Fraunces.
 
 ## Design Principles
-This brand communicates a premium, boutique feel with a warm/magical aesthetic — gold on dark creates luxury and enchantment without being cold or corporate.
+This brand communicates a premium, boutique feel with a warm/magical aesthetic — gold on deep purple creates luxury and enchantment without being cold or corporate.
 
-When writing copy, designing UI, or suggesting changes, lean into the magical-but-grounded tone. Avoid anything clinical, busy, or harsh. Prioritize generous whitespace, gold as a deliberate accent, and Fraunces for all headline moments.
+When writing copy, designing UI, or suggesting changes, lean into the magical-but-grounded tone. Avoid anything clinical, busy, or harsh. Prioritize generous whitespace, gold as a deliberate accent, and Playfair Display for all headline moments.

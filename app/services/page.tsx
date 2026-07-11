@@ -76,7 +76,7 @@ export default function ServicesPage() {
             width: "800px",
             height: "800px",
             borderRadius: "50%",
-            background: "radial-gradient(ellipse, rgba(242,193,90,0.06) 0%, transparent 70%)",
+            background: "radial-gradient(ellipse, rgba(216,179,106,0.06) 0%, transparent 70%)",
             pointerEvents: "none",
           },
         }}
@@ -108,7 +108,7 @@ export default function ServicesPage() {
           >
             Everything you need to{" "}
             <Box component="em" sx={{ fontStyle: "italic", color: "primary.main" }}>
-              grow online
+              shine
             </Box>
           </Typography>
 
@@ -156,7 +156,7 @@ export default function ServicesPage() {
                   color: "inherit",
                   transition: "border-color 0.3s, transform 0.3s",
                   "&:hover": {
-                    borderColor: "rgba(242,193,90,0.3)",
+                    borderColor: "rgba(216,179,106,0.3)",
                     transform: "translateY(-4px)",
                     "& .card-arrow": { transform: "translateX(4px)", opacity: 1 },
                   },
@@ -167,7 +167,7 @@ export default function ServicesPage() {
                     width: 48,
                     height: 48,
                     borderRadius: 1.5,
-                    backgroundColor: "rgba(242,193,90,0.10)",
+                    backgroundColor: "rgba(216,179,106,0.10)",
                     display: "flex",
                     alignItems: "center",
                     justifyContent: "center",
@@ -299,7 +299,7 @@ export default function ServicesPage() {
               px: { xs: 3.5, md: 4 },
               py: 1.6,
               backgroundColor: "primary.main",
-              color: "#0B1020",
+              color: "#0D0B14",
               "&:hover": { backgroundColor: "secondary.main" },
             }}
           >

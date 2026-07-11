@@ -3,36 +3,27 @@
 import Box from "@mui/material/Box";
 import Container from "@mui/material/Container";
 import Typography from "@mui/material/Typography";
-import LanguageOutlined from "@mui/icons-material/LanguageOutlined";
-import PaletteOutlined from "@mui/icons-material/PaletteOutlined";
-import RocketLaunchOutlined from "@mui/icons-material/RocketLaunchOutlined";
 
 const services = [
   {
-    Icon: LanguageOutlined,
     title: "Websites",
     startingFrom: "Starting from $800",
     description:
       "Custom-designed websites that are fast, mobile-friendly, and built to convert visitors into customers.",
-    features: ["Custom design", "Mobile friendly", "Performance optimized"],
     href: "/services/websites",
   },
   {
-    Icon: PaletteOutlined,
     title: "Logo & Branding",
     startingFrom: "Starting from $500",
     description:
       "A distinctive brand identity that sets you apart — from logo design to a cohesive visual language.",
-    features: ["Logo design", "Color palette", "Typography system", "Brand guidelines"],
     href: "/services/logo-branding",
   },
   {
-    Icon: RocketLaunchOutlined,
     title: "Business Essentials",
     startingFrom: "Starting from $299",
     description:
       "Everything you need to launch with confidence — from business cards and social graphics to basic SEO setup and ongoing website support.",
-    features: ["Business cards", "Social media graphics", "Google Business Profile", "Basic SEO setup"],
     href: "/services/business-essentials",
   },
 ];
@@ -91,12 +82,10 @@ export default function Services() {
 
         <Box
           sx={{
-            display: "grid",
-            gridTemplateColumns: { xs: "1fr", sm: "1fr 1fr 1fr" },
-            gap: 3,
+            borderTop: "1px solid rgba(255,255,255,0.09)",
           }}
         >
-          {services.map(({ Icon, title, startingFrom, description, features, href }, i) => (
+          {services.map(({ title, startingFrom, description, href }, i) => (
             <Box
               key={title}
               component="a"
@@ -104,107 +93,61 @@ export default function Services() {
               className="reveal"
               style={{ transitionDelay: `${i * 0.08}s` }}
               sx={{
-                backgroundColor: "background.paper",
-                border: "1px solid rgba(255,255,255,0.07)",
-                borderRadius: 2,
-                p: { xs: 3.5, md: 4 },
                 display: "flex",
-                flexDirection: "column",
+                flexDirection: { xs: "column", sm: "row" },
+                alignItems: { xs: "flex-start", sm: "center" },
+                gap: { xs: 1.5, sm: 4 },
+                py: { xs: 4, md: 5 },
+                borderBottom: "1px solid rgba(255,255,255,0.09)",
                 textDecoration: "none",
                 color: "inherit",
-                transition: "border-color 0.3s, transform 0.3s",
+                transition: "padding-left 0.3s ease",
                 "&:hover": {
-                  borderColor: "rgba(242,193,90,0.3)",
-                  transform: "translateY(-4px)",
-                  "& .card-arrow": { transform: "translateX(4px)", opacity: 1 },
+                  pl: { xs: 0, sm: 1.5 },
+                  "& .row-arrow": { transform: "translateX(4px)", opacity: 1 },
+                  "& .row-title": { color: "primary.main" },
                 },
               }}
             >
-              <Box
-                sx={{
-                  width: 48,
-                  height: 48,
-                  borderRadius: 1.5,
-                  backgroundColor: "rgba(242,193,90,0.10)",
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                  mb: 3,
-                }}
-              >
-                <Icon sx={{ color: "primary.main", fontSize: 24 }} />
+              <Box sx={{ flex: { sm: "0 0 260px" } }}>
+                <Typography
+                  className="row-title"
+                  variant="h4"
+                  sx={{
+                    fontSize: { xs: "24px", md: "28px" },
+                    transition: "color 0.3s ease",
+                  }}
+                >
+                  {title}
+                </Typography>
+                <Typography
+                  sx={{
+                    fontFamily: "var(--font-inter), sans-serif",
+                    fontSize: 11,
+                    fontWeight: 600,
+                    letterSpacing: "0.12em",
+                    textTransform: "uppercase",
+                    color: "rgba(216,179,106,0.65)",
+                    mt: 0.75,
+                  }}
+                >
+                  {startingFrom}
+                </Typography>
               </Box>
 
               <Typography
-                variant="h5"
-                sx={{ fontSize: { xs: "18px", md: "20px" }, mb: 0.75 }}
-              >
-                {title}
-              </Typography>
-
-              <Typography
                 sx={{
-                  fontFamily: "var(--font-inter), sans-serif",
-                  fontSize: 11,
-                  fontWeight: 600,
-                  letterSpacing: "0.12em",
-                  textTransform: "uppercase",
-                  color: "rgba(242,193,90,0.65)",
-                  mb: 1.75,
+                  color: "grey.300",
+                  fontSize: { xs: "15px", md: "17px" },
+                  lineHeight: 1.7,
+                  flex: 1,
                 }}
-              >
-                {startingFrom}
-              </Typography>
-
-              <Typography
-                sx={{ color: "grey.300", fontSize: "14px", lineHeight: 1.7, mb: 3 }}
               >
                 {description}
               </Typography>
 
               <Box
-                component="ul"
                 sx={{
-                  listStyle: "none",
-                  p: 0,
-                  m: 0,
-                  display: "flex",
-                  flexDirection: "column",
-                  gap: 1,
-                }}
-              >
-                {features.map((feature) => (
-                  <Box
-                    component="li"
-                    key={feature}
-                    sx={{
-                      display: "flex",
-                      alignItems: "center",
-                      gap: 1.25,
-                      fontSize: "13px",
-                      color: "grey.400",
-                    }}
-                  >
-                    <Box
-                      component="span"
-                      sx={{
-                        width: 5,
-                        height: 5,
-                        borderRadius: "50%",
-                        backgroundColor: "primary.main",
-                        flexShrink: 0,
-                        opacity: 0.7,
-                      }}
-                    />
-                    {feature}
-                  </Box>
-                ))}
-              </Box>
-
-              <Box
-                sx={{
-                  mt: "auto",
-                  pt: 3,
                   display: "flex",
                   alignItems: "center",
                   gap: 0.5,
@@ -213,12 +156,14 @@ export default function Services() {
                   fontFamily: "var(--font-inter), sans-serif",
                   fontWeight: 600,
                   letterSpacing: "0.06em",
+                  whiteSpace: "nowrap",
+                  flexShrink: 0,
                 }}
               >
-                Learn more
+                Learn More
                 <Box
                   component="span"
-                  className="card-arrow"
+                  className="row-arrow"
                   sx={{ transition: "transform 0.25s, opacity 0.25s", opacity: 0.7 }}
                 >
                   →

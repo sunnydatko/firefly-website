@@ -113,7 +113,7 @@ export default function PromotionalMaterialsPage() {
             height: "800px",
             borderRadius: "50%",
             background:
-              "radial-gradient(ellipse, rgba(242,193,90,0.06) 0%, transparent 70%)",
+              "radial-gradient(ellipse, rgba(216,179,106,0.06) 0%, transparent 70%)",
             pointerEvents: "none",
           },
         }}
@@ -202,7 +202,7 @@ export default function PromotionalMaterialsPage() {
               px: { xs: 3, md: 3.5 },
               py: 1.5,
               backgroundColor: "primary.main",
-              color: "#0B1020",
+              color: "#0D0B14",
               "&:hover": { backgroundColor: "secondary.main" },
             }}
           >
@@ -262,7 +262,7 @@ export default function PromotionalMaterialsPage() {
                     width: 44,
                     height: 44,
                     borderRadius: 1.5,
-                    backgroundColor: "rgba(242,193,90,0.10)",
+                    backgroundColor: "rgba(216,179,106,0.10)",
                     display: "flex",
                     alignItems: "center",
                     justifyContent: "center",
@@ -330,7 +330,7 @@ export default function PromotionalMaterialsPage() {
                     fontFamily: "var(--font-fraunces), serif",
                     fontSize: { xs: "36px", md: "52px" },
                     fontWeight: 700,
-                    color: "rgba(242,193,90,0.35)",
+                    color: "rgba(216,179,106,0.35)",
                     lineHeight: 1,
                   }}
                 >
@@ -399,7 +399,7 @@ export default function PromotionalMaterialsPage() {
               px: { xs: 3.5, md: 4 },
               py: 1.6,
               backgroundColor: "primary.main",
-              color: "#0B1020",
+              color: "#0D0B14",
               "&:hover": { backgroundColor: "secondary.main" },
             }}
           >

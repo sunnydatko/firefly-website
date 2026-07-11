@@ -22,7 +22,7 @@ export default function SectionDivider() {
           flex: 1,
           height: "1px",
           background:
-            "linear-gradient(to right, transparent 0%, rgba(242,193,90,0.18) 50%, rgba(242,193,90,0.32) 100%)",
+            "linear-gradient(to right, transparent 0%, rgba(216,179,106,0.18) 50%, rgba(216,179,106,0.32) 100%)",
           maxWidth: 380,
         }}
       />
@@ -42,7 +42,7 @@ export default function SectionDivider() {
             width: 3,
             height: 3,
             borderRadius: "50%",
-            bgcolor: "rgba(242,193,90,0.35)",
+            bgcolor: "rgba(216,179,106,0.35)",
             flexShrink: 0,
           }}
         />
@@ -53,7 +53,7 @@ export default function SectionDivider() {
             display: "flex",
             alignItems: "center",
             justifyContent: "center",
-            filter: "drop-shadow(0 0 5px rgba(242,193,90,0.55))",
+            filter: "drop-shadow(0 0 5px rgba(216,179,106,0.55))",
             flexShrink: 0,
           }}
         >
@@ -66,7 +66,7 @@ export default function SectionDivider() {
           >
             <path
               d="M7 0 Q6.3 4.5 5.5 5.5 Q4.5 6.3 0 7 Q4.5 7.7 5.5 8.5 Q6.3 9.5 7 14 Q7.7 9.5 8.5 8.5 Q9.5 7.7 14 7 Q9.5 6.3 8.5 5.5 Q7.7 4.5 7 0 Z"
-              fill="#F2C15A"
+              fill="#D8B36A"
             />
           </svg>
         </Box>
@@ -77,7 +77,7 @@ export default function SectionDivider() {
             width: 3,
             height: 3,
             borderRadius: "50%",
-            bgcolor: "rgba(242,193,90,0.35)",
+            bgcolor: "rgba(216,179,106,0.35)",
             flexShrink: 0,
           }}
         />
@@ -89,7 +89,7 @@ export default function SectionDivider() {
           flex: 1,
           height: "1px",
           background:
-            "linear-gradient(to left, transparent 0%, rgba(242,193,90,0.18) 50%, rgba(242,193,90,0.32) 100%)",
+            "linear-gradient(to left, transparent 0%, rgba(216,179,106,0.18) 50%, rgba(216,179,106,0.32) 100%)",
           maxWidth: 380,
         }}
       />

@@ -100,7 +100,7 @@ export default function FeaturedProjects() {
                     display: "flex",
                     alignItems: "center",
                     justifyContent: "center",
-                    backgroundColor: "rgba(11,16,32,0.52)",
+                    backgroundColor: "rgba(13,11,20,0.52)",
                     opacity: 0,
                     transition: "opacity 0.3s ease",
                   }}

@@ -122,13 +122,13 @@ export default function ContactPage() {
             width: "800px",
             height: "800px",
             borderRadius: "50%",
-            background: "radial-gradient(ellipse, rgba(242,193,90,0.06) 0%, transparent 70%)",
+            background: "radial-gradient(ellipse, rgba(216,179,106,0.06) 0%, transparent 70%)",
             pointerEvents: "none",
             "@media (max-width: 600px)": {
               width: "480px",
               height: "380px",
               top: "-5%",
-              background: "radial-gradient(ellipse, rgba(242,193,90,0.05) 0%, transparent 55%)",
+              background: "radial-gradient(ellipse, rgba(216,179,106,0.05) 0%, transparent 55%)",
             },
           },
         }}
@@ -196,7 +196,7 @@ export default function ContactPage() {
                     width: 34,
                     height: 34,
                     borderRadius: 1.5,
-                    border: "1px solid rgba(242,193,90,0.18)",
+                    border: "1px solid rgba(216,179,106,0.18)",
                     display: "flex",
                     alignItems: "center",
                     justifyContent: "center",
@@ -315,7 +315,7 @@ export default function ContactPage() {
                   letterSpacing: "0.18em",
                   textTransform: "uppercase",
                   backgroundColor: "primary.main",
-                  color: "#0B1020",
+                  color: "#0D0B14",
                   "&:hover": { backgroundColor: "secondary.main" },
                 }}
               >

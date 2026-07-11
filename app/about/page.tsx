@@ -11,6 +11,7 @@ import Footer from "../components/Footer";
 import ResponsiveMenu from "../components/ResponsiveMenu";
 import SectionDivider from "../components/SectionDivider";
 import { pageMetadata } from "../lib/seo";
+import leafBg from "../images/leaf-bg.webp";
 
 export const metadata: Metadata = pageMetadata({
   title: "About",
@@ -71,11 +72,29 @@ export default function AboutPage() {
             width: "800px",
             height: "800px",
             borderRadius: "50%",
-            background: "radial-gradient(ellipse, rgba(242,193,90,0.06) 0%, transparent 70%)",
+            background: "radial-gradient(ellipse, rgba(216,179,106,0.06) 0%, transparent 70%)",
             pointerEvents: "none",
           },
         }}
       >
+        {/* Ambient leaf shadow texture */}
+        <Box
+          aria-hidden
+          sx={{
+            position: "absolute",
+            inset: 0,
+            backgroundImage: `url(${leafBg.src})`,
+            backgroundSize: "cover",
+            backgroundPosition: "center 35%",
+            opacity: { xs: 0.14, md: 0.2 },
+            maskImage:
+              "linear-gradient(180deg, transparent 0%, black 25%, black 75%, transparent 100%)",
+            WebkitMaskImage:
+              "linear-gradient(180deg, transparent 0%, black 25%, black 75%, transparent 100%)",
+            pointerEvents: "none",
+          }}
+        />
+
         <Container sx={{ maxWidth: "860px !important", position: "relative", zIndex: 1 }}>
           <Typography
             component="span"
@@ -266,7 +285,7 @@ export default function AboutPage() {
                     width: 44,
                     height: 44,
                     borderRadius: 1.5,
-                    backgroundColor: "rgba(242,193,90,0.10)",
+                    backgroundColor: "rgba(216,179,106,0.10)",
                     display: "flex",
                     alignItems: "center",
                     justifyContent: "center",
@@ -333,7 +352,7 @@ export default function AboutPage() {
               px: { xs: 3.5, md: 4 },
               py: 1.6,
               backgroundColor: "primary.main",
-              color: "#0B1020",
+              color: "#0D0B14",
               "&:hover": { backgroundColor: "secondary.main" },
             }}
           >

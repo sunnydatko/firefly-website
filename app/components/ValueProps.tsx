@@ -35,8 +35,8 @@ export default function ValueProps() {
     <Box
       component="section"
       sx={{
-        background: "linear-gradient(to bottom, #0B1020 55%, rgba(11,16,32,0) 100%)",
-        borderTop: "1px solid rgba(242,193,90,0.10)",
+        background: "linear-gradient(to bottom, #0D0B14 55%, rgba(13,11,20,0) 100%)",
+        borderTop: "1px solid rgba(216,179,106,0.10)",
         display: "grid",
         gridTemplateColumns: { xs: "1fr 1fr", md: "repeat(4, 1fr)" },
       }}
@@ -52,18 +52,18 @@ export default function ValueProps() {
             px: { xs: 3, md: 4 },
             py: { xs: 3, md: 4 },
             borderRight: {
-              xs: i % 2 === 0 ? "1px solid rgba(242,193,90,0.10)" : "none",
-              md: i < 3 ? "1px solid rgba(242,193,90,0.10)" : "none",
+              xs: i % 2 === 0 ? "1px solid rgba(216,179,106,0.10)" : "none",
+              md: i < 3 ? "1px solid rgba(216,179,106,0.10)" : "none",
             },
             borderBottom: {
-              xs: i < 2 ? "1px solid rgba(242,193,90,0.10)" : "none",
+              xs: i < 2 ? "1px solid rgba(216,179,106,0.10)" : "none",
               md: "none",
             },
           }}
         >
           <Icon
             sx={{
-              color: "#F2C15A",
+              color: "#D8B36A",
               fontSize: 34,
               mb: 2,
               opacity: 0.9,
@@ -76,7 +76,7 @@ export default function ValueProps() {
               fontSize: 11,
               letterSpacing: "0.18em",
               textTransform: "uppercase",
-              color: "#F8F5EE",
+              color: "#F2E8CF",
               mb: 1.5,
             }}
           >
@@ -86,7 +86,7 @@ export default function ValueProps() {
             sx={{
               fontSize: 13,
               lineHeight: 1.65,
-              color: "rgba(248,245,238,0.55)",
+              color: "rgba(242,232,207,0.55)",
               maxWidth: 180,
             }}
           >

@@ -33,25 +33,25 @@ function FireflyIcon({ size = 28 }: { size?: number }) {
       <defs>
         <radialGradient id="nf-bodyGrad" cx="45%" cy="30%" r="70%">
           <stop offset="0%" stopColor="#FFFDE8" />
-          <stop offset="45%" stopColor="#F2C15A" />
-          <stop offset="100%" stopColor="#B08018" />
+          <stop offset="45%" stopColor="#D8B36A" />
+          <stop offset="100%" stopColor="#9C7A3E" />
         </radialGradient>
         <radialGradient id="nf-ambientGlow" cx="16" cy="19" r="11" gradientUnits="userSpaceOnUse">
-          <stop offset="0%" stopColor="#F2C15A" stopOpacity="0.5" />
-          <stop offset="100%" stopColor="#F2C15A" stopOpacity="0" />
+          <stop offset="0%" stopColor="#D8B36A" stopOpacity="0.5" />
+          <stop offset="100%" stopColor="#D8B36A" stopOpacity="0" />
         </radialGradient>
       </defs>
       <ellipse cx="16" cy="19" rx="12" ry="9" fill="url(#nf-ambientGlow)" />
-      <path d="M15 20 Q8 17 7 22 Q10 25.5 15 22Z" fill="#F2C15A" opacity="0.4" />
-      <path d="M17 20 Q24 17 25 22 Q22 25.5 17 22Z" fill="#F2C15A" opacity="0.4" />
-      <path d="M15 17.5 Q9 12.5 8 16 Q11 19 15 18.5Z" fill="#FFD878" opacity="0.3" />
-      <path d="M17 17.5 Q23 12.5 24 16 Q21 19 17 18.5Z" fill="#FFD878" opacity="0.3" />
+      <path d="M15 20 Q8 17 7 22 Q10 25.5 15 22Z" fill="#D8B36A" opacity="0.4" />
+      <path d="M17 20 Q24 17 25 22 Q22 25.5 17 22Z" fill="#D8B36A" opacity="0.4" />
+      <path d="M15 17.5 Q9 12.5 8 16 Q11 19 15 18.5Z" fill="#E8CE94" opacity="0.3" />
+      <path d="M17 17.5 Q23 12.5 24 16 Q21 19 17 18.5Z" fill="#E8CE94" opacity="0.3" />
       <ellipse cx="16" cy="21" rx="2.5" ry="3.5" fill="url(#nf-bodyGrad)" />
-      <circle cx="16" cy="15.5" r="2" fill="#C9A840" />
-      <path d="M15 13.7 Q13.5 11 12.5 9" stroke="#A88020" strokeWidth="0.9" fill="none" strokeLinecap="round" />
-      <path d="M17 13.7 Q18.5 11 19.5 9" stroke="#A88020" strokeWidth="0.9" fill="none" strokeLinecap="round" />
-      <circle cx="12.5" cy="9" r="0.9" fill="#A88020" />
-      <circle cx="19.5" cy="9" r="0.9" fill="#A88020" />
+      <circle cx="16" cy="15.5" r="2" fill="#B8934F" />
+      <path d="M15 13.7 Q13.5 11 12.5 9" stroke="#8F6F3A" strokeWidth="0.9" fill="none" strokeLinecap="round" />
+      <path d="M17 13.7 Q18.5 11 19.5 9" stroke="#8F6F3A" strokeWidth="0.9" fill="none" strokeLinecap="round" />
+      <circle cx="12.5" cy="9" r="0.9" fill="#8F6F3A" />
+      <circle cx="19.5" cy="9" r="0.9" fill="#8F6F3A" />
     </Box>
   );
 }
@@ -92,7 +92,7 @@ export default function NotFound() {
   }, []);
 
   return (
-    <Box sx={{ minHeight: "100vh", backgroundColor: "#08111F", display: "flex", flexDirection: "column" }}>
+    <Box sx={{ minHeight: "100vh", backgroundColor: "#0A0813", display: "flex", flexDirection: "column" }}>
       <ResponsiveMenu />
 
       <Box
@@ -157,7 +157,7 @@ export default function NotFound() {
               fontSize: { xs: "28vw", sm: "180px", md: "240px" },
               lineHeight: 0.9,
               letterSpacing: "-0.03em",
-              color: "#F8F5EE",
+              color: "#F2E8CF",
               userSelect: "none",
             }}
           >
@@ -177,9 +177,9 @@ export default function NotFound() {
               maxWidth: 480,
             }}
           >
-            <Box sx={{ flex: 1, height: "1px", bgcolor: "rgba(242,193,90,0.35)" }} />
+            <Box sx={{ flex: 1, height: "1px", bgcolor: "rgba(216,179,106,0.35)" }} />
             <FireflyIcon size={28} />
-            <Box sx={{ flex: 1, height: "1px", bgcolor: "rgba(242,193,90,0.35)" }} />
+            <Box sx={{ flex: 1, height: "1px", bgcolor: "rgba(216,179,106,0.35)" }} />
           </Box>
 
           {/* Heading */}
@@ -203,7 +203,7 @@ export default function NotFound() {
           <Typography
             sx={{
               ...anim("0.6s"),
-              color: "rgba(248,245,238,0.65)",
+              color: "rgba(242,232,207,0.65)",
               fontSize: { xs: 14, md: 16 },
               lineHeight: 1.7,
               mb: { xs: 4, md: 5 },
@@ -227,13 +227,13 @@ export default function NotFound() {
                 textTransform: "uppercase",
                 px: 4,
                 py: 1.5,
-                borderColor: "rgba(242,193,90,0.60)",
-                color: "#F8F5EE",
+                borderColor: "rgba(216,179,106,0.60)",
+                color: "#F2E8CF",
                 borderRadius: "4px",
                 "&:hover": {
-                  borderColor: "#F2C15A",
-                  backgroundColor: "rgba(242,193,90,0.07)",
-                  color: "#F2C15A",
+                  borderColor: "#D8B36A",
+                  backgroundColor: "rgba(216,179,106,0.07)",
+                  color: "#D8B36A",
                 },
                 "& .arrow": { ml: 1.5, transition: "transform 0.3s" },
                 "&:hover .arrow": { transform: "translateX(4px)" },

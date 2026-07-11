@@ -289,7 +289,7 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
               px: { xs: 3.5, md: 4 },
               py: 1.6,
               backgroundColor: "primary.main",
-              color: "#0B1020",
+              color: "#0D0B14",
               "&:hover": { backgroundColor: "secondary.main" },
             }}
           >

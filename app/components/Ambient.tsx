@@ -206,7 +206,7 @@ const FireflyField = () => {
         const opacity = Math.pow(rawBlink, 3) * ff.maxOpacity;
         if (opacity < 0.02) continue;
 
-        const rgb = ff.isAmber ? "244,184,96" : "247,215,116";
+        const rgb = ff.isAmber ? "216,179,106" : "232,206,148";
         const glowR = ff.r * 9;
 
         // Soft outer halo

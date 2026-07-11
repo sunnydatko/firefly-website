@@ -18,7 +18,7 @@ const linkSx = {
   fontWeight: 500,
   letterSpacing: "0.18em",
   textTransform: "uppercase" as const,
-  color: "rgba(248,245,238,0.45)",
+  color: "rgba(242,232,207,0.45)",
   paddingBottom: 0,
   "&::before": { display: "none" },
   "&:hover": {
@@ -31,7 +31,7 @@ const Footer = () => (
   <Box
     className="footer"
     component="footer"
-    sx={{ borderTop: "1px solid rgba(245,241,236,0.08)" }}
+    sx={{ borderTop: "1px solid rgba(242,232,207,0.08)" }}
   >
     <Box sx={{ padding: "32px 0 24px" }}>
       <Container>
@@ -74,7 +74,7 @@ const Footer = () => (
             href="/contact"
             sx={{
               ...linkSx,
-              color: "rgba(242,193,90,0.55)",
+              color: "rgba(216,179,106,0.55)",
               "&:hover": { color: "primary.main" },
             }}
           >
@@ -82,12 +82,12 @@ const Footer = () => (
           </Link>
         </Box>
 
-        <Divider sx={{ borderColor: "rgba(245,241,236,0.06)", mb: 2 }} />
+        <Divider sx={{ borderColor: "rgba(242,232,207,0.06)", mb: 2 }} />
 
         <Typography
           sx={{
             textAlign: "center",
-            color: "rgba(248,245,238,0.45)",
+            color: "rgba(242,232,207,0.45)",
             fontFamily: "var(--font-inter), sans-serif",
             fontSize: 11,
             letterSpacing: "0.06em",

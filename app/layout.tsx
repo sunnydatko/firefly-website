@@ -1,14 +1,15 @@
 import type { Metadata, Viewport } from "next";
-import { Fraunces, Inter } from "next/font/google";
+import { Playfair_Display, Inter } from "next/font/google";
 import "./globals.css";
 import Providers from "./providers";
 import PageLoader from "./components/PageLoader";
 import { SITE_NAME, SITE_URL } from "./lib/seo";
 
-const fraunces = Fraunces({
+const fraunces = Playfair_Display({
   variable: "--font-fraunces",
   subsets: ["latin"],
-  weight: ["300", "400", "500", "600", "700"],
+  weight: ["400", "500", "600", "700", "800"],
+  style: ["normal", "italic"],
 });
 
 const inter = Inter({
@@ -67,7 +68,7 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: "#0B1020",
+  themeColor: "#0D0B14",
   colorScheme: "dark",
 };
 

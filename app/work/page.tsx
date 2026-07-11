@@ -42,7 +42,7 @@ export default function WorkPage() {
             width: "800px",
             height: "800px",
             borderRadius: "50%",
-            background: "radial-gradient(ellipse, rgba(242,193,90,0.06) 0%, transparent 70%)",
+            background: "radial-gradient(ellipse, rgba(216,179,106,0.06) 0%, transparent 70%)",
             pointerEvents: "none",
           },
         }}
@@ -160,7 +160,7 @@ export default function WorkPage() {
                       display: "flex",
                       alignItems: "center",
                       justifyContent: "center",
-                      backgroundColor: "rgba(11,16,32,0.52)",
+                      backgroundColor: "rgba(13,11,20,0.52)",
                       opacity: 0,
                       transition: "opacity 0.3s ease",
                     }}
@@ -260,7 +260,7 @@ export default function WorkPage() {
               px: { xs: 3.5, md: 4 },
               py: 1.6,
               backgroundColor: "primary.main",
-              color: "#0B1020",
+              color: "#0D0B14",
               "&:hover": { backgroundColor: "secondary.main" },
             }}
           >

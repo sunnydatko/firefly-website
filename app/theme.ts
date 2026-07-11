@@ -12,14 +12,14 @@ const theme = createTheme({
   palette: {
     mode: "dark",
     primary: {
-      light: "#FFD878",  // Glow
-      main: "#F2C15A",   // Gold
-      dark: "#C9A840",
+      light: "#E8CE94",  // Glow
+      main: "#D8B36A",   // Gold
+      dark: "#B8934F",
     },
     secondary: {
-      light: "#FFE9A0",
-      main: "#FFD878",   // Glow
-      dark: "#C9A840",
+      light: "#F0DDAE",
+      main: "#E8CE94",   // Glow
+      dark: "#B8934F",
     },
     error: {
       light: "#FFD29A",
@@ -27,24 +27,24 @@ const theme = createTheme({
       dark: "#C97A17",
     },
     background: {
-      default: "#0B1020",   // Midnight
-      paper: "#151B33",     // Indigo
-      elevated: "#2A3347",  // Slate
+      default: "#0D0B14",   // Midnight
+      paper: "#1A1322",     // Plum
+      elevated: "#2B1D3B",  // Aubergine
     },
     text: {
-      primary: "#F8F5EE",
-      secondary: "#9A9890",
+      primary: "#F2E8CF",
+      secondary: "#9C8CA0",
     },
     grey: {
-      100: "#F8F5EE",
-      200: "#E8E4DA",
-      300: "#C8C4B8",
-      400: "#9A9890",
-      500: "#6E6C66",
-      600: "#4A4840",
-      700: "#2E2C28",
-      800: "#1A1916",
-      900: "#0B0A08",
+      100: "#F2E8CF",
+      200: "#E3D6C8",
+      300: "#C6B6BC",
+      400: "#9C8CA0",
+      500: "#756580",
+      600: "#4F4358",
+      700: "#362C3E",
+      800: "#211A28",
+      900: "#120E17",
     },
   },
   typography: {
@@ -92,7 +92,7 @@ const theme = createTheme({
       styleOverrides: {
         root: {
           textDecoration: "none",
-          color: "#F2C15A",
+          color: "#D8B36A",
           transition: "color 0.3s",
           position: "relative",
           paddingBottom: "3px",
@@ -104,13 +104,13 @@ const theme = createTheme({
             width: "100%",
             height: "2px",
             borderRadius: "4px",
-            backgroundColor: "#FFD878",
+            backgroundColor: "#E8CE94",
             transformOrigin: "right",
             transform: "scaleX(0)",
             transition: "transform 0.3s ease-in-out",
           },
           "&:hover": {
-            color: "#FFD878",
+            color: "#E8CE94",
             "&::before": {
               transformOrigin: "left",
               transform: "scaleX(1)",

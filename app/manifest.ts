@@ -9,8 +9,8 @@ export default function manifest(): MetadataRoute.Manifest {
       "Custom web design, branding, and SEO for small businesses.",
     start_url: "/",
     display: "standalone",
-    background_color: "#0B1020",
-    theme_color: "#0B1020",
+    background_color: "#0D0B14",
+    theme_color: "#0D0B14",
     icons: [
       {
         src: "/icon-192.png",

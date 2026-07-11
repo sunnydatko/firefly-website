@@ -6,7 +6,7 @@ import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import Container from "@mui/material/Container";
 import Typography from "@mui/material/Typography";
-import skyBg from "../images/hero-bg-5.webp";
+import skyBg from "../images/hero.webp";
 
 const fadeUp = keyframes`
   from { opacity: 0; transform: translateY(32px); filter: blur(6px); }
@@ -20,7 +20,7 @@ const anim = (delay: string) => ({
 });
 
 const NEUTRAL =
-  "radial-gradient(ellipse 70% 80% at 50% 50%, transparent 0%, rgba(11,16,32,0.4) 100%)";
+  "radial-gradient(ellipse 70% 80% at 50% 50%, transparent 0%, rgba(13,11,20,0.4) 100%)";
 
 export default function Hero() {
   const sectionRef = useRef<HTMLDivElement>(null);
@@ -32,7 +32,7 @@ export default function Hero() {
     const rect = sectionRef.current.getBoundingClientRect();
     const x = ((e.clientX - rect.left) / rect.width) * 100;
     const y = ((e.clientY - rect.top) / rect.height) * 100;
-    mouseOverlayRef.current.style.background = `radial-gradient(ellipse 70% 80% at ${x}% ${y}%, transparent 0%, rgba(11,16,32,0.4) 100%)`;
+    mouseOverlayRef.current.style.background = `radial-gradient(ellipse 70% 80% at ${x}% ${y}%, transparent 0%, rgba(13,11,20,0.4) 100%)`;
   };
 
   const handleMouseLeave = () => {
@@ -43,7 +43,7 @@ export default function Hero() {
     const handleScroll = () => {
       if (!sectionRef.current || !bgRef.current) return;
       const progress = Math.min(window.scrollY / sectionRef.current.offsetHeight, 1);
-      bgRef.current.style.transform = `scale(${1.05 + progress * 0.08})`;
+      bgRef.current.style.transform = `translateX(50px) scale(${1.4 + progress * 0.08})`;
       bgRef.current.style.opacity = String((1 - progress * 0.4) * 0.9);
     };
     window.addEventListener("scroll", handleScroll, { passive: true });
@@ -60,9 +60,9 @@ export default function Hero() {
         position: "relative",
         display: "flex",
         alignItems: "center",
-        minHeight: { xs: "54svh", md: "54vh" },
+        minHeight: { xs: "72svh", md: "78vh" },
         overflow: "hidden",
-        backgroundColor: "#0B1020",
+        backgroundColor: "#0D0B14",
       }}
     >
       {/* Background photo */}
@@ -74,12 +74,12 @@ export default function Hero() {
           inset: 0,
           backgroundImage: `url(${skyBg.src})`,
           backgroundSize: "cover",
-          backgroundPosition: { xs: "75% center", md: "center 62%" },
+          backgroundPosition: { xs: "68% center", md: "68% 58%" },
           willChange: "transform, opacity",
           transformOrigin: "center center",
-          transform: "scale(1.05)",
+          transform: "translateX(50px) scale(1.4)",
           opacity: 0.9,
-          filter: "brightness(0.9)",
+          filter: "brightness(0.62) contrast(1.15)",
         }}
       />
 
@@ -90,8 +90,8 @@ export default function Hero() {
           position: "absolute",
           inset: 0,
           background: {
-            xs: "linear-gradient(180deg, rgba(11,16,32,0.70) 0%, rgba(11,16,32,0.50) 50%, rgba(11,16,32,0.70) 100%)",
-            md: "linear-gradient(90deg, rgba(11,16,32,0.99) 0%, rgba(11,16,32,0.94) 32%, rgba(11,16,32,0.40) 58%, rgba(11,16,32,0.05) 100%)",
+            xs: "linear-gradient(180deg, rgba(13,11,20,0.70) 0%, rgba(13,11,20,0.50) 50%, rgba(13,11,20,0.70) 100%)",
+            md: "linear-gradient(90deg, rgba(13,11,20,0.99) 0%, rgba(13,11,20,0.94) 32%, rgba(13,11,20,0.40) 58%, rgba(13,11,20,0.05) 100%)",
           },
         }}
       />
@@ -110,7 +110,7 @@ export default function Hero() {
         }}
       />
 
-      <Container sx={{ position: "relative", zIndex: 2, pt: { xs: 13, md: 12 }, pb: { xs: 9, md: 7 } }}>
+      <Container sx={{ position: "relative", zIndex: 2, pt: { xs: 17, md: 16.5 }, pb: { xs: 9, md: 7 } }}>
         <Box sx={{ maxWidth: { xs: "100%", md: 620 } }}>
 
           {/* Eyebrow */}
@@ -122,7 +122,7 @@ export default function Hero() {
               fontWeight: 700,
               letterSpacing: "0.22em",
               textTransform: "uppercase",
-              color: "#F2C15A",
+              color: "#D8B36A",
               mb: 2.5,
             }}
           >
@@ -134,21 +134,25 @@ export default function Hero() {
             variant="h1"
             sx={{
               ...anim("0.5s"),
-              fontSize: { xs: "40px", sm: "54px", md: "68px" },
-              lineHeight: 1.08,
-              color: "#F8F5EE",
+              fontSize: { xs: "36px", sm: "49px", md: "65px" },
+              lineHeight: 1.02,
+              color: "#F2E8CF",
               mb: { xs: 2.5, md: 3 },
             }}
           >
-            Websites that
+            Websites
             <br />
-            help your business
+            that help
+            <br />
+            your business
             <br />
             <Box
               component="em"
               sx={{
+                display: "block",
+                mt: { xs: 1, md: 1.5 },
                 fontStyle: "italic",
-                color: "#F2C15A",
+                color: "#D8B36A",
                 fontFamily: "var(--font-fraunces), serif",
               }}
             >
@@ -163,7 +167,7 @@ export default function Hero() {
               width: 80,
               height: 2,
               borderRadius: 1,
-              bgcolor: "#F2C15A",
+              bgcolor: "#D8B36A",
               mb: { xs: 3, md: 3.5 },
             }}
           />
@@ -172,7 +176,7 @@ export default function Hero() {
           <Typography
             sx={{
               ...anim("0.95s"),
-              color: "rgba(248,245,238,0.72)",
+              color: "rgba(242,232,207,0.72)",
               fontSize: { xs: 15, md: 17 },
               lineHeight: 1.7,
               maxWidth: 440,
@@ -201,10 +205,10 @@ export default function Hero() {
                 textTransform: "uppercase",
                 px: { xs: 3, md: 3.5 },
                 py: 1.5,
-                backgroundColor: "#F2C15A",
-                color: "#0B1020",
+                backgroundColor: "#D8B36A",
+                color: "#0D0B14",
                 "&:hover": {
-                  backgroundColor: "#FFD878",
+                  backgroundColor: "#E8CE94",
                 },
               }}
             >
@@ -221,12 +225,12 @@ export default function Hero() {
                 textTransform: "uppercase",
                 px: { xs: 3, md: 3.5 },
                 py: 1.5,
-                borderColor: "#F2C15A",
-                color: "#F2C15A",
+                borderColor: "#D8B36A",
+                color: "#D8B36A",
                 "&:hover": {
-                  borderColor: "#FFD878",
-                  color: "#FFD878",
-                  backgroundColor: "rgba(242,193,90,0.06)",
+                  borderColor: "#E8CE94",
+                  color: "#E8CE94",
+                  backgroundColor: "rgba(216,179,106,0.06)",
                 },
               }}
             >

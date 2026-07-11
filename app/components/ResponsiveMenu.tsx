@@ -20,9 +20,8 @@ import BrandMark from "./BrandMark";
 const drawerWidth = 320;
 
 const navItems = [
-  { name: "Home", href: "/" },
-  { name: "About", href: "/about" },
   { name: "Services", href: "/services" },
+  { name: "About", href: "/about" },
   // { name: "Work", href: "/work" }, // hidden until projects approved
 ];
 
@@ -49,7 +48,7 @@ export default function ResponsiveMenu() {
       <Box sx={{ display: "flex", justifyContent: "center", py: 2 }}>
         <BrandMark height={30} />
       </Box>
-      <Divider sx={{ borderColor: "rgba(242,193,90,0.12)" }} />
+      <Divider sx={{ borderColor: "rgba(216,179,106,0.12)" }} />
       <List>
         {[...navItems, { name: "Let's Glow", href: "/contact" }].map(({ name, href }) => {
           const isActive = href === "/" ? pathname === "/" : pathname === href || pathname.startsWith(href + "/");
@@ -90,10 +89,10 @@ export default function ResponsiveMenu() {
         elevation={0}
         position="fixed"
         sx={{
-          backgroundColor: transparent ? "transparent" : "rgba(11,16,32,0.82)",
+          backgroundColor: transparent ? "transparent" : "rgba(13,11,20,0.82)",
           backdropFilter: transparent ? "blur(0px)" : "blur(16px)",
           WebkitBackdropFilter: transparent ? "blur(0px)" : "blur(16px)",
-          borderBottom: transparent ? "1px solid transparent" : "1px solid rgba(242,193,90,0.08)",
+          borderBottom: transparent ? "1px solid transparent" : "1px solid rgba(216,179,106,0.08)",
           transition: "background-color 0.5s ease, border-color 0.5s ease, backdrop-filter 0.5s ease, -webkit-backdrop-filter 0.5s ease",
           zIndex: 1100,
         }}
@@ -103,7 +102,7 @@ export default function ResponsiveMenu() {
             aria-label="open navigation"
             edge="start"
             onClick={handleDrawerToggle}
-            sx={{ color: "#F2C15A", mr: 2, display: { sm: "none" } }}
+            sx={{ color: "#D8B36A", mr: 2, display: { sm: "none" } }}
           >
             <MenuIcon />
           </IconButton>
@@ -120,7 +119,7 @@ export default function ResponsiveMenu() {
               transition: "filter 0.25s ease",
               filter: "brightness(1)",
               "&:hover": {
-                filter: "brightness(1.15) drop-shadow(0 0 8px rgba(242,193,90,0.35))",
+                filter: "brightness(1.15) drop-shadow(0 0 8px rgba(216,179,106,0.35))",
               },
               flexShrink: 0,
             }}
@@ -144,7 +143,7 @@ export default function ResponsiveMenu() {
                   key={name}
                   href={href}
                   sx={{
-                    color: isActive ? "primary.main" : "rgba(248,245,238,0.65)",
+                    color: isActive ? "primary.main" : "rgba(242,232,207,0.65)",
                     fontFamily: "var(--font-inter), sans-serif",
                     fontWeight: 500,
                     fontSize: 11,
@@ -175,14 +174,14 @@ export default function ResponsiveMenu() {
                 fontWeight: 600,
                 letterSpacing: "0.18em",
                 textTransform: "uppercase",
-                borderColor: "#F2C15A",
-                color: "#F2C15A",
+                borderColor: "#D8B36A",
+                color: "#D8B36A",
                 borderRadius: "4px",
                 whiteSpace: "nowrap",
                 "&:hover": {
-                  borderColor: "#FFD878",
-                  color: "#FFD878",
-                  backgroundColor: "rgba(242,193,90,0.06)",
+                  borderColor: "#E8CE94",
+                  color: "#E8CE94",
+                  backgroundColor: "rgba(216,179,106,0.06)",
                 },
               }}
             >
@@ -206,7 +205,7 @@ export default function ResponsiveMenu() {
                   key={name}
                   href={href}
                   sx={{
-                    color: isActive ? "primary.main" : "rgba(248,245,238,0.65)",
+                    color: isActive ? "primary.main" : "rgba(242,232,207,0.65)",
                     fontFamily: "var(--font-inter), sans-serif",
                     fontWeight: 500,
                     fontSize: 10,
@@ -233,14 +232,14 @@ export default function ResponsiveMenu() {
                 fontWeight: 600,
                 letterSpacing: "0.18em",
                 textTransform: "uppercase",
-                borderColor: "#F2C15A",
-                color: "#F2C15A",
+                borderColor: "#D8B36A",
+                color: "#D8B36A",
                 borderRadius: "4px",
                 whiteSpace: "nowrap",
                 "&:hover": {
-                  borderColor: "#FFD878",
-                  color: "#FFD878",
-                  backgroundColor: "rgba(242,193,90,0.06)",
+                  borderColor: "#E8CE94",
+                  color: "#E8CE94",
+                  backgroundColor: "rgba(216,179,106,0.06)",
                 },
               }}
             >
@@ -261,7 +260,7 @@ export default function ResponsiveMenu() {
             boxSizing: "border-box",
             width: drawerWidth,
             backgroundColor: "background.paper",
-            borderRight: "1px solid rgba(242,193,90,0.08)",
+            borderRight: "1px solid rgba(216,179,106,0.08)",
           },
         }}
       >
