@@ -68,7 +68,7 @@ type Agent = {
   lastTrailEmit: number;
 };
 
-const AGENT_COUNT = 1;
+const AGENT_COUNT = 2;
 
 function HeroFirefly() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
@@ -112,12 +112,12 @@ function HeroFirefly() {
       // move slowly across it.
       const cx = rand(width * 0.42, width * 0.94);
       const cy = rand(height * 0.15, height * 0.7);
-      const spread = rand(8, 18);
+      const spread = rand(22, 50);
       const a0 = rand(0, Math.PI * 2);
       const a3 = a0 + rand(1.2, 3.4) * (Math.random() > 0.5 ? 1 : -1);
       return {
         start: now,
-        duration: rand(1100, 1700),
+        duration: rand(500, 800),
         p0: [cx + Math.cos(a0) * spread * 0.3, cy + Math.sin(a0) * spread * 0.3],
         p1: [cx + rand(-spread, spread), cy + rand(-spread, spread)],
         p2: [cx + rand(-spread, spread), cy + rand(-spread, spread)],
@@ -165,7 +165,7 @@ function HeroFirefly() {
         agent.trail = agent.trail.filter((p) => now - p.t < 250);
         for (const p of agent.trail) {
           const age = now - p.t;
-          const a = 1 - age / 250;
+          const a = 1 - age / 350;
           ctx.beginPath();
           ctx.arc(p.x, p.y, Math.max(1 * a, 0.15), 0, Math.PI * 2);
           ctx.fillStyle = `rgba(216,179,106,${0.25 * a})`;
@@ -333,54 +333,16 @@ export default function Hero() {
         <HeroFirefly />
       </Box>
 
-      {/* Laptop body reveal — lifts exposure on the keyboard/trackpad/aluminum deck
-          just enough to separate it from the background, without touching the screen */}
+      {/* Laptop dissolve — a pool of darkness under the laptop so its base fades into
+          shadow rather than being cut off hard, as if it's emerging from the dark */}
       <Box
         aria-hidden
         sx={{
           display: { xs: "none", md: "block" },
           position: "absolute",
-          left: "38%",
-          width: "60%",
-          top: "64%",
-          height: "30%",
+          inset: 0,
           background:
-            "radial-gradient(ellipse 65% 70% at 48% 35%, rgba(214,204,188,0.20) 0%, rgba(214,204,188,0.08) 45%, transparent 78%)",
-          mixBlendMode: "screen",
-          pointerEvents: "none",
-        }}
-      />
-
-      {/* Rim light — top edge, where the screen bezel meets the deck */}
-      <Box
-        aria-hidden
-        sx={{
-          display: { xs: "none", md: "block" },
-          position: "absolute",
-          left: "44%",
-          width: "50%",
-          top: "65%",
-          height: "8%",
-          background: "linear-gradient(180deg, rgba(232,214,168,0.24) 0%, transparent 100%)",
-          filter: "blur(5px)",
-          mixBlendMode: "screen",
-          pointerEvents: "none",
-        }}
-      />
-
-      {/* Rim light — left edge, screen and deck together */}
-      <Box
-        aria-hidden
-        sx={{
-          display: { xs: "none", md: "block" },
-          position: "absolute",
-          left: "42%",
-          width: "4.5%",
-          top: "4%",
-          height: "86%",
-          background: "linear-gradient(90deg, rgba(232,214,168,0.18) 0%, transparent 100%)",
-          filter: "blur(5px)",
-          mixBlendMode: "screen",
+            "radial-gradient(ellipse 42% 62% at 74% 88%, rgba(13,11,20,0.92) 0%, rgba(13,11,20,0.5) 45%, transparent 78%)",
           pointerEvents: "none",
         }}
       />
@@ -393,7 +355,7 @@ export default function Hero() {
           left: 0,
           right: 0,
           bottom: 0,
-          height: { xs: "18%", md: "24%" },
+          height: { xs: "23%", md: "32%" },
           background: "linear-gradient(to bottom, transparent 0%, #0D0B14 100%)",
           pointerEvents: "none",
         }}
