@@ -10,17 +10,14 @@ const props = [
   {
     Icon: TipsAndUpdatesOutlined,
     title: "Strategy",
-    description: "Purposeful websites built around your goals.",
   },
   {
     Icon: PaletteOutlined,
     title: "Design",
-    description: "Custom visuals that reflect your brand.",
   },
   {
     Icon: CodeOutlined,
     title: "Development",
-    description: "Fast, responsive, modern websites.",
   },
 ];
 
@@ -36,7 +33,7 @@ export default function ValueProps() {
         gridTemplateColumns: "repeat(3, 1fr)",
       }}
     >
-      {props.map(({ Icon, title, description }) => (
+      {props.map(({ Icon, title }) => (
         <Box
           key={title}
           sx={{
@@ -45,7 +42,7 @@ export default function ValueProps() {
             alignItems: "center",
             textAlign: "center",
             px: { xs: 2, md: 4 },
-            py: { xs: 3, md: 4 },
+            py: { xs: 4, md: 5.5 },
           }}
         >
           <Icon
@@ -53,7 +50,7 @@ export default function ValueProps() {
               color: "#D8B36A",
               fontSize: 34,
               mt: "-14px",
-              mb: 2,
+              mb: 2.5,
               opacity: 0.9,
             }}
           />
@@ -65,20 +62,9 @@ export default function ValueProps() {
               letterSpacing: "0.18em",
               textTransform: "uppercase",
               color: "#F2E8CF",
-              mb: 1.5,
             }}
           >
             {title}
-          </Typography>
-          <Typography
-            sx={{
-              fontSize: 13,
-              lineHeight: 1.65,
-              color: "rgba(242,232,207,0.55)",
-              maxWidth: 180,
-            }}
-          >
-            {description}
           </Typography>
         </Box>
       ))}
