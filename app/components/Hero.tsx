@@ -448,7 +448,7 @@ export default function Hero() {
               mb: { xs: 4, md: 5 },
             }}
           >
-            Beautiful websites that earn trust, inspire confidence, and help your business grow.</Typography>
+            Beautiful websites that inspire confidence, build trust, and help your business grow.</Typography>
 
           {/* CTAs */}
           <Box
