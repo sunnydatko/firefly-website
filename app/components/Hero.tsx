@@ -448,7 +448,7 @@ export default function Hero() {
               mb: { xs: 4, md: 5 },
             }}
           >
-            Thoughtful design. Built for growth. Crafted for small businesses.</Typography>
+            Thoughtfully crafted websites.</Typography>
 
           {/* CTAs */}
           <Box
