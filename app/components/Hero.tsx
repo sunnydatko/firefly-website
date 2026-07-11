@@ -117,7 +117,7 @@ function HeroFirefly() {
       const a3 = a0 + rand(1.2, 3.4) * (Math.random() > 0.5 ? 1 : -1);
       return {
         start: now,
-        duration: rand(620, 950),
+        duration: rand(1100, 1600),
         p0: [cx + Math.cos(a0) * spread * 0.3, cy + Math.sin(a0) * spread * 0.3],
         p1: [cx + rand(-spread, spread), cy + rand(-spread, spread)],
         p2: [cx + rand(-spread, spread), cy + rand(-spread, spread)],
