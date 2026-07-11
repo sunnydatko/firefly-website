@@ -391,7 +391,7 @@ export default function Hero() {
               mb: 2.5,
             }}
           >
-            Boutique Web Design &amp; Development
+            Thoughtfully Crafted Digital Experiences
           </Typography>
 
           {/* Headline */}

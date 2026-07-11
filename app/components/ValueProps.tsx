@@ -52,6 +52,7 @@ export default function ValueProps() {
             sx={{
               color: "#D8B36A",
               fontSize: 34,
+              mt: "-14px",
               mb: 2,
               opacity: 0.9,
             }}
