@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 
 export const SITE_URL = "https://fireflycreativeco.com";
 export const SITE_NAME = "Firefly Creative Co";
-const DEFAULT_OG_IMAGE = "/firefly-og.jpg";
+const DEFAULT_OG_IMAGE = "/firefly-og-2.jpg";
 
 // Next.js shallow-merges `openGraph`/`twitter` per segment, so a page that sets
 // its own `openGraph` drops `siteName`/`type`/`locale` from the root layout

@@ -57,13 +57,13 @@ export const metadata: Metadata = {
     locale: "en_US",
     title: OG_TITLE,
     description: OG_DESC,
-    images: [{ url: "/firefly-og.jpg", width: 1200, height: 630, alt: SITE_NAME }],
+    images: [{ url: "/firefly-og-2.jpg", width: 1200, height: 630, alt: SITE_NAME }],
   },
   twitter: {
     card: "summary_large_image",
     title: OG_TITLE,
     description: OG_DESC,
-    images: ["/firefly-og.jpg"],
+    images: ["/firefly-og-2.jpg"],
   },
 };
 
