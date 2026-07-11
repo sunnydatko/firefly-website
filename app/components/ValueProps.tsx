@@ -29,6 +29,8 @@ export default function ValueProps() {
     <Box
       component="section"
       sx={{
+        position: "relative",
+        mt: "-14px",
         background: "linear-gradient(to bottom, #0D0B14 55%, rgba(13,11,20,0) 100%)",
         display: "grid",
         gridTemplateColumns: "repeat(3, 1fr)",

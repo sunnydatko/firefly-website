@@ -100,7 +100,7 @@ function HeroFirefly() {
     const now0 = performance.now();
     const agents: Agent[] = Array.from({ length: AGENT_COUNT }, (_, i) => ({
       flight: null,
-      nextFlightAt: now0 + rand(300, 1600) + i * rand(700, 1400),
+      nextFlightAt: now0 + i * 2400 + rand(200, 2000),
       trail: [],
       lastTrailEmit: 0,
     }));
@@ -117,7 +117,7 @@ function HeroFirefly() {
       const a3 = a0 + rand(1.2, 3.4) * (Math.random() > 0.5 ? 1 : -1);
       return {
         start: now,
-        duration: rand(1600, 2400),
+        duration: rand(500, 800),
         p0: [cx + Math.cos(a0) * spread * 0.3, cy + Math.sin(a0) * spread * 0.3],
         p1: [cx + rand(-spread, spread), cy + rand(-spread, spread)],
         p2: [cx + rand(-spread, spread), cy + rand(-spread, spread)],
@@ -135,7 +135,7 @@ function HeroFirefly() {
           const t = (now - agent.flight.start) / agent.flight.duration;
           if (t >= 1) {
             agent.flight = null;
-            agent.nextFlightAt = now + rand(1800, 3200);
+            agent.nextFlightAt = now + rand(1200, 5200);
           } else {
             const [x, y] = bezier(t, agent.flight);
             const opacity = Math.max(0, Math.sin(Math.PI * t));
@@ -162,7 +162,7 @@ function HeroFirefly() {
           }
         }
 
-        agent.trail = agent.trail.filter((p) => now - p.t < 350);
+        agent.trail = agent.trail.filter((p) => now - p.t < 250);
         for (const p of agent.trail) {
           const age = now - p.t;
           const a = 1 - age / 350;
@@ -333,6 +333,20 @@ export default function Hero() {
         <HeroFirefly />
       </Box>
 
+      {/* Laptop dissolve — a pool of darkness under the laptop so its base fades into
+          shadow rather than being cut off hard, as if it's emerging from the dark */}
+      <Box
+        aria-hidden
+        sx={{
+          display: { xs: "none", md: "block" },
+          position: "absolute",
+          inset: 0,
+          background:
+            "radial-gradient(ellipse 42% 62% at 74% 88%, rgba(13,11,20,0.92) 0%, rgba(13,11,20,0.5) 45%, transparent 78%)",
+          pointerEvents: "none",
+        }}
+      />
+
       {/* Bottom fade — dissolves the photo into the section below instead of a hard cut */}
       <Box
         aria-hidden
@@ -341,7 +355,7 @@ export default function Hero() {
           left: 0,
           right: 0,
           bottom: 0,
-          height: { xs: "20%", md: "28%" },
+          height: { xs: "23%", md: "32%" },
           background: "linear-gradient(to bottom, transparent 0%, #0D0B14 100%)",
           pointerEvents: "none",
         }}
