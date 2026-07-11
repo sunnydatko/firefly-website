@@ -391,7 +391,7 @@ export default function Hero() {
               mb: 2.5,
             }}
           >
-            Thoughtfully Crafted Digital Experiences
+            Thoughtfully Crafted Websites
           </Typography>
 
           {/* Headline */}
@@ -448,7 +448,7 @@ export default function Hero() {
               mb: { xs: 4, md: 5 },
             }}
           >
-            Thoughtfully crafted websites.</Typography>
+            Beautiful websites that earn trust, inspire confidence, and help your business grow.</Typography>
 
           {/* CTAs */}
           <Box
