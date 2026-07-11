@@ -30,7 +30,6 @@ export default function ValueProps() {
       component="section"
       sx={{
         background: "linear-gradient(to bottom, #0D0B14 55%, rgba(13,11,20,0) 100%)",
-        borderTop: "1px solid rgba(216,179,106,0.10)",
         display: "grid",
         gridTemplateColumns: "repeat(3, 1fr)",
       }}

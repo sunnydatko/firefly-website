@@ -61,6 +61,15 @@ const bezier = (t: number, f: Flight): [number, number] => {
   return [x, y];
 };
 
+type Agent = {
+  flight: Flight | null;
+  nextFlightAt: number;
+  trail: Trail[];
+  lastTrailEmit: number;
+};
+
+const AGENT_COUNT = 2;
+
 function HeroFirefly() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
 
@@ -88,23 +97,27 @@ function HeroFirefly() {
     resize();
     window.addEventListener("resize", resize);
 
-    let trail: Trail[] = [];
-    let flight: Flight | null = null;
-    let nextFlightAt = performance.now() + rand(600, 1800);
-    let lastTrailEmit = 0;
+    const now0 = performance.now();
+    const agents: Agent[] = Array.from({ length: AGENT_COUNT }, (_, i) => ({
+      flight: null,
+      nextFlightAt: now0 + rand(300, 1600) + i * rand(700, 1400),
+      trail: [],
+      lastTrailEmit: 0,
+    }));
     let raf = 0;
 
-    const beginFlight = (now: number) => {
+    const beginFlight = (now: number): Flight => {
       // A real firefly hovers in a small patch of air rather than crossing the
-      // whole scene — keep the whole flight inside a modest local radius.
+      // whole scene — keep the whole flight inside a modest local radius, and
+      // move slowly across it.
       const cx = rand(width * 0.42, width * 0.94);
       const cy = rand(height * 0.15, height * 0.7);
-      const spread = rand(50, 110);
+      const spread = rand(22, 50);
       const a0 = rand(0, Math.PI * 2);
       const a3 = a0 + rand(1.2, 3.4) * (Math.random() > 0.5 ? 1 : -1);
-      flight = {
+      return {
         start: now,
-        duration: rand(2600, 4200),
+        duration: rand(1600, 2400),
         p0: [cx + Math.cos(a0) * spread * 0.3, cy + Math.sin(a0) * spread * 0.3],
         p1: [cx + rand(-spread, spread), cy + rand(-spread, spread)],
         p2: [cx + rand(-spread, spread), cy + rand(-spread, spread)],
@@ -115,47 +128,49 @@ function HeroFirefly() {
     const draw = (now: number) => {
       ctx.clearRect(0, 0, width, height);
 
-      if (!flight && now >= nextFlightAt) beginFlight(now);
+      for (const agent of agents) {
+        if (!agent.flight && now >= agent.nextFlightAt) agent.flight = beginFlight(now);
 
-      if (flight) {
-        const t = (now - flight.start) / flight.duration;
-        if (t >= 1) {
-          flight = null;
-          nextFlightAt = now + rand(7000, 13000);
-        } else {
-          const [x, y] = bezier(t, flight);
-          const opacity = Math.max(0, Math.min(1, Math.min(t / 0.15, (1 - t) / 0.25)));
+        if (agent.flight) {
+          const t = (now - agent.flight.start) / agent.flight.duration;
+          if (t >= 1) {
+            agent.flight = null;
+            agent.nextFlightAt = now + rand(1800, 3200);
+          } else {
+            const [x, y] = bezier(t, agent.flight);
+            const opacity = Math.max(0, Math.sin(Math.PI * t));
 
-          if (now - lastTrailEmit > 55) {
-            trail.push({ x, y, t: now });
-            lastTrailEmit = now;
+            if (now - agent.lastTrailEmit > 55) {
+              agent.trail.push({ x, y, t: now });
+              agent.lastTrailEmit = now;
+            }
+
+            const glowR = 9;
+            const grad = ctx.createRadialGradient(x, y, 0, x, y, glowR);
+            grad.addColorStop(0, `rgba(255,232,176,${0.85 * opacity})`);
+            grad.addColorStop(0.35, `rgba(216,179,106,${0.32 * opacity})`);
+            grad.addColorStop(1, "rgba(216,179,106,0)");
+            ctx.beginPath();
+            ctx.arc(x, y, glowR, 0, Math.PI * 2);
+            ctx.fillStyle = grad;
+            ctx.fill();
+
+            ctx.beginPath();
+            ctx.arc(x, y, 1.5, 0, Math.PI * 2);
+            ctx.fillStyle = `rgba(255,232,176,${opacity})`;
+            ctx.fill();
           }
+        }
 
-          const glowR = 9;
-          const grad = ctx.createRadialGradient(x, y, 0, x, y, glowR);
-          grad.addColorStop(0, `rgba(255,232,176,${0.85 * opacity})`);
-          grad.addColorStop(0.35, `rgba(216,179,106,${0.32 * opacity})`);
-          grad.addColorStop(1, "rgba(216,179,106,0)");
+        agent.trail = agent.trail.filter((p) => now - p.t < 350);
+        for (const p of agent.trail) {
+          const age = now - p.t;
+          const a = 1 - age / 350;
           ctx.beginPath();
-          ctx.arc(x, y, glowR, 0, Math.PI * 2);
-          ctx.fillStyle = grad;
-          ctx.fill();
-
-          ctx.beginPath();
-          ctx.arc(x, y, 1.5, 0, Math.PI * 2);
-          ctx.fillStyle = `rgba(255,232,176,${opacity})`;
+          ctx.arc(p.x, p.y, Math.max(1 * a, 0.15), 0, Math.PI * 2);
+          ctx.fillStyle = `rgba(216,179,106,${0.25 * a})`;
           ctx.fill();
         }
-      }
-
-      trail = trail.filter((p) => now - p.t < 350);
-      for (const p of trail) {
-        const age = now - p.t;
-        const a = 1 - age / 350;
-        ctx.beginPath();
-        ctx.arc(p.x, p.y, Math.max(1 * a, 0.15), 0, Math.PI * 2);
-        ctx.fillStyle = `rgba(216,179,106,${0.25 * a})`;
-        ctx.fill();
       }
 
       raf = requestAnimationFrame(draw);
@@ -215,7 +230,7 @@ export default function Hero() {
         position: "relative",
         display: "flex",
         alignItems: "center",
-        minHeight: { xs: "72svh", md: "78vh" },
+        minHeight: { xs: "66svh", md: "72vh" },
         overflow: "hidden",
         backgroundColor: "#0D0B14",
       }}
@@ -346,7 +361,7 @@ export default function Hero() {
         }}
       />
 
-      <Container sx={{ position: "relative", zIndex: 2, pt: { xs: 17, md: 16.5 }, pb: { xs: 9, md: 7 } }}>
+      <Container sx={{ position: "relative", zIndex: 2, pt: { xs: 17, md: 16.5 }, pb: { xs: 5, md: 3 } }}>
         <Box sx={{ maxWidth: { xs: "100%", md: 620 } }}>
 
           {/* Eyebrow */}
