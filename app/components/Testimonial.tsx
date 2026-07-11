@@ -7,10 +7,10 @@ import Box from "@mui/material/Box";
 import Container from "@mui/material/Container";
 import Typography from "@mui/material/Typography";
 import { testimonials } from "../helpers/data";
-import testimonialRosestone from "../images/testimonial-rosestone-jewelry.webp";
-import testimonialTasha from "../images/testimonial-tasha-rae-jewelry.webp";
-import testimonialBeInTouch from "../images/testimonial-be-in-touch.webp";
-import testimonialBB from "../images/testimonial-bb.webp";
+import testimonialRosestone from "../images/testimonials/testimonial-rosestone-jewelry.webp";
+import testimonialTasha from "../images/testimonials/testimonial-tasha-rae-jewelry.webp";
+import testimonialBeInTouch from "../images/testimonials/testimonial-be-in-touch.webp";
+import testimonialBB from "../images/testimonials/testimonial-bb.webp";
 
 const imageMap: Record<string, StaticImageData> = {
   "testimonial-rosestone-jewelry": testimonialRosestone,

@@ -252,7 +252,7 @@ export default function Hero() {
           transformOrigin: "center center",
           transform: "scale(1)",
           opacity: 1,
-          filter: "brightness(0.76) contrast(0.98) blur(3px)",
+          filter: "brightness(1.1) contrast(1.05)",
         }}
       />
 
