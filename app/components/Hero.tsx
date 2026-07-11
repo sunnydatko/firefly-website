@@ -147,8 +147,8 @@ function HeroFirefly() {
 
             const glowR = 9;
             const grad = ctx.createRadialGradient(x, y, 0, x, y, glowR);
-            grad.addColorStop(0, `rgba(255,232,176,${0.85 * opacity})`);
-            grad.addColorStop(0.35, `rgba(216,179,106,${0.32 * opacity})`);
+            grad.addColorStop(0, `rgba(255,232,176,${0.68 * opacity})`);
+            grad.addColorStop(0.35, `rgba(216,179,106,${0.25 * opacity})`);
             grad.addColorStop(1, "rgba(216,179,106,0)");
             ctx.beginPath();
             ctx.arc(x, y, glowR, 0, Math.PI * 2);
@@ -157,7 +157,7 @@ function HeroFirefly() {
 
             ctx.beginPath();
             ctx.arc(x, y, 1.5, 0, Math.PI * 2);
-            ctx.fillStyle = `rgba(255,232,176,${opacity})`;
+            ctx.fillStyle = `rgba(255,232,176,${0.8 * opacity})`;
             ctx.fill();
           }
         }
@@ -168,7 +168,7 @@ function HeroFirefly() {
           const a = 1 - age / 350;
           ctx.beginPath();
           ctx.arc(p.x, p.y, Math.max(1 * a, 0.15), 0, Math.PI * 2);
-          ctx.fillStyle = `rgba(216,179,106,${0.25 * a})`;
+          ctx.fillStyle = `rgba(216,179,106,${0.18 * a})`;
           ctx.fill();
         }
       }
