@@ -36,7 +36,7 @@ export default function ValueProps() {
         gridTemplateColumns: "repeat(3, 1fr)",
       }}
     >
-      {props.map(({ Icon, title, description }, i) => (
+      {props.map(({ Icon, title, description }) => (
         <Box
           key={title}
           sx={{
@@ -46,7 +46,6 @@ export default function ValueProps() {
             textAlign: "center",
             px: { xs: 2, md: 4 },
             py: { xs: 3, md: 4 },
-            borderRight: i < props.length - 1 ? "1px solid rgba(216,179,106,0.10)" : "none",
           }}
         >
           <Icon

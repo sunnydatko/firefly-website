@@ -68,7 +68,7 @@ type Agent = {
   lastTrailEmit: number;
 };
 
-const AGENT_COUNT = 2;
+const AGENT_COUNT = 1;
 
 function HeroFirefly() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
@@ -333,16 +333,54 @@ export default function Hero() {
         <HeroFirefly />
       </Box>
 
-      {/* Laptop dissolve — a pool of darkness under the laptop so its base fades into
-          shadow rather than being cut off hard, as if it's emerging from the dark */}
+      {/* Laptop body reveal — lifts exposure on the keyboard/trackpad/aluminum deck
+          just enough to separate it from the background, without touching the screen */}
       <Box
         aria-hidden
         sx={{
           display: { xs: "none", md: "block" },
           position: "absolute",
-          inset: 0,
+          left: "38%",
+          width: "60%",
+          top: "64%",
+          height: "30%",
           background:
-            "radial-gradient(ellipse 42% 62% at 74% 88%, rgba(13,11,20,0.92) 0%, rgba(13,11,20,0.5) 45%, transparent 78%)",
+            "radial-gradient(ellipse 65% 70% at 48% 35%, rgba(214,204,188,0.20) 0%, rgba(214,204,188,0.08) 45%, transparent 78%)",
+          mixBlendMode: "screen",
+          pointerEvents: "none",
+        }}
+      />
+
+      {/* Rim light — top edge, where the screen bezel meets the deck */}
+      <Box
+        aria-hidden
+        sx={{
+          display: { xs: "none", md: "block" },
+          position: "absolute",
+          left: "44%",
+          width: "50%",
+          top: "65%",
+          height: "8%",
+          background: "linear-gradient(180deg, rgba(232,214,168,0.24) 0%, transparent 100%)",
+          filter: "blur(5px)",
+          mixBlendMode: "screen",
+          pointerEvents: "none",
+        }}
+      />
+
+      {/* Rim light — left edge, screen and deck together */}
+      <Box
+        aria-hidden
+        sx={{
+          display: { xs: "none", md: "block" },
+          position: "absolute",
+          left: "42%",
+          width: "4.5%",
+          top: "4%",
+          height: "86%",
+          background: "linear-gradient(90deg, rgba(232,214,168,0.18) 0%, transparent 100%)",
+          filter: "blur(5px)",
+          mixBlendMode: "screen",
           pointerEvents: "none",
         }}
       />
@@ -355,7 +393,7 @@ export default function Hero() {
           left: 0,
           right: 0,
           bottom: 0,
-          height: { xs: "23%", md: "32%" },
+          height: { xs: "18%", md: "24%" },
           background: "linear-gradient(to bottom, transparent 0%, #0D0B14 100%)",
           pointerEvents: "none",
         }}
