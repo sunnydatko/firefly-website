@@ -90,25 +90,25 @@ function HeroFirefly() {
 
     let trail: Trail[] = [];
     let flight: Flight | null = null;
-    let nextFlightAt = performance.now() + rand(4000, 12000);
+    let nextFlightAt = performance.now() + rand(600, 1800);
     let lastTrailEmit = 0;
     let raf = 0;
 
     const beginFlight = (now: number) => {
-      const leftToRight = Math.random() > 0.5;
-      const y0 = rand(height * 0.18, height * 0.68);
-      const y3 = rand(height * 0.18, height * 0.68);
-      const x0 = leftToRight ? rand(-20, width * 0.05) : rand(width * 0.95, width + 20);
-      const x3 = leftToRight ? rand(width * 0.95, width + 20) : rand(-20, width * 0.05);
-      const midX = (x0 + x3) / 2;
-      const bow = rand(-1, 1) * height * 0.22;
+      // A real firefly hovers in a small patch of air rather than crossing the
+      // whole scene — keep the whole flight inside a modest local radius.
+      const cx = rand(width * 0.42, width * 0.94);
+      const cy = rand(height * 0.15, height * 0.7);
+      const spread = rand(50, 110);
+      const a0 = rand(0, Math.PI * 2);
+      const a3 = a0 + rand(1.2, 3.4) * (Math.random() > 0.5 ? 1 : -1);
       flight = {
         start: now,
-        duration: rand(8000, 12000),
-        p0: [x0, y0],
-        p1: [midX + (x3 - x0) * 0.15, y0 + bow],
-        p2: [midX - (x3 - x0) * 0.15, y3 - bow],
-        p3: [x3, y3],
+        duration: rand(2600, 4200),
+        p0: [cx + Math.cos(a0) * spread * 0.3, cy + Math.sin(a0) * spread * 0.3],
+        p1: [cx + rand(-spread, spread), cy + rand(-spread, spread)],
+        p2: [cx + rand(-spread, spread), cy + rand(-spread, spread)],
+        p3: [cx + Math.cos(a3) * spread * 0.4, cy + Math.sin(a3) * spread * 0.4],
       };
     };
 
@@ -121,20 +121,20 @@ function HeroFirefly() {
         const t = (now - flight.start) / flight.duration;
         if (t >= 1) {
           flight = null;
-          nextFlightAt = now + rand(15000, 25000);
+          nextFlightAt = now + rand(7000, 13000);
         } else {
           const [x, y] = bezier(t, flight);
-          const opacity = Math.max(0, Math.min(1, Math.min(t / 0.08, (1 - t) / 0.08)));
+          const opacity = Math.max(0, Math.min(1, Math.min(t / 0.15, (1 - t) / 0.25)));
 
-          if (now - lastTrailEmit > 45) {
+          if (now - lastTrailEmit > 55) {
             trail.push({ x, y, t: now });
             lastTrailEmit = now;
           }
 
-          const glowR = 10;
+          const glowR = 9;
           const grad = ctx.createRadialGradient(x, y, 0, x, y, glowR);
-          grad.addColorStop(0, `rgba(255,232,176,${0.9 * opacity})`);
-          grad.addColorStop(0.35, `rgba(216,179,106,${0.35 * opacity})`);
+          grad.addColorStop(0, `rgba(255,232,176,${0.85 * opacity})`);
+          grad.addColorStop(0.35, `rgba(216,179,106,${0.32 * opacity})`);
           grad.addColorStop(1, "rgba(216,179,106,0)");
           ctx.beginPath();
           ctx.arc(x, y, glowR, 0, Math.PI * 2);
@@ -142,19 +142,19 @@ function HeroFirefly() {
           ctx.fill();
 
           ctx.beginPath();
-          ctx.arc(x, y, 1.6, 0, Math.PI * 2);
+          ctx.arc(x, y, 1.5, 0, Math.PI * 2);
           ctx.fillStyle = `rgba(255,232,176,${opacity})`;
           ctx.fill();
         }
       }
 
-      trail = trail.filter((p) => now - p.t < 500);
+      trail = trail.filter((p) => now - p.t < 350);
       for (const p of trail) {
         const age = now - p.t;
-        const a = 1 - age / 500;
+        const a = 1 - age / 350;
         ctx.beginPath();
-        ctx.arc(p.x, p.y, Math.max(1.4 * a, 0.2), 0, Math.PI * 2);
-        ctx.fillStyle = `rgba(216,179,106,${0.5 * a})`;
+        ctx.arc(p.x, p.y, Math.max(1 * a, 0.15), 0, Math.PI * 2);
+        ctx.fillStyle = `rgba(216,179,106,${0.25 * a})`;
         ctx.fill();
       }
 
@@ -317,6 +317,20 @@ export default function Hero() {
       >
         <HeroFirefly />
       </Box>
+
+      {/* Bottom fade — dissolves the photo into the section below instead of a hard cut */}
+      <Box
+        aria-hidden
+        sx={{
+          position: "absolute",
+          left: 0,
+          right: 0,
+          bottom: 0,
+          height: { xs: "20%", md: "28%" },
+          background: "linear-gradient(to bottom, transparent 0%, #0D0B14 100%)",
+          pointerEvents: "none",
+        }}
+      />
 
       {/* Cursor-tracked overlay — desktop only */}
       <Box
