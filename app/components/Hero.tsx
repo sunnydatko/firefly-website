@@ -6,7 +6,7 @@ import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import Container from "@mui/material/Container";
 import Typography from "@mui/material/Typography";
-import skyBg from "../images/hero.webp";
+import skyBg from "../images/hero-2.webp";
 
 const fadeUp = keyframes`
   from { opacity: 0; transform: translateY(32px); filter: blur(6px); }
@@ -213,8 +213,8 @@ export default function Hero() {
     const handleScroll = () => {
       if (!sectionRef.current || !bgRef.current) return;
       const progress = Math.min(window.scrollY / sectionRef.current.offsetHeight, 1);
-      bgRef.current.style.transform = `translateX(115px) scale(${1.22 + progress * 0.08})`;
-      bgRef.current.style.opacity = String((1 - progress * 0.4) * 0.9);
+      bgRef.current.style.transform = `scale(${1 + progress * 0.04})`;
+      bgRef.current.style.opacity = String(1 - progress * 0.15);
     };
     window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
@@ -243,13 +243,16 @@ export default function Hero() {
           position: "absolute",
           inset: 0,
           backgroundImage: `url(${skyBg.src})`,
-          backgroundSize: "cover",
-          backgroundPosition: { xs: "55% center", md: "56% 50%" },
+          backgroundSize: { xs: "340%", md: "70%" },
+          backgroundRepeat: "no-repeat",
+          backgroundPosition: { xs: "78% 78%", md: "100% 100%" },
+          maskImage: { md: "linear-gradient(135deg, transparent 0%, rgba(0,0,0,1) 32%)" },
+          WebkitMaskImage: { md: "linear-gradient(135deg, transparent 0%, rgba(0,0,0,1) 32%)" },
           willChange: "transform, opacity",
           transformOrigin: "center center",
-          transform: "translateX(115px) scale(1.22)",
-          opacity: 0.9,
-          filter: "brightness(0.62) contrast(1.15)",
+          transform: "scale(1)",
+          opacity: 1,
+          filter: "brightness(0.85) contrast(1.05)",
         }}
       />
 
@@ -299,8 +302,8 @@ export default function Hero() {
           position: "absolute",
           inset: 0,
           background: {
-            xs: "linear-gradient(180deg, rgba(13,11,20,0.70) 0%, rgba(13,11,20,0.50) 50%, rgba(13,11,20,0.70) 100%)",
-            md: "linear-gradient(90deg, rgba(13,11,20,0.99) 0%, rgba(13,11,20,0.94) 32%, rgba(13,11,20,0.40) 58%, rgba(13,11,20,0.05) 100%)",
+            xs: "linear-gradient(180deg, rgba(13,11,20,0.88) 0%, rgba(13,11,20,0.80) 45%, rgba(13,11,20,0.90) 100%)",
+            md: "linear-gradient(90deg, rgba(13,11,20,0.92) 0%, rgba(13,11,20,0.80) 32%, rgba(13,11,20,0.25) 58%, rgba(13,11,20,0.02) 100%)",
           },
         }}
       />
@@ -342,7 +345,7 @@ export default function Hero() {
           position: "absolute",
           inset: 0,
           background:
-            "radial-gradient(ellipse 42% 62% at 74% 88%, rgba(13,11,20,0.92) 0%, rgba(13,11,20,0.5) 45%, transparent 78%)",
+            "radial-gradient(ellipse 42% 55% at 60% 90%, rgba(13,11,20,0.55) 0%, rgba(13,11,20,0.25) 45%, transparent 78%)",
           pointerEvents: "none",
         }}
       />
