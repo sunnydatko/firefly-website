@@ -252,7 +252,7 @@ export default function Hero() {
           transformOrigin: "center center",
           transform: "scale(1)",
           opacity: 1,
-          filter: "brightness(0.76) contrast(0.98)",
+          filter: "brightness(0.95) contrast(1.02)",
         }}
       >
         {/* Bloom pass — a heavily blurred duplicate of the same photo, screen-blended
