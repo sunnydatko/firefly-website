@@ -112,12 +112,12 @@ function HeroFirefly() {
       // move slowly across it.
       const cx = rand(width * 0.42, width * 0.94);
       const cy = rand(height * 0.15, height * 0.7);
-      const spread = rand(22, 50);
+      const spread = rand(8, 18);
       const a0 = rand(0, Math.PI * 2);
       const a3 = a0 + rand(1.2, 3.4) * (Math.random() > 0.5 ? 1 : -1);
       return {
         start: now,
-        duration: rand(500, 800),
+        duration: rand(1100, 1700),
         p0: [cx + Math.cos(a0) * spread * 0.3, cy + Math.sin(a0) * spread * 0.3],
         p1: [cx + rand(-spread, spread), cy + rand(-spread, spread)],
         p2: [cx + rand(-spread, spread), cy + rand(-spread, spread)],
@@ -165,7 +165,7 @@ function HeroFirefly() {
         agent.trail = agent.trail.filter((p) => now - p.t < 250);
         for (const p of agent.trail) {
           const age = now - p.t;
-          const a = 1 - age / 350;
+          const a = 1 - age / 250;
           ctx.beginPath();
           ctx.arc(p.x, p.y, Math.max(1 * a, 0.15), 0, Math.PI * 2);
           ctx.fillStyle = `rgba(216,179,106,${0.25 * a})`;
