@@ -22,6 +22,29 @@ const anim = (delay: string) => ({
 const NEUTRAL =
   "radial-gradient(ellipse 70% 80% at 50% 50%, transparent 0%, rgba(13,11,20,0.4) 100%)";
 
+/* Signature ambient motion — subtle, slow, never continuous-feeling */
+const breathe = keyframes`
+  0%, 100% { opacity: 0.3; transform: scale(0.94); }
+  50%      { opacity: 0.65; transform: scale(1.06); }
+`;
+
+const screenGlow = keyframes`
+  0%, 100% { opacity: 0.22; }
+  50%      { opacity: 0.5; }
+`;
+
+const fireflyDrift = keyframes`
+  0%   { opacity: 0;    transform: translate(0, 0); }
+  8%   { opacity: 0.85; }
+  50%  { transform: translate(160px, -70px); }
+  92%  { opacity: 0.85; }
+  100% { opacity: 0;    transform: translate(320px, -130px); }
+`;
+
+const reducedMotionFreeze = {
+  "@media (prefers-reduced-motion: reduce)": { animation: "none" },
+};
+
 export default function Hero() {
   const sectionRef = useRef<HTMLDivElement>(null);
   const bgRef = useRef<HTMLDivElement>(null);
@@ -43,7 +66,7 @@ export default function Hero() {
     const handleScroll = () => {
       if (!sectionRef.current || !bgRef.current) return;
       const progress = Math.min(window.scrollY / sectionRef.current.offsetHeight, 1);
-      bgRef.current.style.transform = `translateX(50px) scale(${1.4 + progress * 0.08})`;
+      bgRef.current.style.transform = `translateX(115px) scale(${1.22 + progress * 0.08})`;
       bgRef.current.style.opacity = String((1 - progress * 0.4) * 0.9);
     };
     window.addEventListener("scroll", handleScroll, { passive: true });
@@ -74,12 +97,51 @@ export default function Hero() {
           inset: 0,
           backgroundImage: `url(${skyBg.src})`,
           backgroundSize: "cover",
-          backgroundPosition: { xs: "68% center", md: "68% 58%" },
+          backgroundPosition: { xs: "55% center", md: "56% 50%" },
           willChange: "transform, opacity",
           transformOrigin: "center center",
-          transform: "translateX(50px) scale(1.4)",
+          transform: "translateX(115px) scale(1.22)",
           opacity: 0.9,
           filter: "brightness(0.62) contrast(1.15)",
+        }}
+      />
+
+      {/* Breathing glow — slowly pulses behind the laptop */}
+      <Box
+        aria-hidden
+        sx={{
+          position: "absolute",
+          top: "18%",
+          right: { xs: "-10%", md: "6%" },
+          width: { xs: 360, md: 480 },
+          height: { xs: 360, md: 480 },
+          borderRadius: "50%",
+          background:
+            "radial-gradient(circle, rgba(216,179,106,0.16) 0%, rgba(216,179,106,0.05) 55%, transparent 75%)",
+          mixBlendMode: "screen",
+          pointerEvents: "none",
+          animation: `${breathe} 9s ease-in-out infinite`,
+          ...reducedMotionFreeze,
+        }}
+      />
+
+      {/* Screen glow — mirrors the laptop display gently brightening */}
+      <Box
+        aria-hidden
+        sx={{
+          position: "absolute",
+          top: { xs: "22%", md: "20%" },
+          right: { xs: "12%", md: "26%" },
+          width: { xs: 140, md: 190 },
+          height: { xs: 100, md: 135 },
+          borderRadius: "8px",
+          background:
+            "radial-gradient(ellipse, rgba(232,206,148,0.5) 0%, rgba(147,112,219,0.14) 55%, transparent 80%)",
+          filter: "blur(14px)",
+          mixBlendMode: "screen",
+          pointerEvents: "none",
+          animation: `${screenGlow} 6s ease-in-out infinite`,
+          ...reducedMotionFreeze,
         }}
       />
 
@@ -93,6 +155,40 @@ export default function Hero() {
             xs: "linear-gradient(180deg, rgba(13,11,20,0.70) 0%, rgba(13,11,20,0.50) 50%, rgba(13,11,20,0.70) 100%)",
             md: "linear-gradient(90deg, rgba(13,11,20,0.99) 0%, rgba(13,11,20,0.94) 32%, rgba(13,11,20,0.40) 58%, rgba(13,11,20,0.05) 100%)",
           },
+        }}
+      />
+
+      {/* Right-side atmosphere — faint haze to keep the dark side alive */}
+      <Box
+        aria-hidden
+        sx={{
+          position: "absolute",
+          inset: 0,
+          background: {
+            xs: "none",
+            md: "radial-gradient(ellipse 55% 65% at 88% 30%, rgba(216,179,106,0.05) 0%, transparent 60%), radial-gradient(ellipse 45% 55% at 78% 85%, rgba(90,70,120,0.10) 0%, transparent 65%)",
+          },
+          mixBlendMode: "screen",
+          pointerEvents: "none",
+        }}
+      />
+
+      {/* Drifting firefly — one slow pass every ~18s */}
+      <Box
+        aria-hidden
+        sx={{
+          display: { xs: "none", md: "block" },
+          position: "absolute",
+          left: "58%",
+          top: "62%",
+          width: 5,
+          height: 5,
+          borderRadius: "50%",
+          backgroundColor: "#E8CE94",
+          boxShadow: "0 0 10px 3px rgba(232,206,148,0.85), 0 0 24px 8px rgba(216,179,106,0.35)",
+          pointerEvents: "none",
+          animation: `${fireflyDrift} 18s ease-in-out infinite`,
+          "@media (prefers-reduced-motion: reduce)": { display: "none" },
         }}
       />
 
@@ -137,7 +233,7 @@ export default function Hero() {
               fontSize: { xs: "36px", sm: "49px", md: "65px" },
               lineHeight: 1.02,
               color: "#F2E8CF",
-              mb: { xs: 2.5, md: 3 },
+              mb: { xs: 3.5, md: 4 },
             }}
           >
             Websites
@@ -168,7 +264,7 @@ export default function Hero() {
               height: 2,
               borderRadius: 1,
               bgcolor: "#D8B36A",
-              mb: { xs: 3, md: 3.5 },
+              mb: { xs: 5, md: 5.5 },
             }}
           />
 
