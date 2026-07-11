@@ -33,17 +33,149 @@ const screenGlow = keyframes`
   50%      { opacity: 0.5; }
 `;
 
-const fireflyDrift = keyframes`
-  0%   { opacity: 0;    transform: translate(0, 0); }
-  8%   { opacity: 0.85; }
-  50%  { transform: translate(160px, -70px); }
-  92%  { opacity: 0.85; }
-  100% { opacity: 0;    transform: translate(320px, -130px); }
-`;
-
 const reducedMotionFreeze = {
   "@media (prefers-reduced-motion: reduce)": { animation: "none" },
 };
+
+/* Signature firefly — a rare, wandering crossing with a fading trail.
+   Canvas-driven (not CSS keyframes) because a real trail needs particles
+   that spawn and decay independently of the leader's curved path. */
+type Trail = { x: number; y: number; t: number };
+type Flight = {
+  start: number;
+  duration: number;
+  p0: [number, number];
+  p1: [number, number];
+  p2: [number, number];
+  p3: [number, number];
+};
+
+const rand = (a: number, b: number) => a + Math.random() * (b - a);
+
+const bezier = (t: number, f: Flight): [number, number] => {
+  const mt = 1 - t;
+  const x =
+    mt ** 3 * f.p0[0] + 3 * mt ** 2 * t * f.p1[0] + 3 * mt * t ** 2 * f.p2[0] + t ** 3 * f.p3[0];
+  const y =
+    mt ** 3 * f.p0[1] + 3 * mt ** 2 * t * f.p1[1] + 3 * mt * t ** 2 * f.p2[1] + t ** 3 * f.p3[1];
+  return [x, y];
+};
+
+function HeroFirefly() {
+  const canvasRef = useRef<HTMLCanvasElement>(null);
+
+  useEffect(() => {
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+
+    const canvas = canvasRef.current;
+    const ctx = canvas?.getContext("2d");
+    const container = canvas?.parentElement;
+    if (!canvas || !ctx || !container) return;
+
+    const dpr = Math.min(window.devicePixelRatio || 1, 2);
+    let width = 0;
+    let height = 0;
+
+    const resize = () => {
+      width = container.clientWidth;
+      height = container.clientHeight;
+      canvas.width = width * dpr;
+      canvas.height = height * dpr;
+      canvas.style.width = `${width}px`;
+      canvas.style.height = `${height}px`;
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    };
+    resize();
+    window.addEventListener("resize", resize);
+
+    let trail: Trail[] = [];
+    let flight: Flight | null = null;
+    let nextFlightAt = performance.now() + rand(4000, 12000);
+    let lastTrailEmit = 0;
+    let raf = 0;
+
+    const beginFlight = (now: number) => {
+      const leftToRight = Math.random() > 0.5;
+      const y0 = rand(height * 0.18, height * 0.68);
+      const y3 = rand(height * 0.18, height * 0.68);
+      const x0 = leftToRight ? rand(-20, width * 0.05) : rand(width * 0.95, width + 20);
+      const x3 = leftToRight ? rand(width * 0.95, width + 20) : rand(-20, width * 0.05);
+      const midX = (x0 + x3) / 2;
+      const bow = rand(-1, 1) * height * 0.22;
+      flight = {
+        start: now,
+        duration: rand(8000, 12000),
+        p0: [x0, y0],
+        p1: [midX + (x3 - x0) * 0.15, y0 + bow],
+        p2: [midX - (x3 - x0) * 0.15, y3 - bow],
+        p3: [x3, y3],
+      };
+    };
+
+    const draw = (now: number) => {
+      ctx.clearRect(0, 0, width, height);
+
+      if (!flight && now >= nextFlightAt) beginFlight(now);
+
+      if (flight) {
+        const t = (now - flight.start) / flight.duration;
+        if (t >= 1) {
+          flight = null;
+          nextFlightAt = now + rand(15000, 25000);
+        } else {
+          const [x, y] = bezier(t, flight);
+          const opacity = Math.max(0, Math.min(1, Math.min(t / 0.08, (1 - t) / 0.08)));
+
+          if (now - lastTrailEmit > 45) {
+            trail.push({ x, y, t: now });
+            lastTrailEmit = now;
+          }
+
+          const glowR = 10;
+          const grad = ctx.createRadialGradient(x, y, 0, x, y, glowR);
+          grad.addColorStop(0, `rgba(255,232,176,${0.9 * opacity})`);
+          grad.addColorStop(0.35, `rgba(216,179,106,${0.35 * opacity})`);
+          grad.addColorStop(1, "rgba(216,179,106,0)");
+          ctx.beginPath();
+          ctx.arc(x, y, glowR, 0, Math.PI * 2);
+          ctx.fillStyle = grad;
+          ctx.fill();
+
+          ctx.beginPath();
+          ctx.arc(x, y, 1.6, 0, Math.PI * 2);
+          ctx.fillStyle = `rgba(255,232,176,${opacity})`;
+          ctx.fill();
+        }
+      }
+
+      trail = trail.filter((p) => now - p.t < 500);
+      for (const p of trail) {
+        const age = now - p.t;
+        const a = 1 - age / 500;
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, Math.max(1.4 * a, 0.2), 0, Math.PI * 2);
+        ctx.fillStyle = `rgba(216,179,106,${0.5 * a})`;
+        ctx.fill();
+      }
+
+      raf = requestAnimationFrame(draw);
+    };
+
+    raf = requestAnimationFrame(draw);
+    return () => {
+      cancelAnimationFrame(raf);
+      window.removeEventListener("resize", resize);
+    };
+  }, []);
+
+  return (
+    <canvas
+      ref={canvasRef}
+      aria-hidden
+      style={{ position: "absolute", inset: 0, pointerEvents: "none" }}
+    />
+  );
+}
 
 export default function Hero() {
   const sectionRef = useRef<HTMLDivElement>(null);
@@ -173,24 +305,18 @@ export default function Hero() {
         }}
       />
 
-      {/* Drifting firefly — one slow pass every ~18s */}
+      {/* Signature firefly — a rare, wandering crossing every 15–25s, trail included */}
       <Box
         aria-hidden
         sx={{
           display: { xs: "none", md: "block" },
           position: "absolute",
-          left: "58%",
-          top: "62%",
-          width: 5,
-          height: 5,
-          borderRadius: "50%",
-          backgroundColor: "#E8CE94",
-          boxShadow: "0 0 10px 3px rgba(232,206,148,0.85), 0 0 24px 8px rgba(216,179,106,0.35)",
-          pointerEvents: "none",
-          animation: `${fireflyDrift} 18s ease-in-out infinite`,
+          inset: 0,
           "@media (prefers-reduced-motion: reduce)": { display: "none" },
         }}
-      />
+      >
+        <HeroFirefly />
+      </Box>
 
       {/* Cursor-tracked overlay — desktop only */}
       <Box
