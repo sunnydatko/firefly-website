@@ -252,7 +252,40 @@ export default function Hero() {
           transformOrigin: "center center",
           transform: "scale(1)",
           opacity: 1,
-          filter: "brightness(0.76) contrast(0.98) blur(3px)",
+          filter: "brightness(0.76) contrast(0.98)",
+        }}
+      >
+        {/* Bloom pass — a heavily blurred duplicate of the same photo, screen-blended
+            at low opacity. Spreads light from the highlights like a Pro-Mist diffusion
+            filter, rather than softening the sharp image underneath. */}
+        <Box
+          sx={{
+            position: "absolute",
+            inset: 0,
+            backgroundImage: `url(${skyBg.src})`,
+            backgroundSize: { xs: "340%", md: "70%" },
+            backgroundRepeat: "no-repeat",
+            backgroundPosition: { xs: "78% 78%", md: "100% 100%" },
+            maskImage: { md: "linear-gradient(135deg, transparent 0%, rgba(0,0,0,1) 32%)" },
+            WebkitMaskImage: { md: "linear-gradient(135deg, transparent 0%, rgba(0,0,0,1) 32%)" },
+            filter: "blur(26px) brightness(1.2) saturate(1.05)",
+            mixBlendMode: "screen",
+            opacity: 0.22,
+          }}
+        />
+      </Box>
+
+      {/* Glass veil — an almost imperceptible warm wash across the whole hero that
+          lifts the deepest blacks a fraction, as if shot through coated cinema glass */}
+      <Box
+        aria-hidden
+        sx={{
+          position: "absolute",
+          inset: 0,
+          background:
+            "radial-gradient(ellipse 90% 70% at 60% 35%, rgba(245,238,222,0.05) 0%, rgba(245,238,222,0.02) 45%, transparent 75%)",
+          mixBlendMode: "soft-light",
+          pointerEvents: "none",
         }}
       />
 
@@ -358,8 +391,9 @@ export default function Hero() {
           left: 0,
           right: 0,
           bottom: 0,
-          height: { xs: "23%", md: "32%" },
-          background: "linear-gradient(to bottom, transparent 0%, #0D0B14 100%)",
+          height: { xs: "34%", md: "48%" },
+          background:
+            "linear-gradient(to bottom, transparent 0%, rgba(13,11,20,0.35) 45%, rgba(13,11,20,0.8) 75%, #0D0B14 100%)",
           pointerEvents: "none",
         }}
       />
