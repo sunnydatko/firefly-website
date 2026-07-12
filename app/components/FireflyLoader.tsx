@@ -34,37 +34,6 @@ export default function FireflyLoader() {
       />
 
       <div style={{ position: "relative", width: 220, height: 220 }}>
-        <svg
-          width="220"
-          height="220"
-          viewBox="0 0 220 220"
-          fill="none"
-          aria-hidden="true"
-          style={{ position: "absolute", inset: 0 }}
-        >
-          <circle cx="18" cy="20" r="0.7" fill="white" className="ff-star-a" />
-          <circle cx="200" cy="28" r="0.8" fill="white" className="ff-star-b" />
-          <circle cx="12" cy="188" r="0.9" fill="white" className="ff-star-a" />
-          <circle cx="205" cy="192" r="0.7" fill="white" className="ff-star-b" />
-          <circle cx="110" cy="8" r="0.6" fill="white" className="ff-star-c" />
-          <circle cx="38" cy="210" r="0.7" fill="white" className="ff-star-a" />
-          <circle cx="182" cy="205" r="0.6" fill="white" className="ff-star-b" />
-          <circle cx="8" cy="100" r="0.7" fill="white" className="ff-star-c" />
-          <circle cx="212" cy="108" r="0.6" fill="white" className="ff-star-a" />
-          <circle cx="31" cy="39" r="0.6" fill="white" className="ff-star-c" />
-          <circle cx="189" cy="46" r="0.7" fill="white" className="ff-star-a" />
-          <circle cx="20" cy="167" r="0.8" fill="white" className="ff-star-b" />
-          <circle cx="196" cy="178" r="0.6" fill="white" className="ff-star-c" />
-          <circle cx="50" cy="196" r="0.7" fill="white" className="ff-star-a" />
-          <circle cx="203" cy="99" r="0.6" fill="white" className="ff-star-b" />
-          <circle cx="97" cy="13" r="0.7" fill="white" className="ff-star-c" />
-
-          <circle cx="110" cy="110" r="40" fill="none" stroke="rgba(216,179,106,0.09)" strokeWidth="0.5" />
-          <circle cx="110" cy="110" r="62" fill="none" stroke="rgba(216,179,106,0.07)" strokeWidth="0.5" />
-          <circle cx="110" cy="110" r="82" fill="none" stroke="rgba(216,179,106,0.05)" strokeWidth="0.5" />
-          <circle cx="110" cy="110" r="98" fill="none" stroke="rgba(216,179,106,0.035)" strokeWidth="0.5" />
-        </svg>
-
         <div aria-hidden="true" style={{ position: "absolute", inset: 0 }}>
           {ORBITS.map((o, oi) => (
             <div key={oi}>
@@ -128,13 +97,6 @@ export default function FireflyLoader() {
         @keyframes ffOrbit {
           to { offset-distance: 100%; }
         }
-        .ff-star-a { opacity: 0.1; animation: ffStar 3.2s ease-in-out infinite; }
-        .ff-star-b { opacity: 0.1; animation: ffStar 4.6s ease-in-out infinite 1.5s; }
-        .ff-star-c { opacity: 0.1; animation: ffStar 3.9s ease-in-out infinite 0.8s; }
-        @keyframes ffStar {
-          0%, 100% { opacity: 0.1; }
-          50% { opacity: 0.5; }
-        }
         @keyframes ffBreathe {
           0%, 100% { opacity: 0.5; transform: scale(1); }
           50% { opacity: 1; transform: scale(1.18); }
@@ -142,7 +104,6 @@ export default function FireflyLoader() {
         @media (prefers-reduced-motion: reduce) {
           .ff-dot { animation: none; }
           .ff-dot:not(.ff-dot-main) { display: none; }
-          .ff-star-a, .ff-star-b, .ff-star-c { animation: none; opacity: 0.35; }
         }
       `}</style>
     </>
