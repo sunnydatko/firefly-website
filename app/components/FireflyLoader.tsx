@@ -51,6 +51,18 @@ export default function FireflyLoader() {
           <circle cx="182" cy="205" r="0.6" fill="white" className="ff-star-b" />
           <circle cx="8" cy="100" r="0.7" fill="white" className="ff-star-c" />
           <circle cx="212" cy="108" r="0.6" fill="white" className="ff-star-a" />
+          <circle cx="31" cy="39" r="0.6" fill="white" className="ff-star-c" />
+          <circle cx="189" cy="46" r="0.7" fill="white" className="ff-star-a" />
+          <circle cx="20" cy="167" r="0.8" fill="white" className="ff-star-b" />
+          <circle cx="196" cy="178" r="0.6" fill="white" className="ff-star-c" />
+          <circle cx="50" cy="196" r="0.7" fill="white" className="ff-star-a" />
+          <circle cx="203" cy="99" r="0.6" fill="white" className="ff-star-b" />
+          <circle cx="97" cy="13" r="0.7" fill="white" className="ff-star-c" />
+
+          <circle cx="110" cy="110" r="40" fill="none" stroke="rgba(216,179,106,0.09)" strokeWidth="0.5" />
+          <circle cx="110" cy="110" r="62" fill="none" stroke="rgba(216,179,106,0.07)" strokeWidth="0.5" />
+          <circle cx="110" cy="110" r="82" fill="none" stroke="rgba(216,179,106,0.05)" strokeWidth="0.5" />
+          <circle cx="110" cy="110" r="98" fill="none" stroke="rgba(216,179,106,0.035)" strokeWidth="0.5" />
         </svg>
 
         <div aria-hidden="true" style={{ position: "absolute", inset: 0 }}>
