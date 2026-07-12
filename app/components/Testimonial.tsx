@@ -45,15 +45,15 @@ export default function Testimonial() {
     return () => clearInterval(id);
   }, [paused]);
 
-  const { quote, name, title, image } = testimonials[active];
-  const avatarSrc = image ? imageMap[image] : undefined;
-  const displayName = name
-    ? name
-        .trim()
-        .split(/\s+/)
-        .map((part, i, arr) => (i === arr.length - 1 && arr.length > 1 ? `${part[0]}.` : part))
-        .join(" ")
-    : name;
+  function formatDisplayName(name: string | undefined) {
+    return name
+      ? name
+          .trim()
+          .split(/\s+/)
+          .map((part, i, arr) => (i === arr.length - 1 && arr.length > 1 ? `${part[0]}.` : part))
+          .join(" ")
+      : name;
+  }
 
   return (
     <Box
@@ -133,100 +133,114 @@ export default function Testimonial() {
               }}
             />
 
-            <Box
-              sx={{
-                opacity: visible ? 1 : 0,
-                transition: `opacity ${FADE_MS}ms ease`,
-              }}
-            >
-              <Typography
-                sx={{
-                  color: "primary.light",
-                  fontFamily: "Georgia, serif",
-                  fontSize: { xs: "5rem", md: "6rem" },
-                  lineHeight: 0.5,
-                  mb: 3,
-                  userSelect: "none",
-                  opacity: 0.85,
-                }}
-                aria-hidden
-              >
-                &ldquo;
-              </Typography>
+            <Box sx={{ display: "grid" }}>
+              {testimonials.map(({ quote, name, title, image }, i) => {
+                const isActive = i === active;
+                const avatarSrc = image ? imageMap[image] : undefined;
+                const displayName = formatDisplayName(name);
 
-              <Typography
-                sx={{
-                  color: "common.white",
-                  fontSize: { xs: "16px", md: "18px" },
-                  lineHeight: 1.75,
-                  fontStyle: "italic",
-                  mb: 1,
-                }}
-              >
-                {quote}
-              </Typography>
-
-              {(avatarSrc || name) && (
-                <Box
-                  sx={{
-                    display: "flex",
-                    flexDirection: "column",
-                    alignItems: "center",
-                    gap: 1.5,
-                    mt: 4,
-                  }}
-                >
-                  {avatarSrc && (
-                    <Box
+                return (
+                  <Box
+                    key={i}
+                    aria-hidden={!isActive}
+                    sx={{
+                      gridArea: "1 / 1",
+                      opacity: isActive && visible ? 1 : 0,
+                      transition: `opacity ${FADE_MS}ms ease`,
+                      pointerEvents: isActive ? "auto" : "none",
+                    }}
+                  >
+                    <Typography
                       sx={{
-                        width: 76,
-                        height: 76,
-                        borderRadius: "50%",
-                        overflow: "hidden",
-                        border: "2px solid rgba(216,179,106,0.25)",
-                        boxShadow: "0 0 12px rgba(216,179,106,0.12)",
-                        flexShrink: 0,
-                        position: "relative",
+                        color: "primary.light",
+                        fontFamily: "Georgia, serif",
+                        fontSize: { xs: "5rem", md: "6rem" },
+                        lineHeight: 0.5,
+                        mb: 3,
+                        userSelect: "none",
+                        opacity: 0.85,
+                      }}
+                      aria-hidden
+                    >
+                      &ldquo;
+                    </Typography>
+
+                    <Typography
+                      sx={{
+                        color: "common.white",
+                        fontSize: { xs: "16px", md: "18px" },
+                        lineHeight: 1.75,
+                        fontStyle: "italic",
+                        mb: 1,
                       }}
                     >
-                      <Image
-                        src={avatarSrc}
-                        alt={displayName ?? ""}
-                        fill
-                        style={{ objectFit: "cover" }}
-                        sizes="76px"
-                      />
-                    </Box>
-                  )}
-                  {name && (
-                    <Box>
-                      <Typography
+                      {quote}
+                    </Typography>
+
+                    {(avatarSrc || name) && (
+                      <Box
                         sx={{
-                          color: "common.white",
-                          fontFamily: "var(--font-inter), sans-serif",
-                          fontWeight: 600,
-                          fontSize: { xs: 15, md: 16 },
+                          display: "flex",
+                          flexDirection: "column",
+                          alignItems: "center",
+                          gap: 1.5,
+                          mt: 4,
                         }}
                       >
-                        {displayName}
-                      </Typography>
-                      {title && (
-                        <Typography
-                          sx={{
-                            color: "rgba(255,255,255,0.65)",
-                            fontFamily: "var(--font-inter), sans-serif",
-                            fontSize: { xs: 12, md: 13 },
-                            letterSpacing: "0.04em",
-                            mt: 0.5,
-                          }}
-                        >
-                          {title}
-                        </Typography>
-                      )}
-                    </Box>
-                  )}
-                </Box>
-              )}
+                        {avatarSrc && (
+                          <Box
+                            sx={{
+                              width: 76,
+                              height: 76,
+                              borderRadius: "50%",
+                              overflow: "hidden",
+                              border: "2px solid rgba(216,179,106,0.25)",
+                              boxShadow: "0 0 12px rgba(216,179,106,0.12)",
+                              flexShrink: 0,
+                              position: "relative",
+                            }}
+                          >
+                            <Image
+                              src={avatarSrc}
+                              alt={displayName ?? ""}
+                              fill
+                              style={{ objectFit: "cover" }}
+                              sizes="76px"
+                            />
+                          </Box>
+                        )}
+                        {name && (
+                          <Box>
+                            <Typography
+                              sx={{
+                                color: "common.white",
+                                fontFamily: "var(--font-inter), sans-serif",
+                                fontWeight: 600,
+                                fontSize: { xs: 15, md: 16 },
+                              }}
+                            >
+                              {displayName}
+                            </Typography>
+                            {title && (
+                              <Typography
+                                sx={{
+                                  color: "rgba(255,255,255,0.65)",
+                                  fontFamily: "var(--font-inter), sans-serif",
+                                  fontSize: { xs: 12, md: 13 },
+                                  letterSpacing: "0.04em",
+                                  mt: 0.5,
+                                }}
+                              >
+                                {title}
+                              </Typography>
+                            )}
+                          </Box>
+                        )}
+                      </Box>
+                    )}
+                  </Box>
+                );
+              })}
             </Box>
             {testimonials.length > 1 && (
               <>
