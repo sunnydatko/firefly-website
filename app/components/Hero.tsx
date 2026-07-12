@@ -100,7 +100,7 @@ function HeroFirefly() {
     const now0 = performance.now();
     const agents: Agent[] = Array.from({ length: AGENT_COUNT }, (_, i) => ({
       flight: null,
-      nextFlightAt: now0 + i * 2400 + rand(200, 2000),
+      nextFlightAt: now0 + 3200 + i * 2400 + rand(200, 2000),
       trail: [],
       lastTrailEmit: 0,
     }));
@@ -114,7 +114,7 @@ function HeroFirefly() {
       const cy = rand(height * 0.15, height * 0.7);
       const spread = rand(22, 50);
       const a0 = rand(0, Math.PI * 2);
-      const a3 = a0 + rand(1.2, 3.4) * (Math.random() > 0.5 ? 1 : -1);
+      const a3 = a0 + rand(0.4, 1.5) * (Math.random() > 0.5 ? 1 : -1);
       return {
         start: now,
         duration: rand(1100, 1600),
