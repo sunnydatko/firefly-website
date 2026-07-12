@@ -3,9 +3,13 @@
 import Box from "@mui/material/Box";
 import Container from "@mui/material/Container";
 import Typography from "@mui/material/Typography";
+import LanguageOutlined from "@mui/icons-material/LanguageOutlined";
+import PaletteOutlined from "@mui/icons-material/PaletteOutlined";
+import RocketLaunchOutlined from "@mui/icons-material/RocketLaunchOutlined";
 
 const services = [
   {
+    Icon: LanguageOutlined,
     title: "Websites",
     startingFrom: "Starting from $800",
     description:
@@ -13,6 +17,7 @@ const services = [
     href: "/services/websites",
   },
   {
+    Icon: PaletteOutlined,
     title: "Logo & Branding",
     startingFrom: "Starting from $500",
     description:
@@ -20,6 +25,7 @@ const services = [
     href: "/services/logo-branding",
   },
   {
+    Icon: RocketLaunchOutlined,
     title: "Business Essentials",
     startingFrom: "Starting from $299",
     description:
@@ -82,10 +88,12 @@ export default function Services() {
 
         <Box
           sx={{
-            borderTop: "1px solid rgba(255,255,255,0.09)",
+            display: "grid",
+            gridTemplateColumns: { xs: "1fr", sm: "1fr 1fr 1fr" },
+            gap: 3,
           }}
         >
-          {services.map(({ title, startingFrom, description, href }, i) => (
+          {services.map(({ Icon, title, startingFrom, description, href }, i) => (
             <Box
               key={title}
               component="a"
@@ -93,61 +101,63 @@ export default function Services() {
               className="reveal"
               style={{ transitionDelay: `${i * 0.08}s` }}
               sx={{
+                backgroundColor: "background.paper",
+                border: "1px solid rgba(255,255,255,0.07)",
+                borderRadius: 2,
+                p: { xs: 3.5, md: 4 },
                 display: "flex",
-                flexDirection: { xs: "column", sm: "row" },
-                alignItems: { xs: "flex-start", sm: "center" },
-                gap: { xs: 1.5, sm: 4 },
-                py: { xs: 4, md: 5 },
-                borderBottom: "1px solid rgba(255,255,255,0.09)",
+                flexDirection: "column",
                 textDecoration: "none",
                 color: "inherit",
-                transition: "padding-left 0.3s ease",
+                transition: "border-color 0.3s, transform 0.3s",
                 "&:hover": {
-                  pl: { xs: 0, sm: 1.5 },
+                  borderColor: "rgba(216,179,106,0.3)",
+                  transform: "translateY(-4px)",
                   "& .row-arrow": { transform: "translateX(4px)", opacity: 1 },
-                  "& .row-title": { color: "primary.main" },
                 },
               }}
             >
-              <Box sx={{ flex: { sm: "0 0 260px" } }}>
-                <Typography
-                  className="row-title"
-                  variant="h4"
-                  sx={{
-                    fontSize: { xs: "24px", md: "28px" },
-                    transition: "color 0.3s ease",
-                  }}
-                >
-                  {title}
-                </Typography>
-                <Typography
-                  sx={{
-                    fontFamily: "var(--font-inter), sans-serif",
-                    fontSize: 11,
-                    fontWeight: 600,
-                    letterSpacing: "0.12em",
-                    textTransform: "uppercase",
-                    color: "rgba(216,179,106,0.65)",
-                    mt: 0.75,
-                  }}
-                >
-                  {startingFrom}
-                </Typography>
+              <Box
+                sx={{
+                  width: 48,
+                  height: 48,
+                  borderRadius: 1.5,
+                  backgroundColor: "rgba(216,179,106,0.10)",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  mb: 3,
+                }}
+              >
+                <Icon sx={{ color: "primary.main", fontSize: 24 }} />
               </Box>
+
+              <Typography variant="h5" sx={{ fontSize: { xs: "18px", md: "20px" }, mb: 0.75 }}>
+                {title}
+              </Typography>
 
               <Typography
                 sx={{
-                  color: "grey.300",
-                  fontSize: { xs: "15px", md: "17px" },
-                  lineHeight: 1.7,
-                  flex: 1,
+                  fontFamily: "var(--font-inter), sans-serif",
+                  fontSize: 11,
+                  fontWeight: 600,
+                  letterSpacing: "0.12em",
+                  textTransform: "uppercase",
+                  color: "rgba(216,179,106,0.65)",
+                  mb: 2,
                 }}
               >
+                {startingFrom}
+              </Typography>
+
+              <Typography sx={{ color: "grey.300", fontSize: "14px", lineHeight: 1.7, mb: 3 }}>
                 {description}
               </Typography>
 
               <Box
                 sx={{
+                  mt: "auto",
+                  pt: 1,
                   display: "flex",
                   alignItems: "center",
                   gap: 0.5,
@@ -156,8 +166,6 @@ export default function Services() {
                   fontFamily: "var(--font-inter), sans-serif",
                   fontWeight: 600,
                   letterSpacing: "0.06em",
-                  whiteSpace: "nowrap",
-                  flexShrink: 0,
                 }}
               >
                 Learn More
