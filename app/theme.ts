@@ -87,7 +87,7 @@ const theme = createTheme({
         },
         contained: {
           backgroundImage:
-            "linear-gradient(180deg, #DDBC7C 0%, #D8B36A 55%, #BA9A5B 100%)",
+            "linear-gradient(180deg, #E2C48A 0%, #D8B36A 50%, #AC8848 100%)",
           boxShadow: "inset 0 1px 0 rgba(255,255,255,0.22), 0 2px 8px rgba(0,0,0,0.2)",
           transition:
             "background-image 0.35s ease, box-shadow 0.35s ease, transform 0.2s ease",
