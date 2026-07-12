@@ -6,7 +6,7 @@ import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import Container from "@mui/material/Container";
 import Typography from "@mui/material/Typography";
-import skyBg from "../images/hero-2.webp";
+import skyBg from "../images/hero.webp";
 
 const fadeUp = keyframes`
   from { opacity: 0; transform: translateY(32px); filter: blur(6px); }
@@ -243,9 +243,9 @@ export default function Hero() {
           position: "absolute",
           inset: 0,
           backgroundImage: `url(${skyBg.src})`,
-          backgroundSize: { xs: "340%", md: "70%" },
+          backgroundSize: { xs: "200%", md: "auto 100%" },
           backgroundRepeat: "no-repeat",
-          backgroundPosition: { xs: "78% 78%", md: "100% 100%" },
+          backgroundPosition: { xs: "32% 55%", md: "100% center" },
           maskImage: { md: "linear-gradient(135deg, transparent 0%, rgba(0,0,0,1) 32%)" },
           WebkitMaskImage: { md: "linear-gradient(135deg, transparent 0%, rgba(0,0,0,1) 32%)" },
           willChange: "transform, opacity",
@@ -263,9 +263,9 @@ export default function Hero() {
             position: "absolute",
             inset: 0,
             backgroundImage: `url(${skyBg.src})`,
-            backgroundSize: { xs: "340%", md: "70%" },
+            backgroundSize: { xs: "200%", md: "auto 100%" },
             backgroundRepeat: "no-repeat",
-            backgroundPosition: { xs: "78% 78%", md: "100% 100%" },
+            backgroundPosition: { xs: "32% 55%", md: "100% center" },
             maskImage: { md: "linear-gradient(135deg, transparent 0%, rgba(0,0,0,1) 32%)" },
             WebkitMaskImage: { md: "linear-gradient(135deg, transparent 0%, rgba(0,0,0,1) 32%)" },
             filter: "blur(26px) brightness(1.2) saturate(1.05)",
@@ -412,7 +412,7 @@ export default function Hero() {
         }}
       />
 
-      <Container sx={{ position: "relative", zIndex: 2, pt: { xs: 19, md: 20 }, pb: { xs: 5, md: 3 } }}>
+      <Container sx={{ position: "relative", zIndex: 2, pt: { xs: 12, md: 13 }, pb: { xs: 5, md: 3 } }}>
         <Box sx={{ maxWidth: { xs: "100%", md: 620 } }}>
 
           {/* Eyebrow */}
