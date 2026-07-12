@@ -35,6 +35,8 @@ export default function About() {
 
       <Container
         sx={{
+          position: "relative",
+          zIndex: 1,
           textAlign: "center",
           maxWidth: "860px !important",
         }}

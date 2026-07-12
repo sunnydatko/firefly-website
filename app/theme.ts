@@ -88,14 +88,15 @@ const theme = createTheme({
         contained: {
           backgroundImage:
             "linear-gradient(180deg, #DDBC7C 0%, #D8B36A 55%, #BA9A5B 100%)",
-          boxShadow: "inset 0 1px 0 rgba(255,255,255,0.22)",
+          boxShadow: "inset 0 1px 0 rgba(255,255,255,0.22), 0 2px 8px rgba(0,0,0,0.2)",
           transition:
-            "background-image 0.35s ease, box-shadow 0.35s ease, transform 0.15s ease",
+            "background-image 0.35s ease, box-shadow 0.35s ease, transform 0.2s ease",
           "&:hover": {
             backgroundImage:
-              "linear-gradient(180deg, #EAD39F 0%, #E8CE94 55%, #D8B36A 100%)",
+              "linear-gradient(180deg, #D9AE72 0%, #C99A4C 55%, #96702F 100%)",
             boxShadow:
-              "inset 0 1px 0 rgba(255,255,255,0.3), 0 0 20px rgba(216,179,106,0.35)",
+              "inset 0 1px 0 rgba(255,255,255,0.25), inset 0 -2px 6px rgba(150,105,40,0.35), 0 6px 16px rgba(0,0,0,0.3)",
+            transform: "translateY(-1px)",
           },
           "&:active": {
             transform: "translateY(1px)",

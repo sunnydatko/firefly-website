@@ -6,7 +6,7 @@ import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import Container from "@mui/material/Container";
 import Typography from "@mui/material/Typography";
-import notFoundBg from "./images/not-found-bg.png";
+import notFoundBg from "./images/not-found-bg.webp";
 import ResponsiveMenu from "./components/ResponsiveMenu";
 import Footer from "./components/Footer";
 

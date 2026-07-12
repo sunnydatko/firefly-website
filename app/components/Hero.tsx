@@ -230,7 +230,11 @@ export default function Hero() {
         position: "relative",
         display: "flex",
         alignItems: "center",
-        minHeight: { xs: "calc(66svh + 120px)", md: "calc(72vh + 160px)" },
+        minHeight: {
+          xs: "clamp(520px, calc(48svh + 70px), 680px)",
+          sm: "clamp(560px, calc(52svh + 100px), 720px)",
+          md: "clamp(680px, calc(72vh + 160px), 820px)",
+        },
         overflow: "hidden",
         backgroundColor: "#0D0B14",
       }}
@@ -243,11 +247,11 @@ export default function Hero() {
           position: "absolute",
           inset: 0,
           backgroundImage: `url(${skyBg.src})`,
-          backgroundSize: { xs: "200%", md: "auto 100%" },
+          backgroundSize: { xs: "200%", md: "112vw auto" },
           backgroundRepeat: "no-repeat",
           backgroundPosition: { xs: "32% 55%", md: "100% center" },
-          maskImage: { md: "linear-gradient(135deg, transparent 0%, rgba(0,0,0,1) 32%)" },
-          WebkitMaskImage: { md: "linear-gradient(135deg, transparent 0%, rgba(0,0,0,1) 32%)" },
+          maskImage: { sm: "linear-gradient(135deg, transparent 0%, rgba(0,0,0,1) 32%)" },
+          WebkitMaskImage: { sm: "linear-gradient(135deg, transparent 0%, rgba(0,0,0,1) 32%)" },
           willChange: "transform, opacity",
           transformOrigin: "center center",
           transform: "scale(1)",
@@ -263,11 +267,11 @@ export default function Hero() {
             position: "absolute",
             inset: 0,
             backgroundImage: `url(${skyBg.src})`,
-            backgroundSize: { xs: "200%", md: "auto 100%" },
+            backgroundSize: { xs: "200%", md: "112vw auto" },
             backgroundRepeat: "no-repeat",
             backgroundPosition: { xs: "32% 55%", md: "100% center" },
-            maskImage: { md: "linear-gradient(135deg, transparent 0%, rgba(0,0,0,1) 32%)" },
-            WebkitMaskImage: { md: "linear-gradient(135deg, transparent 0%, rgba(0,0,0,1) 32%)" },
+            maskImage: { sm: "linear-gradient(135deg, transparent 0%, rgba(0,0,0,1) 32%)" },
+            WebkitMaskImage: { sm: "linear-gradient(135deg, transparent 0%, rgba(0,0,0,1) 32%)" },
             filter: "blur(26px) brightness(1.2) saturate(1.05)",
             mixBlendMode: "screen",
             opacity: 0.22,
@@ -335,8 +339,8 @@ export default function Hero() {
           position: "absolute",
           inset: 0,
           background: {
-            xs: "linear-gradient(180deg, rgba(13,11,20,0.88) 0%, rgba(13,11,20,0.80) 45%, rgba(13,11,20,0.90) 100%)",
-            md: "linear-gradient(90deg, rgba(13,11,20,0.92) 0%, rgba(13,11,20,0.80) 32%, rgba(13,11,20,0.25) 58%, rgba(13,11,20,0.02) 100%)",
+            xs: "linear-gradient(125deg, rgba(13,11,20,0.90) 0%, rgba(13,11,20,0.82) 40%, rgba(13,11,20,0.60) 62%, rgba(13,11,20,0.30) 100%)",
+            sm: "linear-gradient(90deg, rgba(13,11,20,0.92) 0%, rgba(13,11,20,0.80) 32%, rgba(13,11,20,0.25) 58%, rgba(13,11,20,0.02) 100%)",
           },
         }}
       />
@@ -349,7 +353,7 @@ export default function Hero() {
           inset: 0,
           background: {
             xs: "none",
-            md: "radial-gradient(ellipse 55% 65% at 88% 30%, rgba(216,179,106,0.05) 0%, transparent 60%), radial-gradient(ellipse 45% 55% at 78% 85%, rgba(90,70,120,0.10) 0%, transparent 65%)",
+            sm: "radial-gradient(ellipse 55% 65% at 88% 30%, rgba(216,179,106,0.05) 0%, transparent 60%), radial-gradient(ellipse 45% 55% at 78% 85%, rgba(90,70,120,0.10) 0%, transparent 65%)",
           },
           mixBlendMode: "screen",
           pointerEvents: "none",
@@ -360,7 +364,7 @@ export default function Hero() {
       <Box
         aria-hidden
         sx={{
-          display: { xs: "none", md: "block" },
+          display: { xs: "none", sm: "block" },
           position: "absolute",
           inset: 0,
           "@media (prefers-reduced-motion: reduce)": { display: "none" },
@@ -374,7 +378,7 @@ export default function Hero() {
       <Box
         aria-hidden
         sx={{
-          display: { xs: "none", md: "block" },
+          display: { xs: "none", sm: "block" },
           position: "absolute",
           inset: 0,
           background:
@@ -432,8 +436,8 @@ export default function Hero() {
         }}
       />
 
-      <Container sx={{ position: "relative", zIndex: 2, pt: { xs: 12, md: 13 }, pb: { xs: 5, md: 3 } }}>
-        <Box sx={{ maxWidth: { xs: "100%", md: 620 } }}>
+      <Container sx={{ position: "relative", zIndex: 2, pt: { xs: 13, sm: 12, md: 13 }, pb: { xs: 5, md: 3 } }}>
+        <Box sx={{ maxWidth: { xs: "100%", sm: 460, md: 500, lg: 620 } }}>
 
           {/* Eyebrow */}
           <Typography
@@ -456,7 +460,7 @@ export default function Hero() {
             variant="h1"
             sx={{
               ...anim("0.5s"),
-              fontSize: { xs: "36px", sm: "49px", md: "65px" },
+              fontSize: { xs: "36px", sm: "44px", md: "50px", lg: "65px" },
               lineHeight: 1.02,
               color: "#F2E8CF",
               mb: { xs: 3.5, md: 4 },
@@ -501,11 +505,20 @@ export default function Hero() {
               color: "rgba(242,232,207,0.72)",
               fontSize: { xs: 15, md: 17 },
               lineHeight: 1.7,
-              maxWidth: 440,
+              maxWidth: { xs: 440, md: "none" },
               mb: { xs: 4, md: 5 },
             }}
           >
-            Beautiful websites that earn trust, elevate your brand, and help your business grow.</Typography>
+            <Box component="span" sx={{ display: { md: "block" } }}>
+              Beautiful websites that earn trust,
+            </Box>{" "}
+            <Box component="span" sx={{ display: { md: "block" } }}>
+              elevate your brand,
+            </Box>{" "}
+            <Box component="span" sx={{ display: { md: "block" } }}>
+              and help your business grow.
+            </Box>
+          </Typography>
 
           {/* CTAs */}
           <Box
@@ -521,17 +534,14 @@ export default function Hero() {
               variant="contained"
               href="/services"
               sx={{
+                width: { xs: "100%", sm: "auto" },
                 fontSize: { xs: 12, md: 13 },
                 fontWeight: 700,
                 letterSpacing: "0.14em",
                 textTransform: "uppercase",
                 px: { xs: 3, md: 3.5 },
                 py: 1.5,
-                backgroundColor: "#D8B36A",
                 color: "#0D0B14",
-                "&:hover": {
-                  backgroundColor: "#E8CE94",
-                },
               }}
             >
               Our Services
@@ -541,6 +551,7 @@ export default function Hero() {
               variant="outlined"
               href="/contact"
               sx={{
+                width: { xs: "100%", sm: "auto" },
                 fontSize: { xs: 12, md: 13 },
                 fontWeight: 700,
                 letterSpacing: "0.14em",
