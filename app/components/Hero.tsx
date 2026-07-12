@@ -230,7 +230,7 @@ export default function Hero() {
         position: "relative",
         display: "flex",
         alignItems: "center",
-        minHeight: { xs: "66svh", md: "72vh" },
+        minHeight: { xs: "calc(66svh + 120px)", md: "calc(72vh + 160px)" },
         overflow: "hidden",
         backgroundColor: "#0D0B14",
       }}
@@ -378,12 +378,14 @@ export default function Hero() {
           position: "absolute",
           inset: 0,
           background:
-            "radial-gradient(ellipse 42% 55% at 60% 90%, rgba(13,11,20,0.55) 0%, rgba(13,11,20,0.25) 45%, transparent 78%)",
+            "radial-gradient(ellipse 42% 45% at 60% 96%, rgba(13,11,20,0.4) 0%, rgba(13,11,20,0.18) 45%, transparent 78%)",
           pointerEvents: "none",
         }}
       />
 
-      {/* Bottom fade — dissolves the photo into the section below instead of a hard cut */}
+      {/* Bottom fade — dissolves the photo into the section below instead of a hard cut.
+          Ramp starts later than the laptop's base so the keyboard stays readable, then
+          catches up quickly to still land fully solid before the section boundary. */}
       <Box
         aria-hidden
         sx={{
@@ -391,9 +393,27 @@ export default function Hero() {
           left: 0,
           right: 0,
           bottom: 0,
-          height: { xs: "34%", md: "48%" },
+          height: { xs: "58%", md: "74%" },
           background:
-            "linear-gradient(to bottom, transparent 0%, rgba(13,11,20,0.35) 45%, rgba(13,11,20,0.8) 75%, #0D0B14 100%)",
+            "linear-gradient(to bottom, transparent 0%, transparent 40%, rgba(13,11,20,0.35) 60%, rgba(13,11,20,0.85) 82%, #0D0B14 100%)",
+          pointerEvents: "none",
+        }}
+      />
+
+      {/* Bottom haze — soft screen-blended glow that sits over the horizon line, pushing
+          the skyline further into the background without blurring the photo itself */}
+      <Box
+        aria-hidden
+        sx={{
+          position: "absolute",
+          left: 0,
+          right: 0,
+          bottom: 0,
+          height: { xs: "30%", md: "36%" },
+          background:
+            "linear-gradient(to bottom, transparent 0%, rgba(13,11,20,0.3) 60%, rgba(13,11,20,0.55) 100%)",
+          filter: "blur(24px)",
+          mixBlendMode: "multiply",
           pointerEvents: "none",
         }}
       />
@@ -428,7 +448,7 @@ export default function Hero() {
               mb: 2.5,
             }}
           >
-            Thoughtfully Crafted Websites
+            Thoughtfully Crafted Digital Experiences
           </Typography>
 
           {/* Headline */}

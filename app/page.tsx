@@ -18,7 +18,6 @@ export default function Home() {
       <ScrollReveal />
       <main style={{ position: "relative", zIndex: 1 }}>
         <Hero />
-        <SectionDivider />
         <About />
         <SectionDivider />
         <Services />

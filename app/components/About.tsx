@@ -10,11 +10,29 @@ export default function About() {
       component="section"
       id="about"
       sx={{
-        py: { xs: 10, md: 14 },
+        pt: { xs: 8, md: 11 },
+        pb: { xs: 10, md: 14 },
         position: "relative",
         zIndex: 1,
       }}
     >
+      {/* Top fade — the Hero section above ends fully opaque, so without this the
+          fixed ambient aura layer (which Hero paints over) suddenly reveals itself
+          right at the section boundary, reading as a hard line. This tapers that
+          reveal in gradually instead of an on/off cut. */}
+      <Box
+        aria-hidden
+        sx={{
+          position: "absolute",
+          top: 0,
+          left: 0,
+          right: 0,
+          height: { xs: 120, md: 200 },
+          background: "linear-gradient(to bottom, #0D0B14 0%, rgba(13,11,20,0) 100%)",
+          pointerEvents: "none",
+        }}
+      />
+
       <Container
         sx={{
           textAlign: "center",
