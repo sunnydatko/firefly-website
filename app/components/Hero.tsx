@@ -100,7 +100,7 @@ function HeroFirefly() {
     const now0 = performance.now();
     const agents: Agent[] = Array.from({ length: AGENT_COUNT }, (_, i) => ({
       flight: null,
-      nextFlightAt: now0 + 3200 + i * 2400 + rand(200, 2000),
+      nextFlightAt: now0 + 500 + i * 2400 + rand(200, 2000),
       trail: [],
       lastTrailEmit: 0,
     }));
