@@ -74,7 +74,11 @@ export default function Contact() {
       });
       if (!res.ok) throw new Error("Request failed");
 
-      setSnack({ open: true, severity: "success", text: "Your message was sent." });
+      setSnack({
+        open: true,
+        severity: "success",
+        text: "✨ Thanks for reaching out — I'll get back to you within one business day.",
+      });
       setFields(EMPTY);
       setErrors({});
       setTouched({});
@@ -95,7 +99,7 @@ export default function Contact() {
       }}
     >
       <Container sx={{ maxWidth: "760px !important" }}>
-        <Box className="reveal" sx={{ textAlign: "center", mb: 6 }}>
+        <Box className="reveal" sx={{ textAlign: "center", mb: { xs: 4, md: 3.5 } }}>
           <Typography
             component="span"
             sx={{
@@ -111,12 +115,47 @@ export default function Contact() {
           >
             + Let's Connect
           </Typography>
-          <Typography variant="h3">Let&apos;s Work Together</Typography>
+          <Typography variant="h3" sx={{ mb: 2 }}>
+            Let&apos;s Work Together
+          </Typography>
+          <Typography
+            sx={{
+              color: "text.secondary",
+              maxWidth: "480px",
+              mx: "auto",
+              fontSize: { xs: 14.5, md: 15.5 },
+              lineHeight: 1.7,
+            }}
+          >
+            Tell me about your project, your goals, or even just an idea — I&apos;d love to hear
+            what you&apos;re building.
+          </Typography>
         </Box>
 
-        <form onSubmit={handleSubmit} noValidate className="reveal" style={{ transitionDelay: "0.1s" }}>
+        <Box
+          component="form"
+          onSubmit={handleSubmit}
+          noValidate
+          className="reveal"
+          sx={{ position: "relative", transitionDelay: "0.1s" }}
+        >
+          <Box
+            aria-hidden
+            sx={{
+              position: "absolute",
+              inset: { xs: "-24px -12px", md: "-48px -64px" },
+              background:
+                "radial-gradient(ellipse 60% 55% at 50% 42%, rgba(216,179,106,0.08), rgba(216,179,106,0.025) 45%, transparent 72%)",
+              filter: "blur(28px)",
+              mixBlendMode: "screen",
+              pointerEvents: "none",
+              zIndex: 0,
+            }}
+          />
           <Box
             sx={{
+              position: "relative",
+              zIndex: 1,
               display: "flex",
               flexDirection: "column",
               gap: 3,
@@ -147,7 +186,7 @@ export default function Contact() {
               label="Message"
               name="message"
               multiline
-              rows={4}
+              rows={7}
               value={fields.message}
               onChange={handleChange}
               onBlur={handleBlur}
@@ -159,15 +198,15 @@ export default function Contact() {
               type="submit"
               sx={{
                 alignSelf: "center",
-                mt: 1,
-                width: { xs: "100%", md: "300px" },
+                mt: 2.25,
+                width: { xs: "100%", sm: "80%", md: "75%" },
                 py: 1.4,
               }}
             >
               Send Message
             </Button>
           </Box>
-        </form>
+        </Box>
       </Container>
 
       <Snackbar

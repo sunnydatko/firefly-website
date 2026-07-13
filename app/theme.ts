@@ -105,6 +105,55 @@ const theme = createTheme({
         },
       },
     },
+    MuiOutlinedInput: {
+      styleOverrides: {
+        root: {
+          backgroundColor: "rgba(242,232,207,0.03)",
+          borderRadius: 4,
+          transition: "background-color 0.3s ease, box-shadow 0.3s ease",
+          "& .MuiOutlinedInput-notchedOutline": {
+            borderColor: "rgba(242,232,207,0.18)",
+            transition: "border-color 0.3s ease",
+          },
+          "&:hover .MuiOutlinedInput-notchedOutline": {
+            borderColor: "rgba(216,179,106,0.5)",
+          },
+          "&:hover": {
+            backgroundColor: "rgba(242,232,207,0.05)",
+          },
+          "&.Mui-focused": {
+            backgroundColor: "rgba(242,232,207,0.05)",
+          },
+          "&.Mui-focused .MuiOutlinedInput-notchedOutline": {
+            borderColor: "#D8B36A",
+            borderWidth: "1px",
+            boxShadow: "0 0 0 4px rgba(216,179,106,0.08)",
+          },
+        },
+      },
+    },
+    MuiInputLabel: {
+      styleOverrides: {
+        root: {
+          color: "rgba(242,232,207,0.55)",
+          "&.Mui-focused": {
+            color: "#D8B36A",
+          },
+        },
+      },
+    },
+    MuiFormHelperText: {
+      styleOverrides: {
+        root: {
+          marginTop: 4,
+          marginLeft: 2,
+          fontSize: "0.8125rem",
+          "&.Mui-error": {
+            color: "rgba(196,138,86,0.82)",
+          },
+        },
+      },
+    },
     MuiLink: {
       defaultProps: { underline: "none" },
       styleOverrides: {
