@@ -21,7 +21,7 @@ export default function Home() {
         <About />
         <SectionDivider />
         <Services />
-        {/* <FeaturedProjects /> */}{/* hidden until projects approved */}
+        <FeaturedProjects />
         <SectionDivider />
         <Testimonial />
         <SectionDivider />
