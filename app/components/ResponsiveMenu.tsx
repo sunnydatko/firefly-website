@@ -20,9 +20,9 @@ import BrandMark from "./BrandMark";
 const drawerWidth = 320;
 
 const navItems = [
+  { name: "Work", href: "/work" },
   { name: "Services", href: "/services" },
   { name: "About", href: "/about" },
-  // { name: "Work", href: "/work" }, // hidden until projects approved
 ];
 
 export default function ResponsiveMenu() {
