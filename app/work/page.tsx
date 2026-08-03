@@ -120,8 +120,13 @@ export default function WorkPage() {
           <Box
             sx={{
               display: "grid",
-              gridTemplateColumns: { xs: "1fr", md: "1fr 1fr" },
+              gridTemplateColumns: {
+                xs: "1fr",
+                md: featuredProjects.length > 1 ? "1fr 1fr" : "1fr",
+              },
               gap: { xs: 5, md: 4 },
+              maxWidth: featuredProjects.length > 1 ? "none" : 480,
+              mx: featuredProjects.length > 1 ? 0 : "auto",
             }}
           >
             {featuredProjects.map((project, index) => (
