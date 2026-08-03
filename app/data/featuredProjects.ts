@@ -1,4 +1,4 @@
-import balancedBodyworks from "../images/projects/balanced-bodyworks.png";
+import balancedBodyworks from "../images/projects/balanced-bodyworks.webp";
 import type { StaticImageData } from "next/image";
 
 export interface FeaturedProject {

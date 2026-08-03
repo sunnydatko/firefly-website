@@ -5,8 +5,8 @@ import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import Container from "@mui/material/Container";
 import Typography from "@mui/material/Typography";
-import balancedBodyworks from "../images/projects/balanced-bodyworks.png";
-import genivere from "../images/projects/genivere.png";
+import balancedBodyworks from "../images/projects/balanced-bodyworks.webp";
+import genivere from "../images/projects/genivere.webp";
 
 const projects = [
   {
