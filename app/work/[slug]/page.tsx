@@ -190,64 +190,68 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
         </Box>
       )}
 
-      <SectionDivider />
+      {featuredProjects.length > 1 && (
+        <>
+          <SectionDivider />
 
-      {/* Next project */}
-      <Box
-        component="section"
-        sx={{
-          py: { xs: 10, md: 12 },
-        }}
-      >
-        <Container sx={{ maxWidth: "1300px !important" }}>
-          <Typography
-            sx={{
-              fontFamily: "var(--font-inter), sans-serif",
-              fontWeight: 600,
-              fontSize: 11,
-              letterSpacing: "0.2em",
-              textTransform: "uppercase",
-              color: "grey.600",
-              mb: 3,
-            }}
-          >
-            Next Project
-          </Typography>
+          {/* Next project */}
           <Box
-            component="a"
-            href={nextProject.href}
+            component="section"
             sx={{
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "space-between",
-              textDecoration: "none",
-              color: "inherit",
-              gap: 4,
-              "&:hover .next-arrow": { transform: "translateX(6px)" },
+              py: { xs: 10, md: 12 },
             }}
           >
-            <Box>
-              <Typography variant="h3" sx={{ fontSize: { xs: "28px", md: "40px" }, mb: 0.5 }}>
-                {nextProject.name}
+            <Container sx={{ maxWidth: "1300px !important" }}>
+              <Typography
+                sx={{
+                  fontFamily: "var(--font-inter), sans-serif",
+                  fontWeight: 600,
+                  fontSize: 11,
+                  letterSpacing: "0.2em",
+                  textTransform: "uppercase",
+                  color: "grey.600",
+                  mb: 3,
+                }}
+              >
+                Next Project
               </Typography>
-              <Typography sx={{ color: "grey.400", fontFamily: "var(--font-inter), sans-serif", fontSize: 14 }}>
-                {nextProject.tagline}&nbsp;&nbsp;·&nbsp;&nbsp;{nextProject.location}
-              </Typography>
-            </Box>
-            <Box
-              className="next-arrow"
-              sx={{
-                fontSize: { xs: 28, md: 40 },
-                color: "primary.main",
-                transition: "transform 0.3s ease",
-                flexShrink: 0,
-              }}
-            >
-              →
-            </Box>
+              <Box
+                component="a"
+                href={nextProject.href}
+                sx={{
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "space-between",
+                  textDecoration: "none",
+                  color: "inherit",
+                  gap: 4,
+                  "&:hover .next-arrow": { transform: "translateX(6px)" },
+                }}
+              >
+                <Box>
+                  <Typography variant="h3" sx={{ fontSize: { xs: "28px", md: "40px" }, mb: 0.5 }}>
+                    {nextProject.name}
+                  </Typography>
+                  <Typography sx={{ color: "grey.400", fontFamily: "var(--font-inter), sans-serif", fontSize: 14 }}>
+                    {nextProject.tagline}&nbsp;&nbsp;·&nbsp;&nbsp;{nextProject.location}
+                  </Typography>
+                </Box>
+                <Box
+                  className="next-arrow"
+                  sx={{
+                    fontSize: { xs: 28, md: 40 },
+                    color: "primary.main",
+                    transition: "transform 0.3s ease",
+                    flexShrink: 0,
+                  }}
+                >
+                  →
+                </Box>
+              </Box>
+            </Container>
           </Box>
-        </Container>
-      </Box>
+        </>
+      )}
 
       <SectionDivider />
 
