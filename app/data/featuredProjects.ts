@@ -1,4 +1,5 @@
 import balancedBodyworks from "../images/projects/balanced-bodyworks.webp";
+import blckMssv from "../images/projects/blck-mssv.webp";
 import type { StaticImageData } from "next/image";
 
 export interface FeaturedProject {
@@ -37,5 +38,24 @@ export const featuredProjects: FeaturedProject[] = [
       "We gave the practice its own identity, Balanced Bodyworks, and built a custom site around it: a warmer homepage, clear service and pricing breakdowns, a visible 5-star client testimonial, and a direct booking path, in a clean, modern layout that puts the client's comfort first.",
     result:
       "Balanced Bodyworks launched in 2026 as Firefly's first live client site — a clean, trustworthy home base for Sarah's practice to grow from.",
+  },
+  {
+    slug: "blck-mssv",
+    name: "BLCK.MSSV",
+    tagline: "Electronic DJ Duo",
+    location: "Southern California",
+    whatWeDid: "Website redesign, custom development",
+    year: "2026",
+    services: ["Web Design", "Web Development"],
+    image: blckMssv,
+    href: "/work/blck-mssv",
+    overview:
+      "BLCK.MSSV is a Southern California electronic duo, J. Cush and Brian M, blending indie dance, melodic techno, and progressive house into their own sound. Their old site crammed everything onto one long, centered page under massive display type — bold to look at, but it buried the mixes, shows, and contact info visitors actually came for. We rebuilt it as a clean, easy-to-scan site that still hits just as hard.",
+    challenge:
+      "Giant centered headlines like 'NEW MUSIC COMING SOON' and 'UPCOMING SHOWS' gave the old site a dramatic look, but the actual content — live Mixcloud sets, show dates, booking contact — sat as an afterthought beneath them, easy to miss on the scroll. For an act that plays alongside names like Paul Oakenfold, the site needed to work as hard as their sets do.",
+    solution:
+      "We rebuilt the site around real navigation — Live Mixes, About, Contact — so their sets and show info surface immediately instead of hiding under oversized type, while keeping the moody, dark visual identity that fits their sound.",
+    result:
+      "The new BLCK.MSSV site is built and ready — it'll go live at blckmssv.com in the coming days, replacing their old site with a home base that's as easy to navigate as it is to look at.",
   },
 ];
