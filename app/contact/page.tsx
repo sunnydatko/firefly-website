@@ -144,10 +144,20 @@ export default function ContactPage() {
             backgroundSize: "cover",
             backgroundPosition: "center 35%",
             opacity: { xs: 0.14, md: 0.2 },
-            maskImage:
-              "radial-gradient(ellipse 85% 80% at 30% 38%, black 0%, black 22%, rgba(0,0,0,0.55) 55%, rgba(0,0,0,0.15) 80%, transparent 100%)",
-            WebkitMaskImage:
-              "radial-gradient(ellipse 85% 80% at 30% 38%, black 0%, black 22%, rgba(0,0,0,0.55) 55%, rgba(0,0,0,0.15) 80%, transparent 100%)",
+            pointerEvents: "none",
+          }}
+        />
+
+        {/* Vignette — dissolves the texture into the solid background with a real
+            color-matched overlay instead of relying on the image's own alpha hitting
+            zero, which is what left a visible texture/no-texture seam before. */}
+        <Box
+          aria-hidden
+          sx={{
+            position: "absolute",
+            inset: 0,
+            background:
+              "radial-gradient(ellipse 85% 80% at 30% 38%, transparent 0%, transparent 30%, #0D0B14 78%)",
             pointerEvents: "none",
           }}
         />
