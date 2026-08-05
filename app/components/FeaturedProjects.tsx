@@ -65,6 +65,7 @@ export default function FeaturedProjects() {
                 },
                 "&:hover .screenshot-wrap img": {
                   transform: "scale(1.03)",
+                  filter: "grayscale(0)",
                 },
                 "&:hover .screenshot-overlay": {
                   opacity: 1,
@@ -77,13 +78,16 @@ export default function FeaturedProjects() {
                 sx={{
                   position: "relative",
                   width: "100%",
-                  aspectRatio: "4 / 3",
+                  aspectRatio: "16 / 9",
                   borderRadius: 2,
                   overflow: "hidden",
                   border: "1px solid rgba(255,255,255,0.08)",
                   mb: 3,
                   transition: "border-color 0.3s ease",
-                  "& img": { transition: "transform 0.5s ease" },
+                  "& img": {
+                    transition: "transform 0.5s ease, filter 0.6s ease",
+                    filter: "grayscale(1)",
+                  },
                 }}
               >
                 <Image
