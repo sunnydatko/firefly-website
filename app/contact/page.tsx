@@ -145,9 +145,9 @@ export default function ContactPage() {
             backgroundPosition: "center 35%",
             opacity: { xs: 0.14, md: 0.2 },
             maskImage:
-              "radial-gradient(ellipse 70% 65% at 32% 40%, black 0%, black 35%, transparent 78%)",
+              "radial-gradient(ellipse 85% 80% at 30% 38%, black 0%, black 22%, rgba(0,0,0,0.55) 55%, rgba(0,0,0,0.15) 80%, transparent 100%)",
             WebkitMaskImage:
-              "radial-gradient(ellipse 70% 65% at 32% 40%, black 0%, black 35%, transparent 78%)",
+              "radial-gradient(ellipse 85% 80% at 30% 38%, black 0%, black 22%, rgba(0,0,0,0.55) 55%, rgba(0,0,0,0.15) 80%, transparent 100%)",
             pointerEvents: "none",
           }}
         />
