@@ -59,9 +59,9 @@ export default function WorkPage() {
             backgroundPosition: "center 35%",
             opacity: { xs: 0.14, md: 0.2 },
             maskImage:
-              "linear-gradient(180deg, transparent 0%, black 25%, black 75%, transparent 100%)",
+              "radial-gradient(ellipse 70% 65% at 32% 40%, black 0%, black 35%, transparent 78%)",
             WebkitMaskImage:
-              "linear-gradient(180deg, transparent 0%, black 25%, black 75%, transparent 100%)",
+              "radial-gradient(ellipse 70% 65% at 32% 40%, black 0%, black 35%, transparent 78%)",
             pointerEvents: "none",
           }}
         />
@@ -165,7 +165,7 @@ export default function WorkPage() {
                     transition: "border-color 0.3s ease",
                     "& img": {
                       transition: "transform 0.5s ease, filter 0.6s ease",
-                      filter: "grayscale(1)",
+                      filter: "grayscale(0.6)",
                     },
                   }}
                 >

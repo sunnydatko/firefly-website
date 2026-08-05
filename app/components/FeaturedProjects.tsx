@@ -86,7 +86,7 @@ export default function FeaturedProjects() {
                   transition: "border-color 0.3s ease",
                   "& img": {
                     transition: "transform 0.5s ease, filter 0.6s ease",
-                    filter: "grayscale(1)",
+                    filter: "grayscale(0.6)",
                   },
                 }}
               >
