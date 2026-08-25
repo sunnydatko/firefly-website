@@ -100,14 +100,14 @@ export const testimonials = [
   },
   {
     quote:
-      "Sunny was one of the smartest decisions I have made in creating my business website. She was not only prompt with her work but her attention to detail and her suggestions on changes to my website were only paled by her incredible ability to express my passion about my business into words! I would not only use her again for future changes but recommend her to anyone who is looking to expand their business and needs to build a website to do so. Speak to her first and don't do what I did!",
+      "Firefly was one of the smartest decisions I have made in creating my business website. They were not only prompt with their work but their attention to detail and their suggestions on changes to my website were only paled by their incredible ability to express my passion about my business into words! I would not only use them again for future changes but recommend them to anyone who is looking to expand their business and needs to build a website to do so. Speak to them first and don't do what I did!",
     name: "Abraham Perez",
     title: "Owner · Quantum Touch Therapy",
     image: "perez",
   },
   {
     quote:
-      "Sunny designed me a website and working with her was such a pleasure, always punctual, awesome communication, and you can tell she puts lots of love into what she is doing.",
+      "Firefly designed me a website and working with them was such a pleasure, always punctual, awesome communication, and you can tell they put lots of love into what they are doing.",
     name: "Jack Shure",
     title: "Owner · Artwork by Jack Shure",
     image: "shure",
