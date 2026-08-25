@@ -7,16 +7,22 @@ import Box from "@mui/material/Box";
 import Container from "@mui/material/Container";
 import Typography from "@mui/material/Typography";
 import { testimonials } from "../helpers/data";
-import testimonialRosestone from "../images/testimonial-rosestone-jewelry.webp";
-import testimonialTasha from "../images/testimonial-tasha-rae-jewelry.webp";
-import testimonialBeInTouch from "../images/testimonial-be-in-touch.webp";
-import testimonialBB from "../images/testimonial-bb.webp";
+import testimonialRosestone from "../images/testimonial/rosestone-jewelry.webp";
+import testimonialTasha from "../images/testimonial/tasha-rae-jewelry.webp";
+import testimonialBeInTouch from "../images/testimonial/be-in-touch.webp";
+import testimonialBB from "../images/testimonial/bb.webp";
+import testimonialMichelleBaker from "../images/testimonial/michelle-baker.jpg";
+import testimonialPerez from "../images/testimonial/perez.jpg";
+import testimonialShure from "../images/testimonial/shure.jpg";
 
 const imageMap: Record<string, StaticImageData> = {
-  "testimonial-rosestone-jewelry": testimonialRosestone,
-  "testimonial-tasha-rae-jewelry": testimonialTasha,
-  "testimonial-be-in-touch": testimonialBeInTouch,
-  "testimonial-bb": testimonialBB,
+  "rosestone-jewelry": testimonialRosestone,
+  "tasha-rae-jewelry": testimonialTasha,
+  "be-in-touch": testimonialBeInTouch,
+  bb: testimonialBB,
+  "michelle-baker": testimonialMichelleBaker,
+  perez: testimonialPerez,
+  shure: testimonialShure,
 };
 
 const INTERVAL_MS = 5500;

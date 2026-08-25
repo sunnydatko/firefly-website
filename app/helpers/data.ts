@@ -68,28 +68,49 @@ export const testimonials = [
       "Firefly poured genuine care into every detail of our project. They built a beautiful, professional website from scratch, then developed a marketing strategy that brought new customers almost immediately. Highest recommendation.",
     name: "Jeshua Rosestone",
     title: "Master Goldsmith · Rosestone Jewelry",
-    image: "testimonial-rosestone-jewelry",
+    image: "rosestone-jewelry",
   },
   {
     quote:
       "Firefly built my website and shaped the marketing strategy behind my online professional image. They're a joy to work with and full of brilliant ideas. Thank you, Firefly!",
     name: "Lani Oft",
     title: "Owner · Be In Touch Bodywork",
-    image: "testimonial-be-in-touch",
+    image: "be-in-touch",
   },
   {
     quote:
       "Firefly helped solve a web-based marketing challenge for my small business, performing above and beyond what I'd hoped for. Their knowledge far exceeded the cost, and I've since hired them for several other projects. Highly recommended.",
     name: "Tasha Tatro",
     title: "Owner · Tasha Rae Jewelry",
-    image: "testimonial-tasha-rae-jewelry",
+    image: "tasha-rae-jewelry",
   },
   {
     quote:
       "I hired Firefly for website updates and social media promotion. Their methods were creative, the work was fast, and the results exceeded my expectations. I'd definitely recommend them.",
     name: "Bryan Beglinger",
     title: "Senior Realtor · FAM Realty",
-    image: "testimonial-bb",
+    image: "bb",
+  },
+  {
+    quote:
+      "Thank you for all that you have done and for working for us… Your skill and artistry is most appreciated and desired. You brought us to a new level.",
+    name: "Michelle Baker",
+    title: "Partner · Baker & Cunningham, LLP",
+    image: "michelle-baker",
+  },
+  {
+    quote:
+      "Sunny was one of the smartest decisions I have made in creating my business website. She was not only prompt with her work but her attention to detail and her suggestions on changes to my website were only paled by her incredible ability to express my passion about my business into words! I would not only use her again for future changes but recommend her to anyone who is looking to expand their business and needs to build a website to do so. Speak to her first and don't do what I did!",
+    name: "Abraham Perez",
+    title: "Owner · Quantum Touch Therapy",
+    image: "perez",
+  },
+  {
+    quote:
+      "Sunny designed me a website and working with her was such a pleasure, always punctual, awesome communication, and you can tell she puts lots of love into what she is doing.",
+    name: "Jack Shure",
+    title: "Owner · Artwork by Jack Shure",
+    image: "shure",
   },
 ];
 
