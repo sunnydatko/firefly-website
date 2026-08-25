@@ -11,9 +11,9 @@ import testimonialRosestone from "../images/testimonial/rosestone-jewelry.webp";
 import testimonialTasha from "../images/testimonial/tasha-rae-jewelry.webp";
 import testimonialBeInTouch from "../images/testimonial/be-in-touch.webp";
 import testimonialBB from "../images/testimonial/bb.webp";
-import testimonialMichelleBaker from "../images/testimonial/michelle-baker.jpg";
-import testimonialPerez from "../images/testimonial/perez.jpg";
-import testimonialShure from "../images/testimonial/shure.jpg";
+import testimonialMichelleBaker from "../images/testimonial/michelle-baker.webp";
+import testimonialPerez from "../images/testimonial/perez.webp";
+import testimonialShure from "../images/testimonial/shure.webp";
 
 const imageMap: Record<string, StaticImageData> = {
   "rosestone-jewelry": testimonialRosestone,
