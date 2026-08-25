@@ -100,7 +100,7 @@ export const testimonials = [
   },
   {
     quote:
-      "Firefly was one of the smartest decisions I have made in creating my business website. They were not only prompt with their work but their attention to detail and their suggestions on changes to my website were only paled by their incredible ability to express my passion about my business into words! I would not only use them again for future changes but recommend them to anyone who is looking to expand their business and needs to build a website to do so. Speak to them first and don't do what I did!",
+      "Firefly was one of the smartest decisions I've made for my business. Their attention to detail and ability to express my passion into words was incredible. I'd recommend them to anyone looking to build a website for their business.",
     name: "Abraham Perez",
     title: "Owner · Quantum Touch Therapy",
     image: "perez",
