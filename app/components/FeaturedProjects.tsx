@@ -19,9 +19,10 @@ export default function FeaturedProjects() {
       }}
     >
       <Container sx={{ maxWidth: "1300px !important" }}>
-        <Box sx={{ textAlign: "center", mb: { xs: 5, md: 6 } }}>
+        <Box sx={{ textAlign: "center", mb: { xs: 7, md: 9 } }}>
           <Typography
             component="span"
+            className="reveal"
             sx={{
               display: "block",
               color: "primary.light",
@@ -30,9 +31,18 @@ export default function FeaturedProjects() {
               fontSize: { xs: 12.5, md: 14 },
               letterSpacing: "0.28em",
               textTransform: "uppercase",
+              mb: 2,
             }}
           >
             + Recent Work
+          </Typography>
+          <Typography
+            className="reveal"
+            style={{ transitionDelay: "0.1s" }}
+            variant="h3"
+            sx={{ textWrap: "balance" }}
+          >
+            A few projects we&rsquo;re proud of
           </Typography>
         </Box>
 
@@ -132,7 +142,7 @@ export default function FeaturedProjects() {
               {/* Info */}
               <Typography
                 variant="h4"
-                sx={{ fontSize: { xs: "19px", md: "22px" }, mb: 0.75 }}
+                sx={{ fontSize: { xs: "19px", md: "22px" }, mb: 1 }}
               >
                 {project.name}
               </Typography>
@@ -142,10 +152,10 @@ export default function FeaturedProjects() {
                   fontFamily: "var(--font-inter), sans-serif",
                   fontSize: { xs: 13, md: 14 },
                   letterSpacing: "0.04em",
-                  mb: 0.5,
+                  mb: 1.5,
                 }}
               >
-                {project.tagline}&nbsp;&nbsp;·&nbsp;&nbsp;{project.location}
+                {project.tagline}&nbsp;&middot;&nbsp;{project.location}
               </Typography>
               <Typography
                 sx={{
@@ -153,6 +163,7 @@ export default function FeaturedProjects() {
                   fontFamily: "var(--font-inter), sans-serif",
                   fontSize: { xs: 12, md: 13 },
                   letterSpacing: "0.03em",
+                  lineHeight: 1.6,
                 }}
               >
                 {project.whatWeDid}
