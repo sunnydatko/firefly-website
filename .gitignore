@@ -42,3 +42,9 @@ next-env.d.ts
 
 # superpowers scratch workspace
 /.superpowers/
+
+# verify-firefly skill runtime state
+/.claude/skills/verify-firefly/.state.json
+/.claude/skills/verify-firefly/.chromium-profile/
+/.claude/skills/verify-firefly/.dev-server.log
+/.claude/skills/verify-firefly/screenshot-*.png
