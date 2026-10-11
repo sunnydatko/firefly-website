@@ -112,6 +112,12 @@ export const testimonials = [
     title: "Owner · Artwork by Jack Shure",
     image: "shure",
   },
+  {
+    quote:
+      "Firefly is an absolute dream to work with — super creative, deeply collaborative, and genuinely easy to partner with. You really can't ask for more than that.",
+    name: "Brian M",
+    title: "Owner · BLCK.MSSV",
+  },
 ];
 
 export const education = [
