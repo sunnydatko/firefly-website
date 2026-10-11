@@ -114,7 +114,7 @@ export const testimonials = [
   },
   {
     quote:
-      "Firefly is an absolute dream to work with — super creative, deeply collaborative, and genuinely easy to partner with. You really can't ask for more than that.",
+      "Firefly is an absolute dream to work with. Super creative, deeply collaborative, and genuinely easy to partner with. You really can't ask for more than that.",
     name: "Brian M",
     title: "Owner · BLCK.MSSV",
   },
